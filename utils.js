@@ -1,6 +1,6 @@
 // ------variables---------------
 const blockSize = 40;
-const mapSizeX = 600/blockSize;
+const mapSizeX = 8960/blockSize;
 const mapSizeY = 480/blockSize;
 const map = make2DGrid(mapSizeX,mapSizeY);
 // ------functions---------------
