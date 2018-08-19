@@ -1,5 +1,5 @@
 setup = () => {
-    createCanvas(8960,680);
+    createCanvas(960,680);
     //initialise map
 
 }
@@ -7,11 +7,17 @@ setup = () => {
 draw = () => {
     clear()
     background(200);
-    for(let x=0; x<Blocks.length; x++) {
-        Blocks[x].show();
+    for(let x=0; x<blocks.length; x++) {
+        blocks[x].show();
+        if(keyIsDown(RIGHT_ARROW)) {
+            blocks[x].goLeft();
+        }
+        if(keyIsDown(LEFT_ARROW)) {
+            blocks[x].goRight();
+        }
     }
-    if(keyIsDown(LEFT_ARROW)) {
-        console.log('gh');
+    for(let x=0; x<ground.length; x++) {
+        ground[x].show();
     }
 }
 
