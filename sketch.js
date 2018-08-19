@@ -1,5 +1,5 @@
 setup = () => {
-    createCanvas(960,680);
+    createCanvas(960,600);
     //initialise map
 
 }

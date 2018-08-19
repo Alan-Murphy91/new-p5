@@ -3,7 +3,6 @@ function Block(x,y,h,w,type='') {
     this.y = y
     this.h = h;
     this.w = w;
-    this.ground = false;
     this.type = (type == 'ground' ? 'ground' : 'block');
 
     this.show = () => {
