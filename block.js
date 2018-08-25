@@ -7,7 +7,11 @@ function Block(x,y,h,w,type='') {
     this.marioContact = false;
 
     this.show = () => {
-        fill(this.type == 'ground' ? 120 : 150);
+        if(!this.marioContact) {
+            fill(this.type == 'ground' ? 120 : 150);
+        } else {
+            fill(50,200,100);
+        }
         stroke(0);
         rect(this.x,this.y,this.h,this.w);
     }
@@ -24,8 +28,17 @@ function Block(x,y,h,w,type='') {
         rect(this.x+20,this.y,2,2);
     }
 
-    this.stopMario = () => {
-        //console.log(dist(this.x+20,this.y+20,mario.x+40,mario.y+20))
+    this.detectMario = () => {
+        if(mario.isFalling){
+            if((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y < this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y < this.y)){
+                this.marioContact = true;
+                console.log(dist(mario.x,this.y,mario.x,mario.y+45))
+                console.log(mario.x,this.x,mario.y,this.y);
+                fallDistance = dist(mario.x,this.y,mario.x,mario.y+45);
+            } else {
+                this.marioContact = false;
+            }
+        }
     }
 
     // this.marioLand = () => {

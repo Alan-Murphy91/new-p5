@@ -9,7 +9,7 @@ draw = () => {
     background(200);
     for(let x=0; x<blocks.length; x++) {
         blocks[x].show();
-        //blocks[x].stopMario();
+        blocks[x].detectMario();
         blocks[x].showCentre();
         blocks[x].showLanding();
         if(keyIsDown(RIGHT_ARROW)) {
@@ -24,11 +24,11 @@ draw = () => {
                 blocks[x].goRight();
             }
         }
-        if(blocks[x].marioContact) {
-            mario.isJumping = false;
-            jumpDistance = fallDistance;
-            mario.isFalling = true;
-        }
+        // if(blocks[x].marioContact) {
+        //     mario.isJumping = false;
+        //     jumpDistance = fallDistance;
+        //     mario.isFalling = true;
+        // }
     }
     mario.show();
     mario.showCentre();
@@ -46,6 +46,7 @@ draw = () => {
         //console.log('mario is starting to fall');
         if(fallDistance <=0) {
             mario.isFalling = false;
+            mario.canJump = true;
         }
         fallDistance -=5;
         mario.y +=5;
@@ -54,8 +55,9 @@ draw = () => {
 
 keyPressed = () => {
     if(keyCode == 32) {
-        if(mario.canJump && !mario.falling){
+        if(mario.canJump && !mario.falling &&!mario.isJumping){
             mario.isJumping = true;
+            mario.canJump = false;
             jumpDistance = 200;
         }
     }
