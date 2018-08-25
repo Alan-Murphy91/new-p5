@@ -2,6 +2,8 @@
 const blockSize = 40;
 const gravity = 5;
 let direction = 1;
+let jumpDistance = 200;
+let fallDistance = 200;
 // ------functions---------------
 
 // ------console-----------------
@@ -18,8 +20,10 @@ blocks.push(new Block(23*blockSize,9*blockSize,blockSize,blockSize,'block'));
 blocks.push(new Block(24*blockSize,9*blockSize,blockSize,blockSize,'block'));
 blocks.push(new Block(25*blockSize,9*blockSize,blockSize,blockSize,'block'));
 
-ground = []
-ground.push(new Block(0,13*blockSize,blockSize*30,blockSize*2,'ground'));
+// -- ground -- //
+for(let i=0;i<40;i++){
+        blocks.push(new Block(i*40,13*blockSize,blockSize*2,blockSize,'ground'));
+}
 
 // ------mario-------------------
 mario = new Mario(11*blockSize,12*blockSize,blockSize,blockSize)
