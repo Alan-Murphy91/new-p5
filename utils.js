@@ -22,7 +22,7 @@ blocks.push(new Block(25*blockSize,9*blockSize,blockSize,blockSize,'block'));
 
 // -- ground -- //
 for(let i=0;i<40;i++){
-        blocks.push(new Block(i*40,13*blockSize,blockSize*2,blockSize,'ground'));
+        blocks.push(new Block(i*40,13*blockSize,blockSize,blockSize*2,'ground'));
 }
 
 // ------mario-------------------
