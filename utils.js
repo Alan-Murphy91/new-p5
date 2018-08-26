@@ -3,7 +3,6 @@ const blockSize = 40;
 const gravity = 5;
 let direction = 1;
 let jumpDistance = 200;
-let fallDistance = 200;
 let rememberDistance = 0;
 let detectionChange = false;
 // ------functions---------------

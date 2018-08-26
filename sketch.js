@@ -40,7 +40,6 @@ draw = () => {
     if(mario.isJumping) {
         if(jumpDistance <= 0) {
             mario.isJumping = false;
-            //fallDistance = 200;
             mario.isFalling = true;
         }
         mario.isLanded = false;
@@ -49,11 +48,6 @@ draw = () => {
     }
     // ------  falling  ------- //
     if(mario.isFalling) {
-        // if(fallDistance <=0) {
-        //     mario.isFalling = false;
-        //     mario.canJump = true;
-        // }
-        // fallDistance -=5;
         mario.y +=5;
     }
 }

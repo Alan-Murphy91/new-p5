@@ -33,13 +33,10 @@ function Block(x,y,h,w,type='') {
             this.marioContact = true;
             mario.isFalling = false; 
             mario.isLanded = true;
-        } else if(!mario.isLanded && ((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y+40 <= this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y+40 <= this.y)) && dist(mario.x,this.y,mario.x,mario.y+40) > 40) {
-                console.log('hi');
+        } else {
+            this.marioContact = false;
         }
-            //this.marioContact = false;
-            //mario.isFalling = true;
     }
-    
 
     this.goLeft = () => {
         this.x -= 5;
