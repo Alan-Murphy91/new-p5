@@ -32,7 +32,6 @@ function Block(x,y,h,w,type='') {
         if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y+40 <= this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y+40 <= this.y)) && dist(mario.x,this.y,mario.x,mario.y+40) == 0) {
             this.marioContact = true;
             mario.isFalling = false; 
-            mario.isLanded = true;
         } else {
             this.marioContact = false;
         }

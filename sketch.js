@@ -1,7 +1,7 @@
 setup = () => {
     createCanvas(960,600);
     //initialise map
-
+    console.log(blocks);
 }
 
 draw = () => {
@@ -13,7 +13,7 @@ draw = () => {
     background(200);
     for(let x=0; x<blocks.length; x++) {
         blocks[x].show();
-        blocks[x].detectMario();
+        blocks[x].detectMario()
         blocks[x].showCentre();
         blocks[x].showLanding();
         if(keyIsDown(RIGHT_ARROW)) {
@@ -42,7 +42,6 @@ draw = () => {
             mario.isJumping = false;
             mario.isFalling = true;
         }
-        mario.isLanded = false;
         jumpDistance -=5;
         mario.y -=5;
     }
