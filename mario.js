@@ -3,10 +3,10 @@ function Mario(x,y,h,w) {
     this.y = y
     this.h = h;
     this.w = w;
-    this.canJump = true;
     this.isJumping = false;
     this.isFalling = false;
-
+    this.isLanded = false;
+    
     this.show = () => {
         fill(50);
         stroke(0);

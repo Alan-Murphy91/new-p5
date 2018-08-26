@@ -29,21 +29,17 @@ function Block(x,y,h,w,type='') {
     }
 
     this.detectMario = () => {
-        if(mario.isFalling){
-            if((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y < this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y < this.y)){
-                this.marioContact = true;
-                console.log(dist(mario.x,this.y,mario.x,mario.y+45))
-                console.log(mario.x,this.x,mario.y,this.y);
-                fallDistance = dist(mario.x,this.y,mario.x,mario.y+45);
-            } else {
-                this.marioContact = false;
-            }
+        if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y+40 <= this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y+40 <= this.y)) && dist(mario.x,this.y,mario.x,mario.y+40) == 0) {
+            this.marioContact = true;
+            mario.isFalling = false; 
+            mario.isLanded = true;
+        } else if(!mario.isLanded && ((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y+40 <= this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y+40 <= this.y)) && dist(mario.x,this.y,mario.x,mario.y+40) > 40) {
+                console.log('hi');
         }
+            //this.marioContact = false;
+            //mario.isFalling = true;
     }
-
-    // this.marioLand = () => {
-    //     if(dist(this.x,this.y+20))
-    // }
+    
 
     this.goLeft = () => {
         this.x -= 5;

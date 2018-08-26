@@ -5,6 +5,10 @@ setup = () => {
 }
 
 draw = () => {
+    //console.log(fallDistance);
+    //console.log(jumpDistance);
+    //console.log('falling? ',mario.isFalling);
+    //console.log('jumping? ',mario.isJumping);
     clear()
     background(200);
     for(let x=0; x<blocks.length; x++) {
@@ -24,40 +28,40 @@ draw = () => {
                 blocks[x].goRight();
             }
         }
-        // if(blocks[x].marioContact) {
-        //     mario.isJumping = false;
-        //     jumpDistance = fallDistance;
-        //     mario.isFalling = true;
-        // }
+        if(mario.isJumping) {
+            blocks[x].marioContact = false;
+        }
     }
+
     mario.show();
     mario.showCentre();
+
+    // ------  jumping  ------- //
     if(mario.isJumping) {
         if(jumpDistance <= 0) {
-            //console.log('mario reached jump height');
             mario.isJumping = false;
-            fallDistance = 200;
+            //fallDistance = 200;
             mario.isFalling = true;
         }
+        mario.isLanded = false;
         jumpDistance -=5;
         mario.y -=5;
     }
+    // ------  falling  ------- //
     if(mario.isFalling) {
-        //console.log('mario is starting to fall');
-        if(fallDistance <=0) {
-            mario.isFalling = false;
-            mario.canJump = true;
-        }
-        fallDistance -=5;
+        // if(fallDistance <=0) {
+        //     mario.isFalling = false;
+        //     mario.canJump = true;
+        // }
+        // fallDistance -=5;
         mario.y +=5;
     }
 }
 
 keyPressed = () => {
     if(keyCode == 32) {
-        if(mario.canJump && !mario.falling &&!mario.isJumping){
+        if(!mario.isFalling && !mario.isJumping){
             mario.isJumping = true;
-            mario.canJump = false;
             jumpDistance = 200;
         }
     }
