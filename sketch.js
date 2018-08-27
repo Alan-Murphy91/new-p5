@@ -5,7 +5,8 @@ setup = () => {
 }
 
 draw = () => {
-    landed = 0;
+    topDetect = 0;
+    bottomDetect = 0;
     //console.log(fallDistance);
     //console.log(jumpDistance);
     //console.log('falling? ',mario.isFalling);
@@ -33,8 +34,11 @@ draw = () => {
             blocks[x].marioContact = false;
         }
     }
-    if(landed > 0) {
+    if(topDetect > 0) {
         mario.isFalling = false;
+    } else if(bottomDetect > 0) {
+        mario.isJumping = false;
+        mario.isFalling = true;
     } else {
         if(!mario.isJumping) {
             mario.isFalling = true;

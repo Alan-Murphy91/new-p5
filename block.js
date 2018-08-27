@@ -5,13 +5,19 @@ function Block(x,y,h,w,type='') {
     this.w = w;
     this.type = (type == 'ground' ? 'ground' : 'block');
     this.marioContact = false;
+    this.booped = false;
 
     this.show = () => {
-        if(!this.marioContact) {
+        if(!this.marioContact && !this.booped) {
             fill(this.type == 'ground' ? 120 : 150);
-        } else {
+        } 
+        else if(this.booped) {
+            fill(255,0,0);
+        } 
+        else {
             fill(50,200,100);
         }
+        
         stroke(0);
         rect(this.x,this.y,this.h,this.w);
     }
@@ -31,7 +37,10 @@ function Block(x,y,h,w,type='') {
     this.detectMario = () => {
         if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y+40 <= this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y+40 <= this.y)) && dist(mario.x,this.y,mario.x,mario.y+40) == 0) {
             this.marioContact = true;
-            landed++;
+            topDetect++;
+        } else if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y-40 >= this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y-40 >= this.y)) && dist(mario.x,this.y,mario.x,mario.y-40) == 0) {
+            this.booped = true;
+            bottomDetect++;
         } else {
             this.marioContact = false;
         }
