@@ -5,6 +5,7 @@ setup = () => {
 }
 
 draw = () => {
+    landed = 0;
     //console.log(fallDistance);
     //console.log(jumpDistance);
     //console.log('falling? ',mario.isFalling);
@@ -13,7 +14,7 @@ draw = () => {
     background(200);
     for(let x=0; x<blocks.length; x++) {
         blocks[x].show();
-        blocks[x].detectMario()
+        blocks[x].detectMario();
         blocks[x].showCentre();
         blocks[x].showLanding();
         if(keyIsDown(RIGHT_ARROW)) {
@@ -30,6 +31,13 @@ draw = () => {
         }
         if(mario.isJumping) {
             blocks[x].marioContact = false;
+        }
+    }
+    if(landed > 0) {
+        mario.isFalling = false;
+    } else {
+        if(!mario.isJumping) {
+            mario.isFalling = true;
         }
     }
 
@@ -49,6 +57,9 @@ draw = () => {
     if(mario.isFalling) {
         mario.y +=5;
     }
+    // else if(!mario.isJumping) {
+    //     mario.isFalling = true;
+    // }
 }
 
 keyPressed = () => {

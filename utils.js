@@ -5,6 +5,7 @@ let direction = 1;
 let jumpDistance = 200;
 let rememberDistance = 0;
 let detectionChange = false;
+let landed = 0;
 // ------functions---------------
 
 // ------console-----------------
