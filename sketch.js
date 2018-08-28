@@ -7,6 +7,7 @@ setup = () => {
 draw = () => {
     topDetect = 0;
     bottomDetect = 0;
+    //console.log(topDetect);
     //console.log(fallDistance);
     //console.log(jumpDistance);
     //console.log('falling? ',mario.isFalling);

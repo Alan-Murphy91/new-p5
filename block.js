@@ -17,7 +17,6 @@ function Block(x,y,h,w,type='') {
         else {
             fill(50,200,100);
         }
-        
         stroke(0);
         rect(this.x,this.y,this.h,this.w);
     }
