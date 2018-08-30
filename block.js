@@ -40,6 +40,10 @@ function Block(x,y,h,w,type='') {
         } else if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y-40 >= this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y-40 >= this.y)) && dist(mario.x,this.y,mario.x,mario.y-40) == 0) {
             this.booped = true;
             bottomDetect++;
+        } else if(mario.y >= this.y && mario.y <= this.y+40 && mario.x+40 == this.x) {
+            leftDetect++;
+        } else if(mario.y >= this.y && mario.y <= this.y+40 && mario.x == this.x+40) {
+            rightDetect++;
         } else {
             this.marioContact = false;
         }

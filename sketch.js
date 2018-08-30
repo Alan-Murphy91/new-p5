@@ -1,17 +1,20 @@
 setup = () => {
     createCanvas(960,600);
     //initialise map
-    console.log(blocks);
+    //console.log(blocks);
 }
 
 draw = () => {
     topDetect = 0;
     bottomDetect = 0;
+    leftDetect = 0;
+    rightDetect = 0;
+    //console.log(leftDetect);
     //console.log(topDetect);
     //console.log(fallDistance);
     //console.log(jumpDistance);
     //console.log('falling? ',mario.isFalling);
-    //console.log('jumping? ',mario.isJumping);
+    //console.log('jumping? ', mario.isJumping);
     clear()
     background(200);
     for(let x=0; x<blocks.length; x++) {
@@ -19,20 +22,40 @@ draw = () => {
         blocks[x].detectMario();
         blocks[x].showCentre();
         blocks[x].showLanding();
-        if(keyIsDown(RIGHT_ARROW)) {
+        // if(keyIsDown(RIGHT_ARROW) && leftDetect == 0) {
+        //     blocks[x].goLeft();
+        //     if(keyIsDown(16)) {
+        //         blocks[x].goLeft();
+        //     }
+        // }
+        // if(keyIsDown(LEFT_ARROW)) {
+        //     blocks[x].goRight();
+        //     if(keyIsDown(16)) {
+        //         blocks[x].goRight();
+        //     }
+        // }
+        if(mario.isJumping) {
+            blocks[x].marioContact = false;
+        }
+    }
+
+    // ----------a lot of loops :(    ---need to make this more efficient. initial loop needs
+    //to finish to see if a block detects hit. use binary search!
+
+    if(keyIsDown(RIGHT_ARROW) && leftDetect == 0) {
+        for(let x=0; x<blocks.length; x++) {
             blocks[x].goLeft();
             if(keyIsDown(16)) {
                 blocks[x].goLeft();
             }
         }
-        if(keyIsDown(LEFT_ARROW)) {
+    }
+    if(keyIsDown(LEFT_ARROW) && rightDetect == 0) {
+        for(let x=0; x<blocks.length; x++) {
             blocks[x].goRight();
             if(keyIsDown(16)) {
                 blocks[x].goRight();
             }
-        }
-        if(mario.isJumping) {
-            blocks[x].marioContact = false;
         }
     }
     if(topDetect > 0) {

@@ -7,6 +7,8 @@ let rememberDistance = 0;
 let detectionChange = false;
 let topDetect = 0;
 let bottomDetect = 0;
+let leftDetect = 0;
+let rightDetect = 0;
 // ------functions---------------
 
 // ------console-----------------
