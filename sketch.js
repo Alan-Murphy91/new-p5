@@ -9,6 +9,7 @@ draw = () => {
     bottomDetect = 0;
     leftDetect = 0;
     rightDetect = 0;
+    //console.log(steps);
     //console.log(leftDetect);
     //console.log(topDetect);
     //console.log(fallDistance);
@@ -22,6 +23,10 @@ draw = () => {
         blocks[x].detectMario();
         blocks[x].showCentre();
         blocks[x].showLanding();
+        if(enemies[x]) {
+            enemies[x].show();
+            enemies[x].randomMove();
+        }
         // if(keyIsDown(RIGHT_ARROW) && leftDetect == 0) {
         //     blocks[x].goLeft();
         //     if(keyIsDown(16)) {
@@ -44,10 +49,16 @@ draw = () => {
 
     if(keyIsDown(RIGHT_ARROW) && leftDetect == 0) {
         for(let x=0; x<blocks.length; x++) {
-            blocks[x].goLeft();
-            if(keyIsDown(16)) {
                 blocks[x].goLeft();
-            }
+                if(keyIsDown(16)) {
+                    blocks[x].goLeft();
+                }
+                if(enemies[x]) {
+                    enemies[x].goLeft();
+                    if(keyIsDown(16)) {
+                        enemies[x].goLeft();
+                    }
+                }
         }
     }
     if(keyIsDown(LEFT_ARROW) && rightDetect == 0) {
@@ -55,6 +66,12 @@ draw = () => {
             blocks[x].goRight();
             if(keyIsDown(16)) {
                 blocks[x].goRight();
+            }
+            if(enemies[x]) {
+                enemies[x].goRight();
+                if(keyIsDown(16)) {
+                    enemies[x].goRight();
+                }
             }
         }
     }

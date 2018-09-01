@@ -3,13 +3,25 @@ function Block(x,y,h,w,type='') {
     this.y = y
     this.h = h;
     this.w = w;
-    this.type = (type == 'ground' ? 'ground' : 'block');
+    this.type = type;
     this.marioContact = false;
     this.booped = false;
 
     this.show = () => {
         if(!this.marioContact && !this.booped) {
-            fill(this.type == 'ground' ? 120 : 150);
+            switch(this.type) {
+                case 'block':
+                    fill(150);
+                    break;
+                case 'ground':
+                    fill(120);
+                    break;
+                case 'pipe':
+                    fill(0,255,0);
+                default:
+                    
+            }
+
         } 
         else if(this.booped) {
             fill(255,0,0);
@@ -47,6 +59,9 @@ function Block(x,y,h,w,type='') {
         } else {
             this.marioContact = false;
         }
+    }
+    this.detectEnemy = () => {
+        
     }
 
     this.goLeft = () => {
