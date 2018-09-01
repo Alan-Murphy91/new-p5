@@ -16,4 +16,8 @@ function Mario(x,y,h,w) {
         fill(255,0,0);
         rect(this.x+20,this.y+20,5,5);
     }
+    this.animate = () => {
+        this.y += 1000;
+        //change this to a distance calc
+    }
 }

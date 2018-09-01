@@ -10,9 +10,7 @@ let bottomDetect = 0;
 let leftDetect = 0;
 let rightDetect = 0;
 let eSideDetect = 0;
-// ------functions---------------
-
-// ------console-----------------
+let mapOffset = 0;
 
 
 // ------blocks------------------
@@ -41,3 +39,9 @@ enemies = [];
 enemies.push(new Enemy(23*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 // ------mario-------------------
 mario = new Mario(11*blockSize,12*blockSize,blockSize,blockSize)
+
+
+// ------functions---------------
+const reset = () => {
+    
+}

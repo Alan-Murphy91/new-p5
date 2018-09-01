@@ -3,6 +3,7 @@ setup = () => {
 }
 
 draw = () => {
+    console.log(eSideDetect);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -18,6 +19,7 @@ draw = () => {
         if(enemies[x]) {
             enemies[x].show();
             enemies[x].randomMove();
+            enemies[x].detectMario();
         }
         if(mario.isJumping) {
             blocks[x].marioContact = false;
@@ -28,23 +30,28 @@ draw = () => {
     //to finish to see if a block detects hit. use binary search!
 
     if(keyIsDown(RIGHT_ARROW) && leftDetect == 0) {
+        mapOffset += 5;
         for(let x=0; x<blocks.length; x++) {
                 blocks[x].goLeft();
                 if(keyIsDown(16)) {
+                    mapOffset += 5;
                     blocks[x].goLeft();
                 }
                 if(enemies[x]) {
                     enemies[x].goLeft();
                     if(keyIsDown(16)) {
+                        mapOffset += 5;
                         enemies[x].goLeft();
                     }
                 }
         }
     }
     if(keyIsDown(LEFT_ARROW) && rightDetect == 0) {
+        mapOffset -= 5;
         for(let x=0; x<blocks.length; x++) {
             blocks[x].goRight();
             if(keyIsDown(16)) {
+                mapOffset -= 5;
                 blocks[x].goRight();
             }
             if(enemies[x]) {
@@ -94,4 +101,8 @@ keyPressed = () => {
             jumpDistance = 200;
         }
     }
+}
+
+loseLife = () => {
+
 }
