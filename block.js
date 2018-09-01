@@ -19,9 +19,7 @@ function Block(x,y,h,w,type='') {
                 case 'pipe':
                     fill(0,255,0);
                 default:
-                    
             }
-
         } 
         else if(this.booped) {
             fill(255,0,0);
@@ -50,11 +48,17 @@ function Block(x,y,h,w,type='') {
             this.marioContact = true;
             topDetect++;
         } else if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y-40 >= this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y-40 >= this.y)) && dist(mario.x,this.y,mario.x,mario.y-40) == 0) {
-            this.booped = true;
+            if(!mario.isFalling) {
+                this.booped = true;
+            }
             bottomDetect++;
         } else if(mario.y >= this.y && mario.y <= this.y+40 && mario.x+40 == this.x) {
             leftDetect++;
+        } else if(mario.isFalling && mario.y+40 >= this.y && mario.y+40 <= this.y+40 && mario.x+40 == this.x) {
+            leftDetect++;
         } else if(mario.y >= this.y && mario.y <= this.y+40 && mario.x == this.x+40) {
+            rightDetect++;
+        } else if(mario.isFalling && mario.y+40 >= this.y && mario.y+40 <= this.y+40 && mario.x == this.x+40) {
             rightDetect++;
         } else {
             this.marioContact = false;

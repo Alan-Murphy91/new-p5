@@ -9,13 +9,6 @@ draw = () => {
     bottomDetect = 0;
     leftDetect = 0;
     rightDetect = 0;
-    //console.log(steps);
-    //console.log(leftDetect);
-    //console.log(topDetect);
-    //console.log(fallDistance);
-    //console.log(jumpDistance);
-    //console.log('falling? ',mario.isFalling);
-    //console.log('jumping? ', mario.isJumping);
     clear()
     background(200);
     for(let x=0; x<blocks.length; x++) {
@@ -27,18 +20,6 @@ draw = () => {
             enemies[x].show();
             enemies[x].randomMove();
         }
-        // if(keyIsDown(RIGHT_ARROW) && leftDetect == 0) {
-        //     blocks[x].goLeft();
-        //     if(keyIsDown(16)) {
-        //         blocks[x].goLeft();
-        //     }
-        // }
-        // if(keyIsDown(LEFT_ARROW)) {
-        //     blocks[x].goRight();
-        //     if(keyIsDown(16)) {
-        //         blocks[x].goRight();
-        //     }
-        // }
         if(mario.isJumping) {
             blocks[x].marioContact = false;
         }
