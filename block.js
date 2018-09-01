@@ -42,7 +42,7 @@ function Block(x,y,h,w,type='') {
         fill(0,255,0);
         rect(this.x+20,this.y,2,2);
     }
-
+    
     this.detectMario = () => {
         if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y+40 <= this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y+40 <= this.y)) && dist(mario.x,this.y,mario.x,mario.y+40) == 0) {
             this.marioContact = true;
@@ -64,8 +64,17 @@ function Block(x,y,h,w,type='') {
             this.marioContact = false;
         }
     }
+    //this is expensive..
     this.detectEnemy = () => {
-        
+        for(let x=0; x<enemies.length; x++) {
+            if(enemies[x].x+40 == this.x && enemies[x].y == this.y) {
+                enemies[x].stepRight = false;
+                enemies[x].stepLeft = true;
+            } else if(enemies[x].x == this.x+40 && enemies[x].y == this.y) {
+                enemies[x].stepRight = true;
+                enemies[x].stepLeft = false;             
+            }
+        }
     }
 
     this.goLeft = () => {

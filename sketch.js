@@ -1,7 +1,5 @@
 setup = () => {
     createCanvas(960,600);
-    //initialise map
-    //console.log(blocks);
 }
 
 draw = () => {
@@ -14,6 +12,7 @@ draw = () => {
     for(let x=0; x<blocks.length; x++) {
         blocks[x].show();
         blocks[x].detectMario();
+        blocks[x].detectEnemy();
         blocks[x].showCentre();
         blocks[x].showLanding();
         if(enemies[x]) {

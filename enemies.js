@@ -4,6 +4,9 @@ function Enemy(x,y,h,w,type='') {
     this.h = h;
     this.w = w;
     this.type = type;
+    this.steps = 100;
+    this.stepLeft = false;
+    this.stepRight = false;
 
     this.show = () => {
         fill(255,255,0);
@@ -21,27 +24,25 @@ function Enemy(x,y,h,w,type='') {
         }
     }
     this.randomMove = () => {
-        if(steps == 50) {
-            //console.log('1')
+        if(this.steps == 50) {
             if(Math.random(1) > 0.5) {
-                stepLeft = true;
+                this.stepLeft = true;
             } else {
-                stepRight = true;
+                this.stepRight = true;
             }
         } 
-        if(steps == 0 || steps == 100) {
-            stepLeft = false;
-            stepRight = false; 
-            steps = 50;
-            //console.log('reset');
+        if(this.steps == 0 || this.steps == 100) {
+            this.stepLeft = false;
+            this.stepRight = false; 
+            this.steps = 50;
         }
-        if(stepLeft) {
+        if(this.stepLeft) {
             this.x -= 1;
-            steps -= 1;
+            this.steps -= 1;
         }
-        if(stepRight) {
+        if(this.stepRight) {
             this.x += 1;
-            steps += 1;
+            this.steps += 1;
         }
     }
 }

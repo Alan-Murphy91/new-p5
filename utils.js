@@ -10,9 +10,6 @@ let bottomDetect = 0;
 let leftDetect = 0;
 let rightDetect = 0;
 let eSideDetect = 0;
-let steps = 100;
-let stepLeft = false;
-let stepRight = false;
 // ------functions---------------
 
 // ------console-----------------
