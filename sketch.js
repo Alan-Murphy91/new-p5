@@ -29,7 +29,7 @@ draw = () => {
     // ----------a lot of loops :(    ---need to make this more efficient. initial loop needs
     //to finish to see if a block detects hit. use binary search!
 
-    if(keyIsDown(RIGHT_ARROW) && leftDetect == 0) {
+    if(keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating) {
         mapOffset += 5;
         for(let x=0; x<blocks.length; x++) {
                 blocks[x].goLeft();
@@ -46,7 +46,7 @@ draw = () => {
                 }
         }
     }
-    if(keyIsDown(LEFT_ARROW) && rightDetect == 0) {
+    if(keyIsDown(LEFT_ARROW) && rightDetect == 0 && !mario.isAnimating) {
         mapOffset -= 5;
         for(let x=0; x<blocks.length; x++) {
             blocks[x].goRight();
@@ -99,6 +99,7 @@ draw = () => {
             blocks[x].x += mapOffset;
             blocks[x].show();
             blocks[x].showCentre();
+            blocks[x].booped = false;
             if(enemies[x]) {
                 enemies[x].x += mapOffset;
                 enemies[x].show();
@@ -114,7 +115,7 @@ draw = () => {
         mario.showCentre();
         setTimeout(() => {
             loop();
-        },1000)
+        },50)
     }
 }
 
