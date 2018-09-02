@@ -5,6 +5,7 @@ function Mario(x,y,h,w) {
     this.w = w;
     this.isJumping = false;
     this.isFalling = false;
+    this.isAnimating = false;
     
     this.show = () => {
         fill(50);
@@ -17,6 +18,10 @@ function Mario(x,y,h,w) {
         rect(this.x+20,this.y+20,5,5);
     }
     this.animate = () => {
-        this.y += 1000;
+        let animationEffect = 500;
+        while(animationEffect >= 5) {
+            mario.y -=1;
+            animationEffect -=5;
+        }
     }
 }

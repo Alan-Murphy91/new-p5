@@ -42,6 +42,3 @@ mario = new Mario(11*blockSize,12*blockSize,blockSize,blockSize)
 
 
 // ------functions---------------
-const reset = () => {
-    
-}

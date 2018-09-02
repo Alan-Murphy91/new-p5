@@ -46,7 +46,7 @@ function Block(x,y,h,w,type='') {
     this.detectMario = () => {
         if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y+40 <= this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y+40 <= this.y)) && dist(mario.x,this.y,mario.x,mario.y+40) == 0) {
             this.marioContact = true;
-            topDetect++;
+                topDetect++;
         } else if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y-40 >= this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y-40 >= this.y)) && dist(mario.x,this.y,mario.x,mario.y-40) == 0) {
             if(!mario.isFalling) {
                 this.booped = true;

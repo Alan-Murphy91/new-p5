@@ -20,7 +20,10 @@ function Enemy(x,y,h,w,type='') {
     }
     this.detectMario = () => {
         if(mario.y == this.y && (dist(mario.x+40,mario.y,this.x,this.y) < 5 || dist(mario.x,mario.y,this.x+40,this.y) < 5)) {
-            mario.animate();
+            if(!mario.isAnimating) {
+                mario.isAnimating = true;
+                mario.animate();
+            }
         }
     }
     this.randomMove = () => {

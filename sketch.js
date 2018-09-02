@@ -3,7 +3,7 @@ setup = () => {
 }
 
 draw = () => {
-    console.log(eSideDetect);
+    console.log(blocks[0].x);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -62,7 +62,7 @@ draw = () => {
             }
         }
     }
-    if(topDetect > 0) {
+    if(topDetect > 0 && !mario.isAnimating) {
         mario.isFalling = false;
     } else if(bottomDetect > 0) {
         mario.isJumping = false;
@@ -89,9 +89,29 @@ draw = () => {
     if(mario.isFalling) {
         mario.y +=5;
     }
-    // else if(!mario.isJumping) {
-    //     mario.isFalling = true;
-    // }
+
+    // ----- reset ----- //
+    if(mario.y > 640) {
+        noLoop();
+        clear();
+        background(200);
+        for(let x=0; x<blocks.length; x++) {
+            blocks[x].x += mapOffset;
+            blocks[x].show();
+            blocks[x].showCentre();
+            if(enemies[x]) {
+                enemies[x].x += mapOffset;
+                enemies[x].show();
+            }
+        }
+        mario.x = 11*blockSize;
+        mario.y = 12*blockSize
+        mario.show();
+        mario.showCentre();
+        setTimeout(() => {
+            loop();
+        },2000)
+    }
 }
 
 keyPressed = () => {
@@ -101,8 +121,4 @@ keyPressed = () => {
             jumpDistance = 200;
         }
     }
-}
-
-loseLife = () => {
-
 }
