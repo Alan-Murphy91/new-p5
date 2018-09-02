@@ -29,9 +29,57 @@ blocks.push(new Block(30*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(29*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(30*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
 
+blocks.push(new Block(39*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(39*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(39*blockSize,10*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(40*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(40*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(40*blockSize,10*blockSize,blockSize,blockSize,'pipe'));
+
+blocks.push(new Block(47*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(47*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(47*blockSize,10*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(47*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(48*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(48*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(48*blockSize,10*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(48*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
+
+blocks.push(new Block(58*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(58*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(58*blockSize,10*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(58*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(59*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(59*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(59*blockSize,10*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(59*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
+
+blocks.push(new Block(65*blockSize,8*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(78*blockSize,9*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(79*blockSize,9*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(80*blockSize,9*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(81*blockSize,4*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(82*blockSize,4*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(83*blockSize,4*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(84*blockSize,4*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(85*blockSize,4*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(86*blockSize,4*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(87*blockSize,4*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(88*blockSize,4*blockSize,blockSize,blockSize,'block'));
+
+
+
+
 // -- ground -- //
-for(let i=0;i<40;i++){
-        blocks.push(new Block(i*40,13*blockSize,blockSize,blockSize*2,'ground'));
+for(let i=0;i<93;i++){
+        if(i == 71 || i == 70 || i == 87 || i == 88 || i == 89) {
+            continue;
+        }
+        else {
+            blocks.push(new Block(i*40,13*blockSize,blockSize,blockSize*2,'ground'));
+        }
 }
 
 // -- enemies - //

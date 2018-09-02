@@ -3,7 +3,6 @@ setup = () => {
 }
 
 draw = () => {
-    console.log(currentPos);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
