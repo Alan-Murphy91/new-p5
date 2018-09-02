@@ -1,6 +1,8 @@
 function Enemy(x,y,h,w,type='') {
     this.x = x;
     this.y = y;
+    this.originX = x;
+    this.originY = y;
     this.h = h;
     this.w = w;
     this.type = type;

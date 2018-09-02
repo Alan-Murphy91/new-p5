@@ -114,7 +114,9 @@ draw = () => {
             blocks[x].showCentre();
             blocks[x].booped = false;
             if(enemies[x]) {
-                enemies[x].x += mapOffset;
+                enemies[x].x = enemies[x].originX;
+                enemies[x].y = enemies[x].originY;
+                enemies[x].steps = 100;
                 enemies[x].show();
                 enemies[x].fainted = false;
             }
