@@ -3,12 +3,11 @@ setup = () => {
 }
 
 draw = () => {
-    console.log(blocks[0].x);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
     rightDetect = 0;
-    clear()
+    clear();
     background(200);
     for(let x=0; x<blocks.length; x++) {
         blocks[x].show();
@@ -20,6 +19,7 @@ draw = () => {
             enemies[x].show();
             enemies[x].randomMove();
             enemies[x].detectMario();
+            enemies[x].topDetect();
         }
         if(mario.isJumping) {
             blocks[x].marioContact = false;
@@ -33,16 +33,16 @@ draw = () => {
         mapOffset += 5;
         for(let x=0; x<blocks.length; x++) {
                 blocks[x].goLeft();
-                if(keyIsDown(16)) {
-                    mapOffset += 5;
-                    blocks[x].goLeft();
-                }
+                // if(keyIsDown(16)) {
+                //     mapOffset += 5;
+                //     blocks[x].goLeft();
+                // }
                 if(enemies[x]) {
                     enemies[x].goLeft();
-                    if(keyIsDown(16)) {
-                        mapOffset += 5;
-                        enemies[x].goLeft();
-                    }
+                    // if(keyIsDown(16)) {
+                    //     mapOffset += 5;
+                    //     enemies[x].goLeft();
+                    // }
                 }
         }
     }
@@ -50,15 +50,15 @@ draw = () => {
         mapOffset -= 5;
         for(let x=0; x<blocks.length; x++) {
             blocks[x].goRight();
-            if(keyIsDown(16)) {
-                mapOffset -= 5;
-                blocks[x].goRight();
-            }
+            // if(keyIsDown(16)) {
+            //     mapOffset -= 5;
+            //     blocks[x].goRight();
+            // }
             if(enemies[x]) {
                 enemies[x].goRight();
-                if(keyIsDown(16)) {
-                    enemies[x].goRight();
-                }
+                // if(keyIsDown(16)) {
+                //     enemies[x].goRight();
+                // }
             }
         }
     }
@@ -104,13 +104,17 @@ draw = () => {
                 enemies[x].show();
             }
         }
+        mapOffset = 0;
         mario.x = 11*blockSize;
-        mario.y = 12*blockSize
+        mario.y = 12*blockSize;
+        mario.isJumping = false;
+        mario.isFalling = false;
+        mario.isAnimating = false;
         mario.show();
         mario.showCentre();
         setTimeout(() => {
             loop();
-        },2000)
+        },1000)
     }
 }
 

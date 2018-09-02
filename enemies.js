@@ -7,10 +7,13 @@ function Enemy(x,y,h,w,type='') {
     this.steps = 100;
     this.stepLeft = false;
     this.stepRight = false;
+    this.fainted = false;
 
     this.show = () => {
-        fill(255,255,0);
-        rect(this.x,this.y,this.h,this.w);
+        if(!this.fainted) {
+            fill(255,255,0);
+            rect(this.x,this.y,this.h,this.w);
+        }
     }
     this.goLeft = () => {
         this.x -= 5;
@@ -20,9 +23,16 @@ function Enemy(x,y,h,w,type='') {
     }
     this.detectMario = () => {
         if(mario.y == this.y && (dist(mario.x+40,mario.y,this.x,this.y) < 5 || dist(mario.x,mario.y,this.x+40,this.y) < 5)) {
-            if(!mario.isAnimating) {
+            if(!mario.isAnimating && !this.fainted) {
                 mario.isAnimating = true;
                 mario.animate();
+            }
+        }
+    }
+    this.topDetect = () => {
+        if((mario.x+40 >= this.x && mario.x+40 <= this.x+40 || mario.x >= this.x && mario.x-40 <= this.x+40) && dist(mario.x,mario.y+40,mario.x,this.y) <= 5) {
+            if(!mario.isAnimating) {
+                this.fainted = true;
             }
         }
     }
