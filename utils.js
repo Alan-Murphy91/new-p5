@@ -11,7 +11,7 @@ let leftDetect = 0;
 let rightDetect = 0;
 let eSideDetect = 0;
 let mapOffset = 0;
-
+let currentPos = 0;
 
 // ------blocks------------------
 blocks = [];

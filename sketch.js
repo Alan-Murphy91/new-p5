@@ -3,6 +3,7 @@ setup = () => {
 }
 
 draw = () => {
+    console.log(currentPos);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -30,15 +31,23 @@ draw = () => {
     //to finish to see if a block detects hit. use binary search!
 
     if(keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating) {
+        if(currentPos < 0) {
+            mario.x += 5;
+            currentPos += 5;
+        }
         mapOffset += 5;
         for(let x=0; x<blocks.length; x++) {
-                blocks[x].goLeft();
+                if(currentPos == 0) {
+                    blocks[x].goLeft();
+                }
                 // if(keyIsDown(16)) {
                 //     mapOffset += 5;
                 //     blocks[x].goLeft();
                 // }
                 if(enemies[x]) {
-                    enemies[x].goLeft();
+                    if(currentPos == 0) {
+                        enemies[x].goLeft();
+                    }
                     // if(keyIsDown(16)) {
                     //     mapOffset += 5;
                     //     enemies[x].goLeft();
@@ -47,19 +56,23 @@ draw = () => {
         }
     }
     if(keyIsDown(LEFT_ARROW) && rightDetect == 0 && !mario.isAnimating) {
-        mapOffset -= 5;
+        if(currentPos > -440) {
+            mapOffset -= 5;
+            currentPos -= 5;
+            mario.x -= 5;
+        }
         for(let x=0; x<blocks.length; x++) {
-            blocks[x].goRight();
+            //blocks[x].goRight();
             // if(keyIsDown(16)) {
             //     mapOffset -= 5;
             //     blocks[x].goRight();
             // }
-            if(enemies[x]) {
-                enemies[x].goRight();
+            //if(enemies[x]) {
+                //enemies[x].goRight();
                 // if(keyIsDown(16)) {
                 //     enemies[x].goRight();
                 // }
-            }
+            //}
         }
     }
     if(topDetect > 0 && !mario.isAnimating) {
@@ -103,6 +116,7 @@ draw = () => {
             if(enemies[x]) {
                 enemies[x].x += mapOffset;
                 enemies[x].show();
+                enemies[x].fainted = false;
             }
         }
         mapOffset = 0;

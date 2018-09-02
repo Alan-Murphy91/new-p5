@@ -30,8 +30,8 @@ function Enemy(x,y,h,w,type='') {
         }
     }
     this.topDetect = () => {
-        if((mario.x+40 >= this.x && mario.x+40 <= this.x+40 || mario.x >= this.x && mario.x-40 <= this.x+40) && dist(mario.x,mario.y+40,mario.x,this.y) <= 5) {
-            if(!mario.isAnimating) {
+        if((mario.x+40 >= this.x && mario.x+40 <= this.x+40 || mario.x >= this.x && mario.x-40 <= this.x+40) && dist(mario.x,mario.y+40,mario.x,this.y) <= 1) {
+            if(!mario.isAnimating && !mario.isJumping) {
                 this.fainted = true;
             }
         }
