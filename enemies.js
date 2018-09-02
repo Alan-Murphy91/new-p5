@@ -19,7 +19,7 @@ function Enemy(x,y,h,w,type='') {
         this.x += 5;
     }
     this.detectMario = () => {
-        if(mario.y == this.y && (mario.x+40 == this.x || this.x+40 == mario.x)) {
+        if(mario.y == this.y && (dist(mario.x+40,mario.y,this.x,this.y) < 5 || dist(mario.x,mario.y,this.x+40,this.y) < 5)) {
             mario.animate();
         }
     }
