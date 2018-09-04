@@ -10,16 +10,21 @@ draw = () => {
     clear();
     background(200);
     for(let x=0; x<blocks.length; x++) {
-        blocks[x].show();
-        blocks[x].detectMario();
-        blocks[x].detectEnemy();
-        blocks[x].showCentre();
-        blocks[x].showLanding();
+        //only draw whats on the screen
+         if(blocks[x].x < 960 && blocks[x].x > -40) {
+            blocks[x].show();
+            blocks[x].detectMario();
+            blocks[x].detectEnemy();
+            blocks[x].showCentre();
+            blocks[x].showLanding();
+        }
         if(enemies[x]) {
-            enemies[x].show();
-            enemies[x].randomMove();
-            enemies[x].detectMario();
-            enemies[x].topDetect();
+            if(enemies[x].x < 960 && enemies[x].x > -40) {
+                enemies[x].show();
+                enemies[x].randomMove();
+                enemies[x].detectMario();
+                enemies[x].topDetect();
+            }
         }
         if(mario.isJumping) {
             blocks[x].marioContact = false;
@@ -33,6 +38,7 @@ draw = () => {
         if(currentPos < 0) {
             mario.x += 5;
             currentPos += 5;
+        } else {
         }
         mapOffset += 5;
         for(let x=0; x<blocks.length; x++) {

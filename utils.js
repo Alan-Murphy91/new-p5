@@ -15,6 +15,7 @@ let currentPos = 0;
 
 // ------blocks------------------
 blocks = [];
+
 blocks.push(new Block(17*blockSize,9*blockSize,blockSize,blockSize,'block'));
 
 blocks.push(new Block(21*blockSize,9*blockSize,blockSize,blockSize,'block'));
@@ -87,6 +88,5 @@ enemies = [];
 enemies.push(new Enemy(23*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 // ------mario-------------------
 mario = new Mario(11*blockSize,12*blockSize,blockSize,blockSize)
-
 
 // ------functions---------------
