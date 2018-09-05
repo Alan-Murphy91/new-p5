@@ -78,7 +78,26 @@ function Block(x,y,h,w,type='') {
     }
 
     this.goLeft = () => {
-        this.x -= 5;
+        //this.x -= 4;
+        if(blocksRightOne) {
+            blocksRightOneN += 1;
+            this.x -= 2;
+            if(blocksRightOneN >= 4000) {
+                blocksRightOne = false;
+                blocksRightTwo = true;
+            }
+        } 
+        // else if(blocksRightTwo) {
+        //     blocksRightTwoN += 5;
+        //     this.x -= 3;
+        //     if(blocksRightTwoN >= 50) {
+        //         blocksRightTwo = false;
+        //         blocksRightThree = true;
+        //     }
+        // } 
+        // else if(blocksRightThree) {
+        //     this.x -=5;
+        // }
     }
     this.goRight = () => {
         this.x += 5;

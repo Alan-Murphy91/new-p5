@@ -12,6 +12,12 @@ let rightDetect = 0;
 let eSideDetect = 0;
 let mapOffset = 0;
 let currentPos = 0;
+let blocksRightOne = true;
+let blocksRightOneN = 0;
+let blocksRightTwo = false;
+let blocksRightTwoN = 0;
+let blocksRightThree = false;
+let blocksRightThreeN = 0;
 
 // ------blocks------------------
 blocks = [];
@@ -85,7 +91,7 @@ for(let i=0;i<93;i++){
 
 // -- enemies - //
 enemies = [];
-enemies.push(new Enemy(23*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+//enemies.push(new Enemy(23*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 // ------mario-------------------
 mario = new Mario(11*blockSize,12*blockSize,blockSize,blockSize)
 

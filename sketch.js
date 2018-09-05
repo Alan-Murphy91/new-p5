@@ -33,7 +33,7 @@ draw = () => {
     }
 
     // ----------a lot of loops :(    ---need to make this more efficient. initial loop needs
-    //to finish to see if a block detects hit. use binary search!
+    //to finish to see if a block detects hit. use binary search?
 
     if(keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating) {
         if(currentPos < 0) {
@@ -46,18 +46,10 @@ draw = () => {
                 if(currentPos == 0) {
                     blocks[x].goLeft();
                 }
-                // if(keyIsDown(16)) {
-                //     mapOffset += 5;
-                //     blocks[x].goLeft();
-                // }
                 if(enemies[x]) {
                     if(currentPos == 0) {
                         enemies[x].goLeft();
                     }
-                    // if(keyIsDown(16)) {
-                    //     mapOffset += 5;
-                    //     enemies[x].goLeft();
-                    // }
                 }
         }
     }
@@ -66,19 +58,6 @@ draw = () => {
             mapOffset -= 5;
             currentPos -= 5;
             mario.x -= 5;
-        }
-        for(let x=0; x<blocks.length; x++) {
-            //blocks[x].goRight();
-            // if(keyIsDown(16)) {
-            //     mapOffset -= 5;
-            //     blocks[x].goRight();
-            // }
-            //if(enemies[x]) {
-                //enemies[x].goRight();
-                // if(keyIsDown(16)) {
-                //     enemies[x].goRight();
-                // }
-            //}
         }
     }
     if(topDetect > 0 && !mario.isAnimating) {
@@ -149,4 +128,5 @@ keyPressed = () => {
         }
     }
 }
+
   
