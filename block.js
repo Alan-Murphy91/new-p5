@@ -44,17 +44,22 @@ function Block(x,y,h,w,type='') {
     }
     
     this.detectMario = () => {
-        if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y+40 <= this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y+40 <= this.y)) && dist(mario.x,this.y,mario.x,mario.y+40) == 0) {
+        if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y+40 <= this.y) || (mario.x >= this.x && mario.x <= this.x+39 && mario.y+40 <= this.y)) && dist(mario.x,this.y,mario.x,mario.y+40) == 0) {
             this.marioContact = true;
                 topDetect++;
-        } else if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y-40 >= this.y) || (mario.x >= this.x && mario.x <= this.x+40 && mario.y-40 >= this.y)) && dist(mario.x,this.y,mario.x,mario.y-40) == 0) {
+        } 
+        else if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y-40 >= this.y) || (mario.x >= this.x && mario.x <= this.x+39 && mario.y-40 >= this.y)) && dist(mario.x,this.y,mario.x,mario.y-40) == 0) {
             if(!mario.isFalling) {
                 this.booped = true;
             }
             bottomDetect++;
-        } else if(mario.y >= this.y && mario.y <= this.y+40 && mario.x+40 == this.x) {
+        }
+         else if(mario.y >= this.y && mario.y <= this.y+40 && mario.x+40 == this.x) {
             leftDetect++;
-        } else if(mario.isFalling && mario.y+40 >= this.y && mario.y+40 <= this.y+40 && mario.x+40 == this.x) {
+        } else if(mario.y >= this.y && mario.y <= this.y+40 && mario.x+40 == this.x) {
+
+        }
+         else if(mario.isFalling && mario.y+40 >= this.y && mario.y+40 <= this.y+40 && mario.x+40 == this.x) {
             leftDetect++;
         } else if(mario.y >= this.y && mario.y <= this.y+40 && mario.x == this.x+40) {
             rightDetect++;
@@ -76,28 +81,33 @@ function Block(x,y,h,w,type='') {
             }
         }
     }
-
-    this.goLeft = () => {
-        //this.x -= 4;
-        if(blocksRightOne) {
-            blocksRightOneN += 1;
-            this.x -= 2;
-            if(blocksRightOneN >= 4000) {
-                blocksRightOne = false;
-                blocksRightTwo = true;
+    //.... ;)
+    this.fixBug = () => {
+        if (mario.x+45 > this.x && mario.x+50 < this.x+40 && mario.y >= this.y && mario.y <= this.y+40) {
+            if(!this.type == 'block') {
+                mario.x -=5;
+                mapOffset -= 5;
+                currentPos -= 5;
             }
-        } 
-        // else if(blocksRightTwo) {
-        //     blocksRightTwoN += 5;
-        //     this.x -= 3;
-        //     if(blocksRightTwoN >= 50) {
-        //         blocksRightTwo = false;
-        //         blocksRightThree = true;
-        //     }
-        // } 
-        // else if(blocksRightThree) {
-        //     this.x -=5;
-        // }
+        }
+    }
+    this.fixBug2 = () => {
+        if (mario.x+45 >= this.x && mario.x+75 <= this.x+40 && mario.y >= this.y && mario.y <= this.y+40) {
+            mario.x -=5;
+            mapOffset -= 5;
+            currentPos -= 5;
+        }    
+    }
+    this.fixBug3 = () => {
+        if (mario.x+45 > this.x && mario.x+70 < this.x+40 && mario.y >= this.y && mario.y <= this.y+40) {
+            mario.x -=5;
+            mapOffset -= 5;
+            currentPos -= 5;
+        }    
+    }
+    this.goLeft = () => {
+        this.x -= 5;
+
     }
     this.goRight = () => {
         this.x += 5;
