@@ -38,12 +38,11 @@ draw = () => {
     // ----------a lot of loops :(    ---need to make this more efficient. initial loop needs
     //to finish to see if a block detects hit. use binary search?
 
-    if(keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating) {
+    if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating) || ((stopRightOne || stopRightTwo || stopRightThree || stopRightFour) && !mario.isAnimating && leftDetect == 0)) {
         if(currentPos < 0) {
             mario.x += 5;
             currentPos += 5;
         } 
-        
         //mapOffset += 5;
         if(blocksRightOne) {
             mapOffset += 1;
@@ -57,7 +56,7 @@ draw = () => {
         else if(blocksRightFour) {
             mapOffset += 4;
         }
-        else {
+        else if(sprint) {
             mapOffset += 5;
         }
         for(let x=0; x<blocks.length; x++) {
@@ -147,4 +146,33 @@ keyPressed = () => {
     }
 }
 
+keyReleased = () => {
+    if(keyCode == 39) {
+        if(blocksRightOne && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            stopRightOne = true;
+            blocksRightOne = false;
+            //console.log('a');
+        }
+        else if(blocksRightTwo && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            stopRightTwo = true;
+            blocksRightTwo = false;
+            //console.log('b');
+        }
+        else if(blocksRightThree && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            stopRightThree = true;
+            blocksRightThree = false;
+            //console.log('c');
+        }
+        else if(blocksRightFour && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            stopRightFour = true;
+            blocksRightFour = false;
+            //console.log('e');
+        }
+        else if(sprint && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            stopRightFour = true;
+            sprint = false;
+            //console.log('e');
+        }
+    }
+}
   

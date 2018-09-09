@@ -20,6 +20,16 @@ let blocksRightThree = false;
 let blocksRightThreeN = 0;
 let blocksRightFour = false;
 let blocksRightFourN = 0;
+let sprint = false;
+
+let stopRightOne = false;
+let stopRightOneN = 0;
+let stopRightTwo = false;
+let stopRightTwoN = 0;
+let stopRightThree = false;
+let stopRightThreeN = 0;
+let stopRightFour = false;
+let stopRightFourN = 0;
 
 // ------blocks------------------
 blocks = [];
