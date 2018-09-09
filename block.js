@@ -174,6 +174,7 @@ function Block(x,y,h,w,type='') {
                 stopRightOneN = 0;
                 blocksRightOneN = 0;
                 stopRightOne = false;
+                blocksRightOne = true;
             }
         }
         else if(stopRightTwo) {
