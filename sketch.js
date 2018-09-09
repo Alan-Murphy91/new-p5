@@ -20,6 +20,7 @@ draw = () => {
             blocks[x].showLanding();
             blocks[x].fixBug();
             blocks[x].fixBug2();
+            blocks[x].fixBug3();
         }
         if(enemies[x]) {
             if(enemies[x].x < 960 && enemies[x].x > -40) {

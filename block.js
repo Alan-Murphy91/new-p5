@@ -99,26 +99,27 @@ function Block(x,y,h,w,type='') {
         }    
     }
     this.fixBug3 = () => {
-        if (mario.x+45 > this.x && mario.x+70 < this.x+40 && mario.y >= this.y && mario.y <= this.y+40) {
+        if (mario.y <= this.y && mario.y+39 >= this.y && mario.x+45 >= this.x && mario.x+75 <= this.x+40) {
             mario.x -=5;
             mapOffset -= 5;
             currentPos -= 5;
         }    
     }
+
     this.goLeft = (param) => {
-        //this.x -= 5;
-        if(blocksRightOne) {
-            if(param != 132) {
-                blocksRightOneN += 1;
-                this.x -=1;
-                console.log(param);
-            } 
-            else if(blocksRightOneN >= 3000 && param == 132){
-                blocksRightOne = false;
-                blocksRightTwo = true;
-                console.log(param);
-            }
-        }
+        this.x -= 5;
+        // if(blocksRightOne) {
+        //     if(param != 132) {
+        //         blocksRightOneN += 1;
+        //         this.x -=1;
+        //         console.log(param);
+        //     } 
+        //     else if(blocksRightOneN >= 3000 && param == 132){
+        //         blocksRightOne = false;
+        //         blocksRightTwo = true;
+        //         console.log(param);
+        //     }
+        //}
         // else if(blocksRightTwo) {
         //     if(blocksRightTwoN <= 3000) {
         //         blocksRightTwoN += 1;
