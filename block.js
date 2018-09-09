@@ -112,48 +112,49 @@ function Block(x,y,h,w,type='') {
     }
 
     this.goLeft = (param) => {
-        this.x -= 5;
-        // if(blocksRightOne) {
-        //     if(param != 132) {
-        //         blocksRightOneN += 1;
-        //         this.x -=1;
-        //         console.log(param);
-        //     } 
-        //     else if(blocksRightOneN >= 3000 && param == 132){
-        //         blocksRightOne = false;
-        //         blocksRightTwo = true;
-        //         console.log(param);
-        //     }
-        //}
-        // else if(blocksRightTwo) {
-        //     if(blocksRightTwoN <= 3000) {
-        //         blocksRightTwoN += 1;
-        //         this.x -=2;
-        //     } else {
-        //         blocksRightTwo = false;
-        //         blocksRightThree = true;
-        //     }
-        // }
-        // else if(blocksRightThree) {
-        //     if(blocksRightThreeN <= 3000) {
-        //         blocksRightThreeN += 1;
-        //         this.x -=3;
-        //     } else {
-        //         blocksRightThree = false;
-        //         blocksRightFour = true;
-        //     }
-        // }
-        // else if(blocksRightFour) {
-        //     if(blocksRightFourN <= 3000) {
-        //         blocksRightFourN += 1;
-        //         this.x -=4;
-        //     } else {
-        //         blocksRightFour = false;
-        //     }
-        // }
-        // else {
-        //     this.x -=5;
-        // }
+        //this.x -= 5;
+        if(blocksRightOne) {
+            if(param != 132) {
+                blocksRightOneN += 1;
+                this.x -=1;
+            } 
+            else if(blocksRightOneN >= 3000 && param == 132){
+                blocksRightOne = false;
+                blocksRightTwo = true;
+            }
+        }
+        else if(blocksRightTwo) {
+            if(param != 132) {
+                blocksRightTwoN += 1;
+                this.x -=2;
+            } 
+            else if(blocksRightTwoN >= 3000 && param == 132){
+                blocksRightTwo = false;
+                blocksRightThree = true;
+            }
+        }
+        else if(blocksRightThree) {
+            if(param != 132) {
+                blocksRightThreeN += 1;
+                this.x -=3;
+            } 
+            else if(blocksRightThreeN >= 3000 && param == 132){
+                blocksRightThree = false;
+                blocksRightFour = true;
+            }
+        }
+        else if(blocksRightFour) {
+            if(param != 132) {
+                blocksRightFourN += 1;
+                this.x -=4;
+            } 
+            else if(blocksRightFourN >= 3000 && param == 132){
+                blocksRightFour = false;
+            }
+        }
+        else {
+            this.x -=5;
+        }
 
     }
     this.goRight = () => {
