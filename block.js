@@ -82,6 +82,7 @@ function Block(x,y,h,w,type='') {
         }
     }
     //.... ;)
+    //TODO: move all 'bug' functions into a switch statement and merge with detection funcs
     this.fixBug = () => {
         if (mario.x+45 > this.x && mario.x+50 < this.x+40 && mario.y >= this.y && mario.y <= this.y+40) {
             if(!this.type == 'block') {
