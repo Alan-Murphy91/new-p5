@@ -41,12 +41,27 @@ draw = () => {
         if(currentPos < 0) {
             mario.x += 5;
             currentPos += 5;
-        } else {
+        } 
+        
+        //mapOffset += 5;
+        if(blocksRightOne) {
+            mapOffset += 1;
         }
-        mapOffset += 5;
+        else if(blocksRightTwo) {
+            mapOffset += 2;
+        }
+        else if(blocksRightThree) {
+            mapOffset += 3;
+        }
+        else if(blocksRightFour) {
+            mapOffset += 4;
+        }
+        else {
+            mapOffset += 5;
+        }
         for(let x=0; x<blocks.length; x++) {
                 if(currentPos == 0) {
-                    blocks[x].goLeft();
+                    blocks[x].goLeft(x);
                 }
                 if(enemies[x]) {
                     if(currentPos == 0) {

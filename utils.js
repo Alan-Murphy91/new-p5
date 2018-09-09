@@ -13,11 +13,13 @@ let eSideDetect = 0;
 let mapOffset = 0;
 let currentPos = 0;
 let blocksRightOne = true;
-let blocksRightOneN = 2000;
+let blocksRightOneN = 0;
 let blocksRightTwo = false;
-let blocksRightTwoN = 2000;
+let blocksRightTwoN = 0;
 let blocksRightThree = false;
-let blocksRightThreeN = 2000;
+let blocksRightThreeN = 0;
+let blocksRightFour = false;
+let blocksRightFourN = 0;
 
 // ------blocks------------------
 blocks = [];
