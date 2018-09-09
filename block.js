@@ -65,7 +65,11 @@ function Block(x,y,h,w,type='') {
             rightDetect++;
         } else if(mario.isFalling && mario.y+40 >= this.y && mario.y+40 <= this.y+40 && mario.x == this.x+40) {
             rightDetect++;
-        } else {
+        } 
+        else if(mario.isJumping && mario.y <= this.y && mario.y+39 >= this.y && mario.x == this.x+40) {
+            rightDetect++;
+        } 
+        else {
             this.marioContact = false;
         }
     }
