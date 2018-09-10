@@ -100,33 +100,36 @@ draw = () => {
                 //console.log('2');
                 mapOffset -= 2;
                 currentPos -= 2;
-                marioLeftTwoN += 2;
+                marioLeftTwoN += 1;
                 this.x -=2;
                 if(marioLeftTwoN >= 1500){
                     marioLeftThree = true;
-                    marioLeftTwo = true;
+                    marioLeftTwo = false;
                     marioLeftTwoN = 0;
                 }
             }
-            else if(blocksRightThree) {
-                //console.log('3');
-                blocksRightThreeN += 1;
+            else if(marioLeftThree) {
+                //console.log('2');
+                mapOffset -= 3;
+                currentPos -= 3;
+                marioLeftThreeN += 1;
                 this.x -=3;
-                
-                if(blocksRightThreeN >= 1500 && param == 132){
-                    blocksRightThree = false;
-                    blocksRightFour = true;
-                    blocksRightThreeN = 0;
+                if(marioLeftThreeN >= 1500){
+                    marioLeftFour = true;
+                    marioLeftThree = false;
+                    marioLeftThreeN = 0;
                 }
             }
-            else if(blocksRightFour) {
-                //console.log('4');
-                
-                blocksRightFourN += 1;
+            else if(marioLeftFour) {
+                //console.log('2');
+                mapOffset -= 4;
+                currentPos -= 4;
+                marioLeftFourN += 1;
                 this.x -=4;
-                if(blocksRightFourN >= 1500 && param == 132){
-                    blocksRightFour = false;
-                    sprint = true;
+                if(marioLeftFourN >= 1500){
+                    marioLeftSprint = true;
+                    marioLeftFour = false;
+                    marioLeftFourN = 0;
                 }
             }
             else if(sprint) {
