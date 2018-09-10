@@ -43,22 +43,22 @@ draw = () => {
             mario.x += 5;
             currentPos += 5;
         } 
-        //mapOffset += 5;
-        if(blocksRightOne) {
-            mapOffset += 1;
-        }
-        else if(blocksRightTwo) {
-            mapOffset += 2;
-        }
-        else if(blocksRightThree) {
-            mapOffset += 3;
-        }
-        else if(blocksRightFour) {
-            mapOffset += 4;
-        }
-        else if(sprint) {
-            mapOffset += 5;
-        }
+        mapOffset += 5;
+        // if(blocksRightOne) {
+        //     mapOffset += 1;
+        // }
+        // else if(blocksRightTwo) {
+        //     mapOffset += 2;
+        // }
+        // else if(blocksRightThree) {
+        //     mapOffset += 3;
+        // }
+        // else if(blocksRightFour) {
+        //     mapOffset += 4;
+        // }
+        // else if(sprint) {
+        //     mapOffset += 5;
+        // }
         for(let x=0; x<blocks.length; x++) {
                 if(currentPos == 0) {
                     blocks[x].goLeft(x);
@@ -146,33 +146,33 @@ keyPressed = () => {
     }
 }
 
-keyReleased = () => {
-    if(keyCode == 39) {
-        if(blocksRightOne && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
-            stopRightOne = true;
-            blocksRightOne = false;
-            //console.log('a');
-        }
-        else if(blocksRightTwo && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
-            stopRightTwo = true;
-            blocksRightTwo = false;
-            //console.log('b');
-        }
-        else if(blocksRightThree && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
-            stopRightThree = true;
-            blocksRightThree = false;
-            //console.log('c');
-        }
-        else if(blocksRightFour && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
-            stopRightFour = true;
-            blocksRightFour = false;
-            //console.log('e');
-        }
-        else if(sprint && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
-            stopRightFour = true;
-            sprint = false;
-            //console.log('e');
-        }
-    }
-}
+// keyReleased = () => {
+//     if(keyCode == 39) {
+//         if(blocksRightOne && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+//             stopRightOne = true;
+//             blocksRightOne = false;
+//             //console.log('a');
+//         }
+//         else if(blocksRightTwo && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+//             stopRightTwo = true;
+//             blocksRightTwo = false;
+//             //console.log('b');
+//         }
+//         else if(blocksRightThree && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+//             stopRightThree = true;
+//             blocksRightThree = false;
+//             //console.log('c');
+//         }
+//         else if(blocksRightFour && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+//             stopRightFour = true;
+//             blocksRightFour = false;
+//             //console.log('e');
+//         }
+//         else if(sprint && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+//             stopRightFour = true;
+//             sprint = false;
+//             //console.log('e');
+//         }
+//     }
+// }
   
