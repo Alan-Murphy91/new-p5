@@ -112,110 +112,96 @@ function Block(x,y,h,w,type='') {
     }
 
     this.goLeft = (param) => {
-        this.x -= 5;
-        // if(blocksRightOne) {
-        //     //console.log('1');
-        //     if(param != 132) {
-        //         blocksRightOneN += 1;
-        //         this.x -=1;
-        //     } 
-        //     else if(blocksRightOneN >= 3000 && param == 132){
-        //         blocksRightOne = false;
-        //         blocksRightTwo = true;
-        //         blocksRightOneN = 0;
-        //     }
-        // }
-        // else if(blocksRightTwo) {
-        //     //console.log('2');
-        //     if(param != 132) {
-        //         blocksRightTwoN += 1;
-        //         this.x -=2;
-        //     } 
-        //     else if(blocksRightTwoN >= 3000 && param == 132){
-        //         blocksRightTwo = false;
-        //         blocksRightThree = true;
-        //         blocksRightTwoN = 0;
-        //     }
-        // }
-        // else if(blocksRightThree) {
-        //     //console.log('3');
-        //     if(param != 132) {
-        //         blocksRightThreeN += 1;
-        //         this.x -=3;
-        //     } 
-        //     else if(blocksRightThreeN >= 3000 && param == 132){
-        //         blocksRightThree = false;
-        //         blocksRightFour = true;
-        //         blocksRightThreeN = 0;
-        //     }
-        // }
-        // else if(blocksRightFour) {
-        //     //console.log('4');
-        //     if(param != 132) {
-        //         blocksRightFourN += 1;
-        //         this.x -=4;
-        //     } 
-        //     else if(blocksRightFourN >= 3000 && param == 132){
-        //         blocksRightFour = false;
-        //         sprint = true;
-        //     }
-        // }
-        // else if(sprint) {
-        //     //console.log('5');
-        //     this.x -=5;
-        // }
-        // else if(stopRightOne) {
-        //     //console.log('aa');
-        //     if(param != 132) {
-        //         stopRightOneN += 1;
-        //         this.x -=1;
-        //     } 
-        //     else if(stopRightOneN >= 1500 && param == 132){
-        //         stopRightOneN = 0;
-        //         blocksRightOneN = 0;
-        //         stopRightOne = false;
-        //         blocksRightOne = true;
-        //     }
-        // }
-        // else if(stopRightTwo) {
-        //     //console.log('bb');
-        //     if(param != 132) {
-        //         stopRightTwoN += 1;
-        //         this.x -=2;
-        //     } 
-        //     else if(stopRightTwoN >= 1500 && param == 132){
-        //         stopRightOne = true;
-        //         stopRightTwoN = 0;
-        //         blocksRightTwoN = 0;
-        //         stopRightTwo = false;
-        //     }
-        // }
-        // else if(stopRightThree) {
-        //     //console.log('cc');
-        //     if(param != 132) {
-        //         stopRightThreeN += 1;
-        //         this.x -=3;
-        //     } 
-        //     else if(stopRightThreeN >= 1500 && param == 132){
-        //         stopRightTwo = true;
-        //         stopRightThreeN = 0;
-        //         blocksRightThreeN = 0;
-        //         stopRightThree = false;
-        //     }
-        // }
-        // else if(stopRightFour) {
-        //     //console.log('ee');
-        //     if(param != 132) {
-        //         stopRightFourN += 1;
-        //         this.x -=4;
-        //     } 
-        //     else if(stopRightFourN >= 1500 && param == 132){
-        //         stopRightThree = true;
-        //         stopRightFourN = 0;
-        //         blocksRightFourN = 0;
-        //         stopRightFour = false;
-        //     }
-        // }
+        //this.x -= 5;
+        if(blocksRightOne) {
+            //console.log('1');
+            blocksRightOneN += 1;
+            this.x -=1;
+            if(blocksRightOneN >= 1500 && param == 132){
+                blocksRightOne = false;
+                blocksRightTwo = true;
+                blocksRightOneN = 0;
+            }
+        }
+        else if(blocksRightTwo) {
+            //console.log('2');
+            blocksRightTwoN += 1;
+            this.x -=2;
+            if(blocksRightTwoN >= 1500 && param == 132){
+                blocksRightTwo = false;
+                blocksRightThree = true;
+                blocksRightTwoN = 0;
+            }
+        }
+        else if(blocksRightThree) {
+            //console.log('3');
+            blocksRightThreeN += 1;
+            this.x -=3;
+            
+            if(blocksRightThreeN >= 1500 && param == 132){
+                blocksRightThree = false;
+                blocksRightFour = true;
+                blocksRightThreeN = 0;
+            }
+        }
+        else if(blocksRightFour) {
+            //console.log('4');
+            
+            blocksRightFourN += 1;
+            this.x -=4;
+            if(blocksRightFourN >= 1500 && param == 132){
+                blocksRightFour = false;
+                sprint = true;
+            }
+        }
+        else if(sprint) {
+            //console.log('5');
+            this.x -=5;
+        }
+        else if(stopRightOne) {
+            //console.log('aa');
+            stopRightOneN += 1;
+            this.x -=1;
+            if(stopRightOneN >= 1000 && param == 132){
+                stopRightOneN = 0;
+                blocksRightOneN = 0;
+                stopRightOne = false;
+                blocksRightOne = true;
+            }
+        }
+        else if(stopRightTwo) {
+            //console.log('bb');
+            stopRightTwoN += 1;
+            this.x -=2;
+            if(stopRightTwoN >= 1000 && param == 132){
+                stopRightOne = true;
+                stopRightTwoN = 0;
+                blocksRightTwoN = 0;
+                stopRightTwo = false;
+            }
+        }
+        else if(stopRightThree) {
+            //console.log('cc');
+            stopRightThreeN += 1;
+            this.x -=3;
+            if(stopRightThreeN >= 1000 && param == 132){
+                stopRightTwo = true;
+                stopRightThreeN = 0;
+                blocksRightThreeN = 0;
+                stopRightThree = false;
+            }
+        }
+        else if(stopRightFour) {
+            //console.log('ee');
+            stopRightFourN += 1;
+            this.x -=4;
+            if(stopRightFourN >= 1000 && param == 132){
+                stopRightThree = true;
+                stopRightFourN = 0;
+                blocksRightFourN = 0;
+                stopRightFour = false;
+            }
+        }
     }
     this.goRight = () => {
         this.x += 5;

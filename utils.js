@@ -12,6 +12,7 @@ let rightDetect = 0;
 let eSideDetect = 0;
 let mapOffset = 0;
 let currentPos = 0;
+
 let blocksRightOne = true;
 let blocksRightOneN = 0;
 let blocksRightTwo = false;
@@ -30,6 +31,25 @@ let stopRightThree = false;
 let stopRightThreeN = 0;
 let stopRightFour = false;
 let stopRightFourN = 0;
+
+let marioLeftOne = true;
+let marioLeftOneN = 0;
+let marioLeftTwo = false;
+let marioLeftTwoN = 0;
+let marioLeftThree = false;
+let marioLeftThreeN = 0;
+let marioLeftFour = false;
+let marioLeftFourN = 0;
+let marioLeftSprint = false;
+
+let marioStopLOne = true;
+let marioStopLOneN = 0;
+let marioStopLTwo = false;
+let marioStopLTwoN = 0;
+let marioStopLThree = false;
+let marioStopLThreeN = 0;
+let marioStopLFour = false;
+let marioStopLFourN = 0;
 
 // ------blocks------------------
 blocks = [];
