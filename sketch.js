@@ -1,15 +1,28 @@
 
+
+// -fix mapOffset and currentPos for left and rightDetect
+// -transition from running right when currentPos < 0 to > 0 smoothly and account for mapoffset and currentPos
+// - fix all the bugs
+
+
+
 setup = () => {
     createCanvas(960,600);
 }
 
 draw = () => {
+    console.log(mapOffset);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
     rightDetect = 0;
     clear();
     background(200);
+    // move this
+    if(mapOffset < -440) {
+        mario.x = 0;
+        mapOffset = -440; 
+    }
     for(let x=0; x<blocks.length; x++) {
         //only draw whats on the screen
          if(blocks[x].x < 960 && blocks[x].x > -40) {
@@ -38,7 +51,7 @@ draw = () => {
     // ----------a lot of loops :(    ---need to make this more efficient. initial loop needs
     //to finish to see if a block detects hit. use binary search?
 
-    if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating) || ((stopRightOne || stopRightTwo || stopRightThree || stopRightFour) && !mario.isAnimating && leftDetect == 0)) {
+    if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating && marioLeftOne) || ((stopRightOne || stopRightTwo || stopRightThree || stopRightFour) && !mario.isAnimating && leftDetect == 0)) {
         if(currentPos < 0) {
             mario.x += 5;
             currentPos += 5;
@@ -81,7 +94,7 @@ draw = () => {
                 }
         }
     }
-    if((keyIsDown(LEFT_ARROW) && rightDetect == 0 && !mario.isAnimating) || ((marioStopLOne || marioStopLTwo || marioStopLThree || marioStopLFour) && !mario.isAnimating && leftDetect == 0)) {
+    if((keyIsDown(LEFT_ARROW) && rightDetect == 0 && !mario.isAnimating && blocksRightOne) || ((marioStopLOne || marioStopLTwo || marioStopLThree || marioStopLFour) && !mario.isAnimating && leftDetect == 0)) {
         if(currentPos > -440) {
             if(marioLeftOne) {
                 //console.log('1');
@@ -133,22 +146,27 @@ draw = () => {
             }
             else if(marioLeftSprint) {
                 //console.log('5');
+                mapOffset -= 5;
+                currentPos -=5;
                 mario.x -=5;
             }
             else if(marioStopLOne) {
-                console.log('aa');
+                //console.log('aa');
                 marioStopLOneN += 1;
                 mario.x -=1;
+                mapOffset -= 1;
                 if(marioStopLOneN >= 5){
                     marioStopLOne = false;
+                    marioLeftOne = true;
                     marioStopLOneN = 0;
                     marioLeftOneN = 0;
                 }
             }
             else if(marioStopLTwo) {
-                console.log('bb');
+                //console.log('bb');
                 marioStopLTwoN += 1;
                 mario.x -=2;
+                mapOffset -= 2;
                 if(marioStopLTwoN >= 5){
                     marioStopLOne = true;
                     marioStopLTwo = false;
@@ -157,9 +175,10 @@ draw = () => {
                 }
             }
             else if(marioStopLThree) {
-                console.log('cc');
+                //console.log('cc');
                 marioStopLThreeN += 1;
                 mario.x -=3;
+                mapOffset -= 3;
                 if(marioStopLThreeN >= 5){
                     marioStopLTwo = true;
                     marioStopLThree = false;
@@ -168,9 +187,10 @@ draw = () => {
                 }
             }
             else if(marioStopLFour) {
-                console.log('dd');
+                //console.log('dd');
                 marioStopLFourN += 1;
                 mario.x -=4;
+                mapOffset -= 4;
                 if(marioStopLFourN >= 5){
                     marioStopLThree = true;
                     marioStopLFour = false;
@@ -281,27 +301,27 @@ keyReleased = () => {
         if(marioLeftOne && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
             marioStopLOne = true;
             marioLeftOne = false;
-            console.log('a');
+            //console.log('a');
         }
         else if(marioLeftTwo && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
             marioStopLTwo = true;
             marioLeftTwo = false;
-            console.log('b');
+            //console.log('b');
         }
         else if(marioLeftThree && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
             marioStopLThree = true;
             marioLeftThree = false;
-            console.log('c');
+            //console.log('c');
         }
         else if(marioLeftFour && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
             marioStopLFour = true;
             marioLeftFour = false;
-            console.log('e');
+            //console.log('e');
         }
         else if(marioLeftSprint && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
             marioStopLFour = true;
             marioLeftSprint = false;
-            console.log('e');
+            //console.log('e');
         }
     }
 }
