@@ -117,7 +117,7 @@ function Block(x,y,h,w,type='') {
             //console.log('1');
             blocksRightOneN += 1;
             this.x -=1;
-            if(blocksRightOneN >= 1500 && param == 132){
+            if(blocksRightOneN >= 1000 && param == 132){
                 blocksRightOne = false;
                 blocksRightTwo = true;
                 blocksRightOneN = 0;
@@ -127,7 +127,7 @@ function Block(x,y,h,w,type='') {
             //console.log('2');
             blocksRightTwoN += 1;
             this.x -=2;
-            if(blocksRightTwoN >= 1500 && param == 132){
+            if(blocksRightTwoN >= 1000 && param == 132){
                 blocksRightTwo = false;
                 blocksRightThree = true;
                 blocksRightTwoN = 0;
@@ -138,7 +138,7 @@ function Block(x,y,h,w,type='') {
             blocksRightThreeN += 1;
             this.x -=3;
             
-            if(blocksRightThreeN >= 1500 && param == 132){
+            if(blocksRightThreeN >= 1000 && param == 132){
                 blocksRightThree = false;
                 blocksRightFour = true;
                 blocksRightThreeN = 0;
@@ -149,7 +149,7 @@ function Block(x,y,h,w,type='') {
             
             blocksRightFourN += 1;
             this.x -=4;
-            if(blocksRightFourN >= 1500 && param == 132){
+            if(blocksRightFourN >= 1000 && param == 132){
                 blocksRightFour = false;
                 sprint = true;
             }
@@ -162,7 +162,7 @@ function Block(x,y,h,w,type='') {
             //console.log('aa');
             stopRightOneN += 1;
             this.x -=1;
-            if(stopRightOneN >= 1000 && param == 132){
+            if(stopRightOneN >= 750 && param == 132){
                 stopRightOneN = 0;
                 blocksRightOneN = 0;
                 stopRightOne = false;
@@ -173,7 +173,7 @@ function Block(x,y,h,w,type='') {
             //console.log('bb');
             stopRightTwoN += 1;
             this.x -=2;
-            if(stopRightTwoN >= 1000 && param == 132){
+            if(stopRightTwoN >= 750 && param == 132){
                 stopRightOne = true;
                 stopRightTwoN = 0;
                 blocksRightTwoN = 0;
@@ -184,7 +184,7 @@ function Block(x,y,h,w,type='') {
             //console.log('cc');
             stopRightThreeN += 1;
             this.x -=3;
-            if(stopRightThreeN >= 1000 && param == 132){
+            if(stopRightThreeN >= 750 && param == 132){
                 stopRightTwo = true;
                 stopRightThreeN = 0;
                 blocksRightThreeN = 0;
@@ -195,7 +195,7 @@ function Block(x,y,h,w,type='') {
             //console.log('ee');
             stopRightFourN += 1;
             this.x -=4;
-            if(stopRightFourN >= 1000 && param == 132){
+            if(stopRightFourN >= 750 && param == 132){
                 stopRightThree = true;
                 stopRightFourN = 0;
                 blocksRightFourN = 0;

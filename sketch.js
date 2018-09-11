@@ -4,7 +4,6 @@ setup = () => {
 }
 
 draw = () => {
-    console.log(rightDetect);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -82,15 +81,15 @@ draw = () => {
                 }
         }
     }
-    if(keyIsDown(LEFT_ARROW) && rightDetect == 0 && !mario.isAnimating) {
+    if((keyIsDown(LEFT_ARROW) && rightDetect == 0 && !mario.isAnimating) || ((marioStopLOne || marioStopLTwo || marioStopLThree || marioStopLFour) && !mario.isAnimating && leftDetect == 0)) {
         if(currentPos > -440) {
             if(marioLeftOne) {
                 //console.log('1');
                 mapOffset -= 1;
                 currentPos -= 1;
                 marioLeftOneN += 1;
-                this.x -=1;
-                if(marioLeftOneN >= 1500){
+                mario.x -=1;
+                if(marioLeftOneN >= 10){
                     marioLeftTwo = true;
                     marioLeftOne = false;
                     marioLeftOneN = 0;
@@ -101,83 +100,82 @@ draw = () => {
                 mapOffset -= 2;
                 currentPos -= 2;
                 marioLeftTwoN += 1;
-                this.x -=2;
-                if(marioLeftTwoN >= 1500){
+                mario.x -=2;
+                if(marioLeftTwoN >= 10){
                     marioLeftThree = true;
                     marioLeftTwo = false;
                     marioLeftTwoN = 0;
                 }
             }
             else if(marioLeftThree) {
-                //console.log('2');
+                //console.log('3');
                 mapOffset -= 3;
                 currentPos -= 3;
                 marioLeftThreeN += 1;
-                this.x -=3;
-                if(marioLeftThreeN >= 1500){
+                mario.x -=3;
+                if(marioLeftThreeN >= 10){
                     marioLeftFour = true;
                     marioLeftThree = false;
                     marioLeftThreeN = 0;
                 }
             }
             else if(marioLeftFour) {
-                //console.log('2');
+                //console.log('4');
                 mapOffset -= 4;
                 currentPos -= 4;
                 marioLeftFourN += 1;
-                this.x -=4;
-                if(marioLeftFourN >= 1500){
+                mario.x -=4;
+                if(marioLeftFourN >= 10){
                     marioLeftSprint = true;
                     marioLeftFour = false;
                     marioLeftFourN = 0;
                 }
             }
-            else if(sprint) {
+            else if(marioLeftSprint) {
                 //console.log('5');
-                this.x -=5;
+                mario.x -=5;
             }
-            else if(stopRightOne) {
-                //console.log('aa');
-                stopRightOneN += 1;
-                this.x -=1;
-                if(stopRightOneN >= 1000 && param == 132){
-                    stopRightOneN = 0;
-                    blocksRightOneN = 0;
-                    stopRightOne = false;
-                    blocksRightOne = true;
+            else if(marioStopLOne) {
+                console.log('aa');
+                marioStopLOneN += 1;
+                mario.x -=1;
+                if(marioStopLOneN >= 5){
+                    marioStopLOne = false;
+                    marioStopLOneN = 0;
+                    marioLeftOneN = 0;
                 }
             }
-            else if(stopRightTwo) {
-                //console.log('bb');
-                stopRightTwoN += 1;
-                this.x -=2;
-                if(stopRightTwoN >= 1000 && param == 132){
-                    stopRightOne = true;
-                    stopRightTwoN = 0;
-                    blocksRightTwoN = 0;
-                    stopRightTwo = false;
+            else if(marioStopLTwo) {
+                console.log('bb');
+                marioStopLTwoN += 1;
+                mario.x -=2;
+                if(marioStopLTwoN >= 5){
+                    marioStopLOne = true;
+                    marioStopLTwo = false;
+                    marioStopLTwoN = 0;
+                    marioLeftTwoN = 0;
                 }
             }
-            else if(stopRightThree) {
-                //console.log('cc');
-                stopRightThreeN += 1;
-                this.x -=3;
-                if(stopRightThreeN >= 1000 && param == 132){
-                    stopRightTwo = true;
-                    stopRightThreeN = 0;
-                    blocksRightThreeN = 0;
-                    stopRightThree = false;
+            else if(marioStopLThree) {
+                console.log('cc');
+                marioStopLThreeN += 1;
+                mario.x -=3;
+                if(marioStopLThreeN >= 5){
+                    marioStopLTwo = true;
+                    marioStopLThree = false;
+                    marioStopLThreeN = 0;
+                    marioLeftThreeN = 0;
                 }
             }
-            else if(stopRightFour) {
-                //console.log('ee');
-                stopRightFourN += 1;
-                this.x -=4;
-                if(stopRightFourN >= 1000 && param == 132){
-                    stopRightThree = true;
-                    stopRightFourN = 0;
-                    blocksRightFourN = 0;
-                    stopRightFour = false;
+            else if(marioStopLFour) {
+                console.log('dd');
+                marioStopLFourN += 1;
+                mario.x -=4;
+                if(marioStopLFourN >= 5){
+                    marioStopLThree = true;
+                    marioStopLFour = false;
+                    marioStopLFourN = 0;
+                    marioLeftFourN = 0;
                 }
             }
         }
@@ -277,6 +275,33 @@ keyReleased = () => {
             stopRightFour = true;
             sprint = false;
             //console.log('e');
+        }
+    }
+    if(keyCode == 37) {
+        if(marioLeftOne && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            marioStopLOne = true;
+            marioLeftOne = false;
+            console.log('a');
+        }
+        else if(marioLeftTwo && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            marioStopLTwo = true;
+            marioLeftTwo = false;
+            console.log('b');
+        }
+        else if(marioLeftThree && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            marioStopLThree = true;
+            marioLeftThree = false;
+            console.log('c');
+        }
+        else if(marioLeftFour && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            marioStopLFour = true;
+            marioLeftFour = false;
+            console.log('e');
+        }
+        else if(marioLeftSprint && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            marioStopLFour = true;
+            marioLeftSprint = false;
+            console.log('e');
         }
     }
 }

@@ -42,7 +42,7 @@ let marioLeftFour = false;
 let marioLeftFourN = 0;
 let marioLeftSprint = false;
 
-let marioStopLOne = true;
+let marioStopLOne = false;
 let marioStopLOneN = 0;
 let marioStopLTwo = false;
 let marioStopLTwoN = 0;
