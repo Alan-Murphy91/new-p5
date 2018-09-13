@@ -11,7 +11,7 @@ setup = () => {
 }
 
 draw = () => {
-    console.log(currentPos);
+    //console.log(currentPos);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -53,23 +53,25 @@ draw = () => {
     if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating && marioLeftOne) || (((stopRightOne || stopRightTwo || stopRightThree || stopRightFour) && !mario.isAnimating && leftDetect == 0)) || ((SubStopOne || SubStopTwo || SubStopThree || SubStopFour) && !mario.isAnimating && leftDetect == 0)) {
         if(currentPos < 0) {
             if(SubPosRightOne) {
-                //console.log('s1');
+                console.log('s1');
                 SubPosRightOneN += 1;
                 mapOffset+=1;
                 mario.x +=1;
+                currentPos +=1;
                 if(SubPosRightOneN >= 10){
-                    SubPosRightOne = false;
                     SubPosRightTwo = true;
+                    SubPosRightOne = false;
                     SubPosRightOneN = 0;
                 } else if(currentPos >=0) {
                     blocksRightOne = true;
                 }
             }
             else if(SubPosRightTwo) {
-                //console.log('s1');
+                console.log('s2');
                 SubPosRightTwoN += 1;
                 mapOffset+=2;
                 mario.x +=2;
+                currentPos +=2;
                 if(SubPosRightTwoN >= 10){
                     SubPosRightTwo = false;
                     SubPosRightThree = true;
@@ -80,10 +82,11 @@ draw = () => {
                 }
             }
             else if(SubPosRightThree) {
-                //console.log('s3');
+                console.log('s3');
                 SubPosRightThreeN += 1;
                 mapOffset+=3;
                 mario.x +=3;
+                currentPos +=3;
                 if(SubPosRightThreeN >= 10){
                     SubPosRightThree = false;
                     SubPosRightFour = true;
@@ -94,10 +97,11 @@ draw = () => {
                 }
             }
             else if(SubPosRightFour) {
-                //console.log('s4');
+                console.log('s4');
                 SubPosRightFourN += 1;
                 mapOffset+=4;
                 mario.x +=4;
+                currentPos +=4;
                 if(SubPosRightFourN >= 10){
                     SubPosRightFour = false;
                     SubPosRightSprint = true;
@@ -111,6 +115,7 @@ draw = () => {
                 console.log('s5');
                 mapOffset+=5;
                 mario.x +=5;
+                currentPos +=5;
                 if(currentPos >=0) {
                     console.log('s-end');
                     SubPosRightSprint = false;
@@ -118,9 +123,10 @@ draw = () => {
                 }
             }
             else if(SubStopOne) {
-                console.log('ss1');
+                //console.log('ss1');
                 mapOffset+=1;
                 mario.x +=1;
+                currentPos +=1;
                 if(SubStopOneN >= 10){
                     SubStopOne = false;
                     blocksRightOne = true;
@@ -132,17 +138,45 @@ draw = () => {
                 }
             }
             else if(SubStopTwo) {
-                console.log('ss1');
+                //console.log('ss2');
                 mapOffset+=2;
                 mario.x +=2;
+                currentPos +=2;
                 if(SubStopTwoN >= 10){
                     SubStopOne = true;
-                    blocksRightOne = true;
-                    marioLeftOne = true;
-                    SubPosRightOneN = 0;
+                    SubStopTwo = false;
+                    SubStopTwoN = 0;
                 } else if(currentPos >=0) {
-                    SubStopOne = false;
-                    stopRightOne = true;
+                    SubStopTwo = false;
+                    stopRightTwo = true;
+                }
+            }
+            else if(SubStopThree) {
+                //console.log('ss2');
+                mapOffset+=3;
+                mario.x +=3;
+                currentPos +=3;
+                if(SubStopThreeN >= 10){
+                    SubStopTwo = true;
+                    SubStopThree = false;
+                    SubStopThreeN = 0;
+                } else if(currentPos >=0) {
+                    SubStopThree = false;
+                    stopRightThree = true;
+                }
+            }
+            else if(SubStopFour) {
+                //console.log('ss2');
+                mapOffset+=4;
+                mario.x +=4;
+                currentPos +=4;
+                if(SubStopFourN >= 10){
+                    SubStopThree = true;
+                    SubStopFour = false;
+                    SubStopFourN = 0;
+                } else if(currentPos >=0) {
+                    SubStopFour = false;
+                    stopRightFour = true;
                 }
             }
         } 
@@ -218,6 +252,7 @@ draw = () => {
                 //console.log('aa');
                 marioStopLOneN += 1;
                 mario.x -=1;
+                currentPos -=1;
                 mapOffset -= 1;
                 if(marioStopLOneN >= 5){
                     marioStopLOne = false;
@@ -231,6 +266,7 @@ draw = () => {
                 //console.log('bb');
                 marioStopLTwoN += 1;
                 mario.x -=2;
+                currentPos -=2;
                 mapOffset -= 2;
                 if(marioStopLTwoN >= 5){
                     marioStopLOne = true;
@@ -244,6 +280,7 @@ draw = () => {
                 marioStopLThreeN += 1;
                 mario.x -=3;
                 mapOffset -= 3;
+                currentPos -=3;
                 if(marioStopLThreeN >= 5){
                     marioStopLTwo = true;
                     marioStopLThree = false;
@@ -256,6 +293,7 @@ draw = () => {
                 marioStopLFourN += 1;
                 mario.x -=4;
                 mapOffset -= 4;
+                currentPos -=4;
                 if(marioStopLFourN >= 5){
                     marioStopLThree = true;
                     marioStopLFour = false;
@@ -361,6 +399,32 @@ keyReleased = () => {
             sprint = false;
             //console.log('e');
         }
+        else if(SubPosRightOne && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            SubStopOne = true;
+            SubPosRightOne = false;
+            //console.log('b');
+        }
+        else if(SubPosRightTwo && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            SubStopTwo = true;
+            SubPosRightTwo = false;
+            //console.log('b');
+        }
+        else if(SubPosRightThree && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            SubStopThree = true;
+            SubPosRightThree = false;
+            //console.log('b');
+        }
+        else if(SubPosRightFour && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            SubStopFour = true;
+            SubPosRightFour = false;
+            //console.log('b');
+        }
+        else if(SubPosRightSprint && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
+            SubStopFour = true;
+            SubPosRightSprint = false;
+            //console.log('b');
+        }
+
     }
     if(keyCode == 37) {
         if(marioLeftOne && leftDetect == 0 && rightDetect == 0 && !mario.isAnimating) {
