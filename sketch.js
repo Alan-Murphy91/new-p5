@@ -11,7 +11,7 @@ setup = () => {
 }
 
 draw = () => {
-    console.log(leftDetect);
+    console.log(currentPos);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -50,14 +50,14 @@ draw = () => {
     // ----------a lot of loops :(    ---need to make this more efficient. initial loop needs
     //to finish to see if a block detects hit. use binary search?
 
-    if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating && marioLeftOne) || ((stopRightOne || stopRightTwo || stopRightThree || stopRightFour) && !mario.isAnimating && leftDetect == 0)) {
+    if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating && marioLeftOne) || (((stopRightOne || stopRightTwo || stopRightThree || stopRightFour) && !mario.isAnimating && leftDetect == 0)) || ((SubStopOne || SubStopTwo || SubStopThree || SubStopFour) && !mario.isAnimating && leftDetect == 0)) {
         if(currentPos < 0) {
             if(SubPosRightOne) {
-                //console.log('1');
+                //console.log('s1');
                 SubPosRightOneN += 1;
                 mapOffset+=1;
                 mario.x +=1;
-                if(SubPosRightOneN >= 1250 && param == 132){
+                if(SubPosRightOneN >= 10){
                     SubPosRightOne = false;
                     SubPosRightTwo = true;
                     SubPosRightOneN = 0;
@@ -66,11 +66,11 @@ draw = () => {
                 }
             }
             else if(SubPosRightTwo) {
-                //console.log('1');
+                //console.log('s1');
                 SubPosRightTwoN += 1;
                 mapOffset+=2;
                 mario.x +=2;
-                if(SubPosRightTwoN >= 1250 && param == 132){
+                if(SubPosRightTwoN >= 10){
                     SubPosRightTwo = false;
                     SubPosRightThree = true;
                     SubPosRightTwoN = 0;
@@ -80,11 +80,11 @@ draw = () => {
                 }
             }
             else if(SubPosRightThree) {
-                //console.log('1');
+                //console.log('s3');
                 SubPosRightThreeN += 1;
                 mapOffset+=3;
                 mario.x +=3;
-                if(SubPosRightThreeN >= 1250 && param == 132){
+                if(SubPosRightThreeN >= 10){
                     SubPosRightThree = false;
                     SubPosRightFour = true;
                     SubPosRightThreeN = 0;
@@ -94,11 +94,11 @@ draw = () => {
                 }
             }
             else if(SubPosRightFour) {
-                //console.log('1');
+                //console.log('s4');
                 SubPosRightFourN += 1;
                 mapOffset+=4;
                 mario.x +=4;
-                if(SubPosRightFourN >= 1250 && param == 132){
+                if(SubPosRightFourN >= 10){
                     SubPosRightFour = false;
                     SubPosRightSprint = true;
                     SubPosRightFourN = 0;
@@ -108,12 +108,41 @@ draw = () => {
                 }
             }
             else if(SubPosRightSprint) {
-                //console.log('5');
+                console.log('s5');
                 mapOffset+=5;
-                this.x -=5;
+                mario.x +=5;
                 if(currentPos >=0) {
+                    console.log('s-end');
                     SubPosRightSprint = false;
                     sprint = true;
+                }
+            }
+            else if(SubStopOne) {
+                console.log('ss1');
+                mapOffset+=1;
+                mario.x +=1;
+                if(SubStopOneN >= 10){
+                    SubStopOne = false;
+                    blocksRightOne = true;
+                    marioLeftOne = true;
+                    SubPosRightOneN = 0;
+                } else if(currentPos >=0) {
+                    SubStopOne = false;
+                    stopRightOne = true;
+                }
+            }
+            else if(SubStopTwo) {
+                console.log('ss1');
+                mapOffset+=2;
+                mario.x +=2;
+                if(SubStopTwoN >= 10){
+                    SubStopOne = true;
+                    blocksRightOne = true;
+                    marioLeftOne = true;
+                    SubPosRightOneN = 0;
+                } else if(currentPos >=0) {
+                    SubStopOne = false;
+                    stopRightOne = true;
                 }
             }
         } 

@@ -61,6 +61,15 @@ let SubPosRightFour = false;
 let SubPosRightFourN = 0;
 let SubPosRightSprint = false;
 
+let SubStopOne = false;
+let SubStopOneN = 0;
+let SubStopTwo = false;
+let SubStopTwoN = 0;
+let SubStopThree = false;
+let SubStopThreeN = 0;
+let SubStopFour = false;
+let SubStopFourN = 0;
+
 // ------blocks------------------
 blocks = [];
 
