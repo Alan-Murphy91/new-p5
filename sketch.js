@@ -11,7 +11,7 @@ setup = () => {
 }
 
 draw = () => {
-    console.log(mapOffset);
+    console.log(leftDetect);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -31,9 +31,8 @@ draw = () => {
             blocks[x].detectEnemy();
             blocks[x].showCentre();
             blocks[x].showLanding();
-            blocks[x].fixBug();
-            blocks[x].fixBug2();
-            blocks[x].fixBug3();
+            blocks[x].adjust();
+
         }
         if(enemies[x]) {
             if(enemies[x].x < 960 && enemies[x].x > -40) {
@@ -53,35 +52,71 @@ draw = () => {
 
     if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating && marioLeftOne) || ((stopRightOne || stopRightTwo || stopRightThree || stopRightFour) && !mario.isAnimating && leftDetect == 0)) {
         if(currentPos < 0) {
-            mario.x += 5;
-            currentPos += 5;
-        } else {
-        //mapOffset += 5;
-        if(blocksRightOne) {
-            mapOffset += 1;
-        }
-        else if(blocksRightTwo) {
-            mapOffset += 2;
-        }
-        else if(blocksRightThree) {
-            mapOffset += 3;
-        }
-        else if(blocksRightFour) {
-            mapOffset += 4;
-        }
-        else if(stopRightOne) {
-            mapOffset += 1;
-        }
-        else if(stopRightTwo) {
-            mapOffset += 2;
-        }
-        else if(stopRightThree) {
-            mapOffset += 3;
-        }
-        else if(stopRightFour) {
-            mapOffset += 4;
-        }
-        }
+            if(SubPosRightOne) {
+                //console.log('1');
+                SubPosRightOneN += 1;
+                mapOffset+=1;
+                mario.x +=1;
+                if(SubPosRightOneN >= 1250 && param == 132){
+                    SubPosRightOne = false;
+                    SubPosRightTwo = true;
+                    SubPosRightOneN = 0;
+                } else if(currentPos >=0) {
+                    blocksRightOne = true;
+                }
+            }
+            else if(SubPosRightTwo) {
+                //console.log('1');
+                SubPosRightTwoN += 1;
+                mapOffset+=2;
+                mario.x +=2;
+                if(SubPosRightTwoN >= 1250 && param == 132){
+                    SubPosRightTwo = false;
+                    SubPosRightThree = true;
+                    SubPosRightTwoN = 0;
+                } else if(currentPos >=0) {
+                    SubPosRightTwo = false;
+                    blocksRightTwo = true;
+                }
+            }
+            else if(SubPosRightThree) {
+                //console.log('1');
+                SubPosRightThreeN += 1;
+                mapOffset+=3;
+                mario.x +=3;
+                if(SubPosRightThreeN >= 1250 && param == 132){
+                    SubPosRightThree = false;
+                    SubPosRightFour = true;
+                    SubPosRightThreeN = 0;
+                } else if(currentPos >=0) {
+                    SubPosRightThree = false;
+                    blocksRightThree = true;
+                }
+            }
+            else if(SubPosRightFour) {
+                //console.log('1');
+                SubPosRightFourN += 1;
+                mapOffset+=4;
+                mario.x +=4;
+                if(SubPosRightFourN >= 1250 && param == 132){
+                    SubPosRightFour = false;
+                    SubPosRightSprint = true;
+                    SubPosRightFourN = 0;
+                } else if(currentPos >=0) {
+                    SubPosRightFour = false;
+                    blocksRightFour = true;
+                }
+            }
+            else if(SubPosRightSprint) {
+                //console.log('5');
+                mapOffset+=5;
+                this.x -=5;
+                if(currentPos >=0) {
+                    SubPosRightSprint = false;
+                    sprint = true;
+                }
+            }
+        } 
 
         for(let x=0; x<blocks.length; x++) {
                 if(currentPos == 0) {
@@ -158,6 +193,7 @@ draw = () => {
                 if(marioStopLOneN >= 5){
                     marioStopLOne = false;
                     marioLeftOne = true;
+                    blocksRightOne = true;
                     marioStopLOneN = 0;
                     marioLeftOneN = 0;
                 }

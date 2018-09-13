@@ -51,6 +51,16 @@ let marioStopLThreeN = 0;
 let marioStopLFour = false;
 let marioStopLFourN = 0;
 
+let SubPosRightOne = true;
+let SubPosRightOneN = 0;
+let SubPosRightTwo = false;
+let SubPosRightTwoN = 0;
+let SubPosRightThree = false;
+let SubPosRightThreeN = 0;
+let SubPosRightFour = false;
+let SubPosRightFourN = 0;
+let SubPosRightSprint = false;
+
 // ------blocks------------------
 blocks = [];
 
