@@ -60,6 +60,9 @@ function Block(x,y,h,w,type='') {
         else if(mario.y >= this.y && mario.y <= this.y+40 && mario.x+40 == this.x) {
             leftDetect++;
         }
+        else if(mario.y <= this.y && mario.y+39 >= this.y && mario.x+45 == this.x) {
+            leftDetect++;
+        }
          else if(mario.isFalling && mario.y+40 >= this.y && mario.y+40 <= this.y+40 && mario.x+40 == this.x) {
             leftDetect++;
         } 
@@ -90,14 +93,17 @@ function Block(x,y,h,w,type='') {
 
     this.adjust = () => {
         if (mario.x+45 > this.x && mario.x+75 < this.x+40 && mario.y >= this.y && mario.y <= this.y+40) {
-            if(!this.type == 'block') {
+            if(!this.type == 'ground' && !mario.isJumping) {
+                //console.log('ccccc')
                 mario.x -=5;
                 mapOffset -= 5;
                 currentPos -= 5;
             }
         } 
-        else if(mario.x+45 > this.x && mario.x+75 < this.x+40 && mario.y <= this.y && mario.y+40 >= this.y) {
-            if(!this.type == 'block') {
+
+        else if(mario.x+45 > this.x && mario.x+75 < this.x+40 && mario.y <= this.y && mario.y+39 >= this.y) {
+            if(!this.type == 'ground' && mario.isJumping) {
+                //console.log('ssss');
                 mario.x -=5;
                 mapOffset -= 5;
                 currentPos -= 5;

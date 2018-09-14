@@ -11,7 +11,7 @@ setup = () => {
 }
 
 draw = () => {
-    //console.log(currentPos);
+    //console.log(mapOffset);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
