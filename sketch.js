@@ -11,7 +11,7 @@ setup = () => {
 }
 
 draw = () => {
-    console.log();
+    console.log(mapOffset);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -56,6 +56,8 @@ draw = () => {
             currentPos +=5;
             mapOffset +=5;
         } else {
+            mapOffset +=5;
+            
             for(let x=0; x<blocks.length; x++) {
                 if(currentPos == 0) {
                     blocks[x].goLeft();
@@ -106,7 +108,8 @@ draw = () => {
     }
 
     // ----- reset ----- //
-    if(mario.y > 640) {
+    if(mario.y >= 640) {
+        console.log('sss');
         noLoop();
         clear();
         background(200);
