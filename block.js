@@ -116,6 +116,7 @@ function Block(x,y,h,w,type='') {
         //this.x -= 5;
         if(blocksRightOne) {
             //console.log('1');
+            marioLeftOne = false;
             blocksRightOneN += 1;
             mapOffset+=1;
             this.x -=1;

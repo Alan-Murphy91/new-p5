@@ -51,7 +51,7 @@ let marioStopLThreeN = 0;
 let marioStopLFour = false;
 let marioStopLFourN = 0;
 
-let SubPosRightOne = true;
+let SubPosRightOne = false;
 let SubPosRightOneN = 0;
 let SubPosRightTwo = false;
 let SubPosRightTwoN = 0;
