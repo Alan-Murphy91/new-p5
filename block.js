@@ -103,13 +103,17 @@ function Block(x,y,h,w,type='') {
 
 
     this.goLeft = () => {
-        if(mario.isJumping || mario.isFalling) {
-            this.x-=5;
+        if(rightRegen && !mario.isJumping && !mario.isFalling && leftDetect == 0) {
+            this.x -= Math.floor(slide/10);
         } else {
-            if(slide < 10) {
-                this.x -= 1;
-            } else if(slide >= 10) {
-                this.x -= Math.floor(slide/10);
+            if(mario.isJumping || mario.isFalling) {
+                this.x-=5;
+            } else {
+                if(slide < 10) {
+                    this.x -= 1;
+                } else if(slide >= 10) {
+                    this.x -= Math.floor(slide/10);
+                }
             }
         }
     }

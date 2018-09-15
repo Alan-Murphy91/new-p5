@@ -11,21 +11,29 @@ setup = () => {
 }
 
 draw = () => {
-    //console.log(leftDetect);
+    console.log(currentPos);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
     rightDetect = 0;
     clear();
     background(200);
-    // move this
-    // if(mapOffset < -440) {
-    //     mario.x = 0;
-    //     mapOffset = -440; 
-    // }
+    if(mario.x < 440) {
+        currentPos = mario.x-440;
+    }
     if(rightRegen) {
         if(slide > 0) {
             slide--;
+            if(leftDetect == 0) {
+                mapOffset += Math.floor(slide/10);
+                if(currentPos < 0) {
+                    if((Math.floor(slide/10) + currentPos) > 0) {
+                        currentPos = 0;
+                    } else {
+                        mapOffset += Math.floor(slide/10);
+                    }
+                }
+            }
         } else {
             rightRegen = false;
         }
@@ -81,7 +89,7 @@ draw = () => {
         }
     }
 
-    if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating)) {
+    if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating) || (rightRegen && leftDetect == 0)) {
         if(slide < 50) {
             slide++;
         }
