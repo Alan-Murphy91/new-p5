@@ -113,6 +113,6 @@ function Block(x,y,h,w,type='') {
 
 
     this.goLeft = () => {
-        this.x -= 5;
+        this.x -= Math.floor(slide/10);
     }
 }

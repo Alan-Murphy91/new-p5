@@ -11,7 +11,7 @@ setup = () => {
 }
 
 draw = () => {
-    console.log(mapOffset);
+    console.log(slide);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -19,10 +19,30 @@ draw = () => {
     clear();
     background(200);
     // move this
-    if(mapOffset < -440) {
-        mario.x = 0;
-        mapOffset = -440; 
+    // if(mapOffset < -440) {
+    //     mario.x = 0;
+    //     mapOffset = -440; 
+    // }
+    if(mario.x < -440) {
+        mario.x = -440;
+        currentPos = -440;
+        mapOffset = -440;
     }
+    if(rightRegen) {
+        if(slide > 0) {
+            slide--;
+        } else {
+            rightRegen = false;
+        }
+    }
+    if(leftRegen) {
+        if(slide < 0) {
+            slide++;
+        } else {
+            leftRegen = false;
+        }
+    }
+
     for(let x=0; x<blocks.length; x++) {
         //only draw whats on the screen
          if(blocks[x].x < 960 && blocks[x].x > -40) {
@@ -51,13 +71,17 @@ draw = () => {
     //to finish to see if a block detects hit. use binary search?
 
     if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating)) {
+        if(slide < 50) {
+            slide++;
+        }
         if(currentPos < 0) {
-            mario.x +=5;
-            currentPos +=5;
-            mapOffset +=5;
+            mario.x += Math.floor(slide/10);
+            currentPos += Math.floor(slide/10);
+            mapOffset += Math.floor(slide/10);
+
         } else {
-            mapOffset +=5;
-            
+            mapOffset += 5
+
             for(let x=0; x<blocks.length; x++) {
                 if(currentPos == 0) {
                     blocks[x].goLeft();
@@ -72,11 +96,14 @@ draw = () => {
     }
 
     if((keyIsDown(LEFT_ARROW) && rightDetect == 0 && !mario.isAnimating)) {
-       if(currentPos > -440) {
-           mario.x -=5;
-           currentPos -=5;
-           mapOffset -=5;
-       }
+        if(slide > -50) {
+            slide--;
+        }
+        if(currentPos > -440) {
+            mario.x += Math.floor(slide/10);
+            currentPos += Math.floor(slide/10);
+            mapOffset += Math.floor(slide/10);
+        }
     }
 
     if(topDetect > 0 && !mario.isAnimating) {
@@ -109,7 +136,6 @@ draw = () => {
 
     // ----- reset ----- //
     if(mario.y >= 640) {
-        console.log('sss');
         noLoop();
         clear();
         background(200);
@@ -148,5 +174,15 @@ keyPressed = () => {
         }
     }
 }
+
+keyReleased = () => {
+    if(keyCode == 39) {
+        rightRegen = true;
+    } 
+    else if(keyCode == 37) {
+        leftRegen = true;
+    }
+}
+
 
   

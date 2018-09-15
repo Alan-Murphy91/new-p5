@@ -13,62 +13,9 @@ let eSideDetect = 0;
 let mapOffset = 0;
 let currentPos = 0;
 
-let blocksRightOne = true;
-let blocksRightOneN = 0;
-let blocksRightTwo = false;
-let blocksRightTwoN = 0;
-let blocksRightThree = false;
-let blocksRightThreeN = 0;
-let blocksRightFour = false;
-let blocksRightFourN = 0;
-let sprint = false;
-
-let stopRightOne = false;
-let stopRightOneN = 0;
-let stopRightTwo = false;
-let stopRightTwoN = 0;
-let stopRightThree = false;
-let stopRightThreeN = 0;
-let stopRightFour = false;
-let stopRightFourN = 0;
-
-let marioLeftOne = true;
-let marioLeftOneN = 0;
-let marioLeftTwo = false;
-let marioLeftTwoN = 0;
-let marioLeftThree = false;
-let marioLeftThreeN = 0;
-let marioLeftFour = false;
-let marioLeftFourN = 0;
-let marioLeftSprint = false;
-
-let marioStopLOne = false;
-let marioStopLOneN = 0;
-let marioStopLTwo = false;
-let marioStopLTwoN = 0;
-let marioStopLThree = false;
-let marioStopLThreeN = 0;
-let marioStopLFour = false;
-let marioStopLFourN = 0;
-
-let SubPosRightOne = false;
-let SubPosRightOneN = 0;
-let SubPosRightTwo = false;
-let SubPosRightTwoN = 0;
-let SubPosRightThree = false;
-let SubPosRightThreeN = 0;
-let SubPosRightFour = false;
-let SubPosRightFourN = 0;
-let SubPosRightSprint = false;
-
-let SubStopOne = false;
-let SubStopOneN = 0;
-let SubStopTwo = false;
-let SubStopTwoN = 0;
-let SubStopThree = false;
-let SubStopThreeN = 0;
-let SubStopFour = false;
-let SubStopFourN = 0;
+let rightRegen = false;
+let leftRegen = false;
+let slide = 0;
 
 // ------blocks------------------
 blocks = [];
