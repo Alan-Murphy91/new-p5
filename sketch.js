@@ -88,7 +88,7 @@ draw = () => {
 
         if(currentPos >= 0 && slide >= 0) {
             currentPos = 0;
-            if(mario.isJumping) {
+            if(mario.isJumping || mario.isFalling) {
                 mapOffset +=5;
             } else {
                 if(slide < 10) {

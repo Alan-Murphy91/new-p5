@@ -107,7 +107,7 @@ function Block(x,y,h,w,type='') {
 
 
     this.goLeft = () => {
-        if(mario.isJumping) {
+        if(mario.isJumping || mario.isFalling) {
             this.x-=5;
         } else {
             if(slide < 10) {
