@@ -177,7 +177,6 @@ draw = () => {
     // ------  jumping  ------- //
     if(mario.isJumping) {
         mario.y -= jumpHeight;
-        while(mario.y)
     }
     // if(mario.isJumping) {
     //     if(jumpDistance <= 0) {
@@ -190,7 +189,7 @@ draw = () => {
 
     // ------  falling  ------- //
     if(mario.isFalling) {
-        mario.y +=5;
+        mario.y +=jumpHeight;
     }
 
     // ----- reset ----- //
@@ -228,17 +227,12 @@ draw = () => {
         if(jumpHeight < 200) {
             jumpHeight+=10;
         }
+    } else {
+        if(jumpHeight > 0) {
+            jumpHeight -=10;
+        }
     }
 }
-
-// keyPressed = () => {
-//     if(keyCode == 32) {
-//         if(!mario.isFalling && !mario.isJumping){
-//             mario.isJumping = true;
-//             jumpDistance = 200;
-//         }
-//     }
-// }
 
 keyReleased = () => {
     if(keyCode == 39) {
@@ -246,6 +240,7 @@ keyReleased = () => {
     } 
     if(keyCode == 32) {
         mario.isFalling = true;
+        mario.isJumping = false;
         jumpHeight = 0;
     }
     else if(keyCode == 37) {
