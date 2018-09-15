@@ -73,22 +73,18 @@ function Block(x,y,h,w,type='') {
 
     this.adjust = () => {
         if(mario.x+45 == this.x && mario.y >= this.y && mario.y <= this.y+40) {
-            console.log('a');
             leftDetect++;
         }
         else if(mario.x+45 == this.x && mario.y >= this.y && mario.y <= this.y+40) {
-            console.log('b');
             leftDetect++;
         }
         else if (mario.x+45 > this.x && mario.x+75 < this.x+40) {
             if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
-                console.log('c');
                 mario.x -= (mario.x+45 - this.x) + 5;
                 mapOffset -= (mario.x+45 - this.x) + 5;
                 currentPos -= (mario.x+45 - this.x) + 5;
             }
             else if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
-                console.log('d');
                 leftDetect++;
                 mario.x -=5;
                 mapOffset -=5;
