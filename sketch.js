@@ -11,7 +11,7 @@ setup = () => {
 }
 
 draw = () => {
-    console.log(slide);
+    console.log(jumpHeight);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;

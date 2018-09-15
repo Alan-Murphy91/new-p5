@@ -13,6 +13,8 @@ let eSideDetect = 0;
 let mapOffset = 0;
 let currentPos = 0;
 
+let jumpHeight = 0;
+
 let rightRegen = false;
 let leftRegen = false;
 let slide = 0;
