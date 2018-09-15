@@ -105,14 +105,21 @@ draw = () => {
         }
         } 
         else {
-            if(slide < 10) {
-                mario.x += 1;
-                currentPos += 1;
-                mapOffset += 1;
-            } else if(slide >= 10) {
-                mario.x += Math.floor(slide/10);
-                currentPos += Math.floor(slide/10);
-                mapOffset += Math.floor(slide/10);
+            if(mario.isJumping || mario.isFalling) {
+                mapOffset +=5;
+                mario.x += 5;
+                currentPos +=5;
+                mapOffset +=5;
+            } else {
+                if(slide < 10) {
+                    mario.x += 1;
+                    currentPos += 1;
+                    mapOffset += 1;
+                } else if(slide >= 10) {
+                    mario.x += Math.floor(slide/10);
+                    currentPos += Math.floor(slide/10);
+                    mapOffset += Math.floor(slide/10);
+                }
             }
         }
         }
@@ -122,14 +129,21 @@ draw = () => {
             slide--;
         }
         if(currentPos > -440 && slide <= 0) {
-            if(slide > -10) {
-                mario.x += -1
-                currentPos += -1;
-                mapOffset += -1;
-            } else if(slide <= -10) {
-                mario.x += Math.floor(slide/10);
-                currentPos += Math.floor(slide/10);
-                mapOffset += Math.floor(slide/10);      
+            if(mario.isJumping || mario.isFalling) {
+                mapOffset -=5;
+                mario.x -=5;
+                currentPos -= 5;
+                mapOffset -= 5;
+            } else {
+                if(slide > -10) {
+                    mario.x += -1
+                    currentPos += -1;
+                    mapOffset += -1;
+                } else if(slide <= -10) {
+                    mario.x += Math.floor(slide/10);
+                    currentPos += Math.floor(slide/10);
+                    mapOffset += Math.floor(slide/10);      
+                }
             }
         }
     }
