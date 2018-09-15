@@ -11,7 +11,7 @@ setup = () => {
 }
 
 draw = () => {
-    console.log(dist(blocks[7].x,blocks[7].y,mario.x+40,mario.y));
+    //console.log(currentPos,mapOffset);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -81,19 +81,21 @@ draw = () => {
         }
     }
 
-    // ----------a lot of loops :(    ---need to make this more efficient. initial loop needs
-    //to finish to see if a block detects hit. use binary search?
-
     if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating)) {
         if(slide < 50) {
             slide++;
         }
+
         if(currentPos >= 0 && slide >= 0) {
             currentPos = 0;
-            if(slide < 10) {
-                mapOffset += 1;
-            } else if(slide >= 10) {
-                mapOffset += Math.floor(slide/10);
+            if(mario.isJumping) {
+                mapOffset +=5;
+            } else {
+                if(slide < 10) {
+                    mapOffset += 1;
+                } else if(slide >= 10) {
+                    mapOffset += Math.floor(slide/10);
+                }
             }
             for(let x=0; x<blocks.length; x++) {
                 blocks[x].goLeft();
