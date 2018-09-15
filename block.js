@@ -54,29 +54,6 @@ function Block(x,y,h,w,type='') {
             }
             bottomDetect++;
         }
-        // else if(mario.y >= this.y && mario.y <= this.y+39 && mario.x+45 == this.x) {
-        //     leftDetect++;
-        //     console.log('a');
-        // } 
-        // else if(mario.y == this.y && mario.x+50 > this.x && mario.x < this.x+40) {
-        //     leftDetect++;
-        //     console.log('v');
-        // }
-        // else if(mario.y <= this.y && mario.y+39 >= this.y && mario.x+45 == this.x) {
-        //     leftDetect++;
-        //     console.log('d');
-        // }
-        //  else if(mario.isFalling && mario.y+40 >= this.y && mario.y+40 <= this.y+40 && mario.x+40 == this.x) {
-        //     leftDetect++;
-        // } 
-        // else if(mario.y >= this.y && mario.y <= this.y+40 && mario.x == this.x+40) {
-        //     rightDetect++;
-        // } else if(mario.isFalling && mario.y+40 >= this.y && mario.y+40 <= this.y+40 && mario.x == this.x+40) {
-        //     rightDetect++;
-        // } 
-        // else if(mario.isJumping && mario.y <= this.y && mario.y+39 >= this.y && mario.x == this.x+40) {
-        //     rightDetect++;
-        // } 
         else {
             this.marioContact = false;
         }
@@ -95,24 +72,31 @@ function Block(x,y,h,w,type='') {
     }
 
     this.adjust = () => {
-        if (mario.x+45 > this.x && mario.x+75 < this.x+40) {
+        if(mario.x+45 == this.x && mario.y >= this.y && mario.y <= this.y+40) {
+            console.log('a');
+            leftDetect++;
+        }
+        else if(mario.x+45 == this.x && mario.y >= this.y && mario.y <= this.y+40) {
+            console.log('b');
+            leftDetect++;
+        }
+        else if (mario.x+45 > this.x && mario.x+75 < this.x+40) {
             if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
-                console.log('ccccc');
-                leftDetect++;
-                mario.x -=10;
-                mapOffset -= 10;
-                currentPos -= 10;
+                console.log('c');
+                mario.x -= (mario.x+45 - this.x) + 5;
+                mapOffset -= (mario.x+45 - this.x) + 5;
+                currentPos -= (mario.x+45 - this.x) + 5;
             }
             else if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
+                console.log('d');
                 leftDetect++;
-                mario.x -=10;
-                mapOffset -= 10;
-                currentPos -= 10;
+                mario.x -=5;
+                mapOffset -=5;
+                currentPos -=5;
             } 
         } 
         else if(mario.x+45 == this.x){
             if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
-                //console.log('ccccc');
                 leftDetect++;
             }
             else if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
