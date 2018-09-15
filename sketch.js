@@ -11,7 +11,7 @@ setup = () => {
 }
 
 draw = () => {
-    console.log(currentPos);
+    console.log(slide);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -96,7 +96,7 @@ draw = () => {
 
         if(currentPos >= 0 && slide >= 0) {
             currentPos = 0;
-            if(mario.isJumping || mario.isFalling) {
+            if(mario.isJumping) {
                 mapOffset +=5;
             } else {
                 if(slide < 10) {
@@ -113,7 +113,7 @@ draw = () => {
         }
         } 
         else {
-            if(mario.isJumping || mario.isFalling) {
+            if(mario.isJumping) {
                 mapOffset +=5;
                 mario.x += 5;
                 currentPos +=5;
@@ -132,25 +132,29 @@ draw = () => {
         }
         }
 
-    if((keyIsDown(LEFT_ARROW) && rightDetect == 0 && !mario.isAnimating)) {
+    if((keyIsDown(LEFT_ARROW) && rightDetect == 0 && !mario.isAnimating) || (leftRegen && rightDetect == 0)) {
         if(slide > -50) {
             slide--;
         }
         if(currentPos > -440 && slide <= 0) {
-            if(mario.isJumping || mario.isFalling) {
-                mapOffset -=5;
-                mario.x -=5;
-                currentPos -= 5;
-                mapOffset -= 5;
+            if(leftRegen && !mario.isJumping && !mario.isFalling && rightDetect == 0) {
+                mario.x += Math.floor(slide/10);
             } else {
-                if(slide > -10) {
-                    mario.x += -1
-                    currentPos += -1;
-                    mapOffset += -1;
-                } else if(slide <= -10) {
-                    mario.x += Math.floor(slide/10);
-                    currentPos += Math.floor(slide/10);
-                    mapOffset += Math.floor(slide/10);      
+                if(mario.isJumping) {
+                    mapOffset -=5;
+                    mario.x -=5;
+                    currentPos -= 5;
+                    mapOffset -= 5;
+                } else {
+                    if(slide > -10) {
+                        mario.x += -1
+                        currentPos += -1;
+                        mapOffset += -1;
+                    } else if(slide <= -10) {
+                        mario.x += Math.floor(slide/10);
+                        currentPos += Math.floor(slide/10);
+                        mapOffset += Math.floor(slide/10);      
+                    }
                 }
             }
         }

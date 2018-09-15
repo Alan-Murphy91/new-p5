@@ -72,13 +72,7 @@ function Block(x,y,h,w,type='') {
     }
 
     this.adjust = () => {
-        if(mario.x+45 == this.x && mario.y >= this.y && mario.y <= this.y+40) {
-            leftDetect++;
-        }
-        else if(mario.x+45 == this.x && mario.y >= this.y && mario.y <= this.y+40) {
-            leftDetect++;
-        }
-        else if (mario.x+45 > this.x && mario.x+75 < this.x+40) {
+        if (mario.x+45 > this.x && mario.x+75 < this.x+40) {
             if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
                 mario.x -= (mario.x+45 - this.x) + 5;
                 mapOffset -= (mario.x+45 - this.x) + 5;
@@ -99,6 +93,28 @@ function Block(x,y,h,w,type='') {
                 leftDetect++;
             }
         }
+        /////
+        if (mario.x-5 < this.x+40 && mario.x-5 > this.x && slide < 0) {
+            if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
+                mario.x += ((this.x+40) - (mario.x-5)) + 5;
+                mapOffset += ((this.x+40) - (mario.x-5)) + 5;
+                currentPos += ((this.x+40) - (mario.x-5)) + 5;
+            }
+            else if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
+                rightDetect++;
+                mario.x +=5;
+                mapOffset +=5;
+                currentPos +=5;
+            } 
+        } 
+        else if(mario.x-5 == this.x+40){
+            if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
+                rightDetect++;
+            }
+            else if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
+                rightDetect++;
+            }
+        }
     }
 
 
@@ -106,7 +122,7 @@ function Block(x,y,h,w,type='') {
         if(rightRegen && !mario.isJumping && !mario.isFalling && leftDetect == 0) {
             this.x -= Math.floor(slide/10);
         } else {
-            if(mario.isJumping || mario.isFalling) {
+            if(mario.isJumping) {
                 this.x-=5;
             } else {
                 if(slide < 10) {
