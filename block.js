@@ -113,6 +113,10 @@ function Block(x,y,h,w,type='') {
 
 
     this.goLeft = () => {
-        this.x -= Math.floor(slide/10);
+        if(slide < 10) {
+            this.x -= 1;
+        } else if(slide >= 10) {
+            this.x -= Math.floor(slide/10);
+        }
     }
 }

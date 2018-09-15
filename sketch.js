@@ -11,7 +11,7 @@ setup = () => {
 }
 
 draw = () => {
-    console.log(slide);
+    console.log(dist(blocks[7].x,blocks[7].y,mario.x+40,mario.y));
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -23,6 +23,20 @@ draw = () => {
     //     mario.x = 0;
     //     mapOffset = -440; 
     // }
+    if(rightRegen) {
+        if(slide > 0) {
+            slide--;
+        } else {
+            rightRegen = false;
+        }
+    }
+    if(leftRegen) {
+        if(slide < 0) {
+            slide++;
+        } else {
+            leftRegen = false;
+        }
+    }
     if(mario.x < -440) {
         mario.x = -440;
         currentPos = -440;
@@ -74,35 +88,47 @@ draw = () => {
         if(slide < 50) {
             slide++;
         }
-        if(currentPos < 0) {
-            mario.x += Math.floor(slide/10);
-            currentPos += Math.floor(slide/10);
-            mapOffset += Math.floor(slide/10);
-
-        } else {
-            mapOffset += 5
-
+        if(currentPos >= 0 && slide >= 0) {
+            currentPos = 0;
+            if(slide < 10) {
+                mapOffset += 1;
+            } else if(slide >= 10) {
+                mapOffset += Math.floor(slide/10);
+            }
             for(let x=0; x<blocks.length; x++) {
-                if(currentPos == 0) {
-                    blocks[x].goLeft();
-                }
+                blocks[x].goLeft();
                 if(enemies[x]) {
-                    if(currentPos == 0) {
-                        enemies[x].goLeft();
-                    }
+                    enemies[x].goLeft();
                 }
         }
+        } 
+        else {
+            if(slide < 10) {
+                mario.x += 1;
+                currentPos += 1;
+                mapOffset += 1;
+            } else if(slide >= 10) {
+                mario.x += Math.floor(slide/10);
+                currentPos += Math.floor(slide/10);
+                mapOffset += Math.floor(slide/10);
+            }
         }
-    }
+        }
 
     if((keyIsDown(LEFT_ARROW) && rightDetect == 0 && !mario.isAnimating)) {
         if(slide > -50) {
             slide--;
         }
-        if(currentPos > -440) {
-            mario.x += Math.floor(slide/10);
-            currentPos += Math.floor(slide/10);
-            mapOffset += Math.floor(slide/10);
+        if(currentPos > -440 && slide <= 0) {
+            if(slide > -10) {
+                mario.x += -1
+                currentPos += -1;
+                mapOffset += -1;
+            } else if(slide <= -10) {
+                mario.x += Math.floor(slide/10);
+                currentPos += Math.floor(slide/10);
+                mapOffset += Math.floor(slide/10);      
+            }
         }
     }
 
@@ -183,6 +209,3 @@ keyReleased = () => {
         leftRegen = true;
     }
 }
-
-
-  
