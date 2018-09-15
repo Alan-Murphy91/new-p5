@@ -176,13 +176,18 @@ draw = () => {
 
     // ------  jumping  ------- //
     if(mario.isJumping) {
-        if(jumpDistance <= 0) {
-            mario.isJumping = false;
-            mario.isFalling = true;
-        }
-        jumpDistance -=5;
-        mario.y -=5;
+        mario.y -= jumpHeight;
+        while(mario.y)
     }
+    // if(mario.isJumping) {
+    //     if(jumpDistance <= 0) {
+    //         mario.isJumping = false;
+    //         mario.isFalling = true;
+    //     }
+    //     jumpDistance -=5;
+    //     mario.y -=5;
+    // }
+
     // ------  falling  ------- //
     if(mario.isFalling) {
         mario.y +=5;
@@ -218,21 +223,31 @@ draw = () => {
             loop();
         },50)
     }
-}
-
-keyPressed = () => {
-    if(keyCode == 32) {
-        if(!mario.isFalling && !mario.isJumping){
-            mario.isJumping = true;
-            jumpDistance = 200;
+    if(keyIsDown(32) && !mario.isFalling) {
+        mario.isJumping = true;
+        if(jumpHeight < 200) {
+            jumpHeight+=10;
         }
     }
 }
+
+// keyPressed = () => {
+//     if(keyCode == 32) {
+//         if(!mario.isFalling && !mario.isJumping){
+//             mario.isJumping = true;
+//             jumpDistance = 200;
+//         }
+//     }
+// }
 
 keyReleased = () => {
     if(keyCode == 39) {
         rightRegen = true;
     } 
+    if(keyCode == 32) {
+        mario.isFalling = true;
+        jumpHeight = 0;
+    }
     else if(keyCode == 37) {
         leftRegen = true;
     }

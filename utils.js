@@ -14,6 +14,7 @@ let mapOffset = 0;
 let currentPos = 0;
 
 let jumpHeight = 0;
+let jumpN = 0;
 
 let rightRegen = false;
 let leftRegen = false;
