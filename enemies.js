@@ -10,15 +10,31 @@ function Enemy(x,y,h,w,type='') {
     this.stepLeft = false;
     this.stepRight = false;
     this.fainted = false;
+    this.shell = false;
+    this.power = false;
 
     this.show = () => {
         if(!this.fainted) {
             if(this.type == 'goomba') {
                 fill(255,255,0);
                 rect(this.x,this.y,this.h,this.w);
-            } else if(this.type == 'koopatroopa') {
-                fill(0,255,255);
-                rect(this.x,this.y,this.h,this.w); 
+            } 
+            else if(this.type == 'koopatroopa') {
+                if(!this.shell && !this.power) {
+                    fill(0,255,255);
+                    rect(this.x,this.y,this.h,this.w); 
+                }
+                else if(this.shell && !this.power) {
+                    fill(0,155,155);
+                    rect(this.x,this.y,this.h,this.w); 
+                }
+                else if(this.power) {
+                    fill(0,55,55);
+                    rect(this.x,this.y,this.h,this.w); 
+                } else {
+                    fill(20,20,20);
+                    rect(this.x,this.y,this.h,this.w); 
+                }
             }
         }
     }
@@ -53,8 +69,8 @@ function Enemy(x,y,h,w,type='') {
         }
     }
     this.topDetect = () => {
-        if((this.type == 'goomba' && mario.x+40 >= this.x && mario.x+40 <= this.x+40 || mario.x >= this.x && mario.x-40 <= this.x+40) && dist(mario.x,mario.y+40,mario.x,this.y) <= 1) {
-            if(!mario.isAnimating && !mario.isJumping) {
+        if((mario.x+40 >= this.x && mario.x+40 <= this.x+40 || mario.x >= this.x && mario.x-40 <= this.x+40) && dist(mario.x,mario.y+40,mario.x,this.y) <= 1) {
+            if(!mario.isAnimating && !mario.isJumping && this.type == 'goomba') {
                 this.fainted = true;
                 this.y = 700;
                 mario.isJumping = true;
@@ -63,16 +79,44 @@ function Enemy(x,y,h,w,type='') {
                     mario.canJump = true;
                     mario.isFalling = true;
                     mario.isJumping = false;
-                },100);
+                },200);
+            }
+            else {
+                if(!this.shell && !this.power) {
+                    this.shell = true;
+                    mario.isJumping = true;
+                    mario.y-=60;
+                    setTimeout(()=> {
+                        mario.canJump = true;
+                        mario.isFalling = true;
+                        mario.isJumping = false;
+                    },300);
+                }
+                else if(this.shell && !this.power) {
+                    this.shell = false;
+                    this.power = true;
+                    mario.isJumping = true;
+                    mario.y-=60;
+                    setTimeout(()=> {
+                        mario.canJump = true;
+                        mario.isFalling = true;
+                        mario.isJumping = false;
+                    },300);
+                }
+                else if(this.power) {
+                    this.power = false;
+                    mario.isJumping = true;
+                    mario.y-=60;
+                    setTimeout(()=> {
+                        mario.canJump = true;
+                        mario.isFalling = true;
+                        mario.isJumping = false;
+                    },300);
+                }
             }
         } 
-        // else if((this.type == 'koopatroopa' && mario.x+40 >= this.x && mario.x+40 <= this.x+40 || mario.x >= this.x && mario.x-40 <= this.x+40) && dist(mario.x,mario.y+40,mario.x,this.y) <= 1) {
-        //     if(!mario.isAnimating && !mario.isJumping) {
-        //         this.fainted = true;
-        //     }
-        // } 
-
     }
+
     this.randomMove = () => {
         if(this.steps == 50) {
             if(Math.random(1) > 0.5) {

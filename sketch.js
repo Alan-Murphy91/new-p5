@@ -8,10 +8,11 @@
 
 setup = () => {
     createCanvas(960,600);
+    //console.log(enemies[0].type);
 }
 
 draw = () => {
-    //console.log(topDetect);
+    //console.log(enemies[0].fainted);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -84,7 +85,7 @@ draw = () => {
             if(enemies[x].x < 960 && enemies[x].x > -40) {
                 enemies[x].show();
                 enemies[x].randomMove();
-                enemies[x].detectMario();
+                //enemies[x].detectMario();
                 enemies[x].topDetect();
             }
         }
