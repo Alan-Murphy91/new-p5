@@ -91,7 +91,7 @@ for(let i=0;i<93;i++){
 
 // -- enemies - //
 enemies = [];
-//enemies.push(new Enemy(23*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(23*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(35*blockSize,12*blockSize,blockSize,blockSize,'koopatroopa'));
 // ------mario-------------------
 mario = new Mario(11*blockSize,12*blockSize,blockSize,blockSize)

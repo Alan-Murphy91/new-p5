@@ -13,8 +13,13 @@ function Enemy(x,y,h,w,type='') {
 
     this.show = () => {
         if(!this.fainted) {
-            fill(255,255,0);
-            rect(this.x,this.y,this.h,this.w);
+            if(this.type == 'goomba') {
+                fill(255,255,0);
+                rect(this.x,this.y,this.h,this.w);
+            } else if(this.type == 'koopatroopa') {
+                fill(0,255,255);
+                rect(this.x,this.y,this.h,this.w); 
+            }
         }
     }
     // this.goLeft = () => {
@@ -40,7 +45,7 @@ function Enemy(x,y,h,w,type='') {
     //     this.x += 5;
     // }
     this.detectMario = () => {
-        if(mario.y == this.y && (dist(mario.x+40,mario.y,this.x,this.y) < 5 || dist(mario.x,mario.y,this.x+40,this.y) < 5)) {
+        if(mario.y == this.y && (dist(mario.x+40,mario.y,this.x,this.y) < 4 || dist(mario.x,mario.y,this.x+40,this.y) < 4)) {
             if(!mario.isAnimating && !this.fainted) {
                 mario.isAnimating = true;
                 mario.animate();
@@ -48,11 +53,25 @@ function Enemy(x,y,h,w,type='') {
         }
     }
     this.topDetect = () => {
-        if((mario.x+40 >= this.x && mario.x+40 <= this.x+40 || mario.x >= this.x && mario.x-40 <= this.x+40) && dist(mario.x,mario.y+40,mario.x,this.y) <= 1) {
+        if((this.type == 'goomba' && mario.x+40 >= this.x && mario.x+40 <= this.x+40 || mario.x >= this.x && mario.x-40 <= this.x+40) && dist(mario.x,mario.y+40,mario.x,this.y) <= 1) {
             if(!mario.isAnimating && !mario.isJumping) {
                 this.fainted = true;
+                this.y = 700;
+                mario.isJumping = true;
+                mario.y-=20;
+                setTimeout(()=> {
+                    mario.canJump = true;
+                    mario.isFalling = true;
+                    mario.isJumping = false;
+                },100);
             }
-        }
+        } 
+        // else if((this.type == 'koopatroopa' && mario.x+40 >= this.x && mario.x+40 <= this.x+40 || mario.x >= this.x && mario.x-40 <= this.x+40) && dist(mario.x,mario.y+40,mario.x,this.y) <= 1) {
+        //     if(!mario.isAnimating && !mario.isJumping) {
+        //         this.fainted = true;
+        //     }
+        // } 
+
     }
     this.randomMove = () => {
         if(this.steps == 50) {

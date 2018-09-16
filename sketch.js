@@ -226,6 +226,7 @@ draw = () => {
         mario.isJumping = false;
         mario.isFalling = false;
         mario.isAnimating = false;
+        mario.canJump = true;
         mario.show();
         mario.showCentre();
         setTimeout(() => {
