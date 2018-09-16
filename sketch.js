@@ -11,7 +11,7 @@ setup = () => {
 }
 
 draw = () => {
-    console.log(topDetect);
+    //console.log(topDetect);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -71,8 +71,12 @@ draw = () => {
             blocks[x].show();
             blocks[x].detectMario();
             blocks[x].detectEnemy();
-            blocks[x].showCentre();
-            blocks[x].showLanding();
+            blocks[x].showCoin();
+            if(blocks[x].coinHit) {
+                blocks[x].raiseCoin();
+            }
+            //blocks[x].showCentre();
+            //blocks[x].showLanding();
             blocks[x].adjust();
 
         }
@@ -205,7 +209,8 @@ draw = () => {
         for(let x=0; x<blocks.length; x++) {
             blocks[x].x += mapOffset;
             blocks[x].show();
-            blocks[x].showCentre();
+            //blocks[x].showCentre();
+            blocks[x].showCoin();
             blocks[x].booped = false;
             if(enemies[x]) {
                 enemies[x].x = enemies[x].originX;

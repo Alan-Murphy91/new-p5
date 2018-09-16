@@ -22,13 +22,13 @@ let slide = 0;
 // ------blocks------------------
 blocks = [];
 
-blocks.push(new Block(17*blockSize,9*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(17*blockSize,9*blockSize,blockSize,blockSize,'block',true));
 
 blocks.push(new Block(21*blockSize,9*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(22*blockSize,9*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(22*blockSize,9*blockSize,blockSize,blockSize,'block',true));
 blocks.push(new Block(23*blockSize,9*blockSize,blockSize,blockSize,'block'));
-        blocks.push(new Block(23*blockSize,5*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(24*blockSize,9*blockSize,blockSize,blockSize,'block'));
+        blocks.push(new Block(23*blockSize,5*blockSize,blockSize,blockSize,'block',true));
+blocks.push(new Block(24*blockSize,9*blockSize,blockSize,blockSize,'block',true));
 blocks.push(new Block(25*blockSize,9*blockSize,blockSize,blockSize,'block'));
 
 blocks.push(new Block(29*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
@@ -91,7 +91,7 @@ for(let i=0;i<93;i++){
 
 // -- enemies - //
 enemies = [];
-//enemies.push(new Enemy(23*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(23*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 // ------mario-------------------
 mario = new Mario(11*blockSize,12*blockSize,blockSize,blockSize)
 

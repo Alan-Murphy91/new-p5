@@ -17,12 +17,28 @@ function Enemy(x,y,h,w,type='') {
             rect(this.x,this.y,this.h,this.w);
         }
     }
+    // this.goLeft = () => {
+    //     this.x -= 5;
+    // }
     this.goLeft = () => {
-        this.x -= 5;
+        if(rightRegen && !mario.isJumping && !mario.isFalling && leftDetect == 0) {
+            this.x -= Math.floor(slide/10);
+        } else {
+            // if(mario.isJumping) {
+            //     this.x-=5;
+            // } 
+            //if {
+                if(slide < 10) {
+                    this.x -= 1;
+                } else if(slide >= 10) {
+                    this.x -= Math.floor(slide/10);
+                }
+           // }
+        }
     }
-    this.goRight = () => {
-        this.x += 5;
-    }
+    // this.goRight = () => {
+    //     this.x += 5;
+    // }
     this.detectMario = () => {
         if(mario.y == this.y && (dist(mario.x+40,mario.y,this.x,this.y) < 5 || dist(mario.x,mario.y,this.x+40,this.y) < 5)) {
             if(!mario.isAnimating && !this.fainted) {

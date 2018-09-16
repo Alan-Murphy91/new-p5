@@ -1,4 +1,4 @@
-function Block(x,y,h,w,type='') {
+function Block(x,y,h,w,type='',coin=false) {
     this.x = x
     this.y = y
     this.h = h;
@@ -6,6 +6,11 @@ function Block(x,y,h,w,type='') {
     this.type = type;
     this.marioContact = false;
     this.booped = false;
+    this.coin = coin;
+    this.coinHit = false;
+    this.starY = this.y+20;
+    this.starYMax = this.starY - 80;
+
 
     this.show = () => {
         if(!this.marioContact && !this.booped) {
@@ -31,16 +36,31 @@ function Block(x,y,h,w,type='') {
         rect(this.x,this.y,this.h,this.w);
     }
 
-    this.showCentre = () => {
-        if(this.type == 'block'){
-            fill(255,0,0);
-            rect(this.x+20,this.y+20,5,5);
+    // this.showCentre = () => {
+    //     if(this.type == 'block'){
+    //         fill(255,0,0);
+    //         rect(this.x+20,this.y+20,5,5);
+    //     }
+    // }
+
+    // this.showLanding = () => {
+    //     fill(0,255,0);
+    //     rect(this.x+20,this.y,2,2);
+    // }
+
+    this.showCoin = () => {
+        if(this.coin) {
+            fill(255,215,0);
+            ellipse(this.x+20,this.starY,20,30);
         }
     }
 
-    this.showLanding = () => {
-        fill(0,255,0);
-        rect(this.x+20,this.y,2,2);
+    this.raiseCoin = () => {
+        if(this.starY > this.starYMax) {
+            this.starY-=10;
+        } else {
+            this.coin = false;
+        }
     }
     
     this.detectMario = () => {
@@ -52,6 +72,7 @@ function Block(x,y,h,w,type='') {
         else if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y-40 >= this.y) || (mario.x >= this.x && mario.x <= this.x+39 && mario.y-40 >= this.y)) && dist(mario.x,this.y,mario.x,mario.y-40) == 0) {
             if(!mario.isFalling) {
                 this.booped = true;
+                this.coinHit = true;
             }
             bottomDetect++;
             mario.canJump = false;
