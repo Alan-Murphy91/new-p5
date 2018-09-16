@@ -105,6 +105,8 @@ function Enemy(x,y,h,w,type='') {
                 }
                 else if(this.power) {
                     this.power = false;
+                    this.fainted = true;
+                    this.y=700;
                     mario.isJumping = true;
                     mario.y-=60;
                     setTimeout(()=> {
@@ -118,25 +120,39 @@ function Enemy(x,y,h,w,type='') {
     }
 
     this.randomMove = () => {
-        if(this.steps == 50) {
-            if(Math.random(1) > 0.5) {
-                this.stepLeft = true;
-            } else {
-                this.stepRight = true;
+        if(this.shell) {
+            this.steps = 0;
+        } else {
+            if(this.steps == 50) {
+                if(Math.random(1) > 0.5) {
+                    this.stepLeft = true;
+                } else {
+                    this.stepRight = true;
+                }
+            } 
+            if(this.steps == 0 || this.steps == 100) {
+                this.stepLeft = false;
+                this.stepRight = false; 
+                this.steps = 50;
             }
-        } 
-        if(this.steps == 0 || this.steps == 100) {
-            this.stepLeft = false;
-            this.stepRight = false; 
-            this.steps = 50;
-        }
-        if(this.stepLeft) {
-            this.x -= 1;
-            this.steps -= 1;
-        }
-        else if(this.stepRight) {
-            this.x += 1;
-            this.steps += 1;
+            if(this.stepLeft) {
+                if(this.power) {
+                    this.x -= 5;
+                    this.steps -= 1;
+                } else {
+                    this.x -= 1;
+                    this.steps -= 1;
+                }
+            }
+            else if(this.stepRight) {
+                if(this.power) {
+                    this.x += 5;
+                    this.steps += 1;
+                } else {
+                    this.x += 1;
+                    this.steps += 1;
+                }
+            }
         }
     }
 }
