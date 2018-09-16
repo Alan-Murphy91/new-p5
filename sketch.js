@@ -13,7 +13,6 @@ setup = () => {
 
 draw = () => {
     //console.log(enemies[0].fainted);
-    mario.y=50
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;

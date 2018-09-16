@@ -145,7 +145,6 @@ function Block(x,y,h,w,type='',coin=false) {
     }
 
     this.goLeft = () => {
-        this.x-=20;
         if(rightRegen && !mario.isJumping && !mario.isFalling && leftDetect == 0) {
             this.x -= Math.floor(slide/10);
         } else {
