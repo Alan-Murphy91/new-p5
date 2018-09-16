@@ -5,6 +5,7 @@ function Mario(x,y,h,w) {
     this.w = w;
     this.isJumping = false;
     this.isFalling = false;
+    this.canJump = true;
     this.isAnimating = false;
     
     this.show = () => {

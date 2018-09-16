@@ -47,12 +47,14 @@ function Block(x,y,h,w,type='') {
         if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y+40 <= this.y) || (mario.x >= this.x && mario.x <= this.x+39 && mario.y+40 <= this.y)) && dist(mario.x,this.y,mario.x,mario.y+40) == 0) {
             this.marioContact = true;
                 topDetect++;
+                jumpHeight = 0;
         } 
         else if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y-40 >= this.y) || (mario.x >= this.x && mario.x <= this.x+39 && mario.y-40 >= this.y)) && dist(mario.x,this.y,mario.x,mario.y-40) == 0) {
             if(!mario.isFalling) {
                 this.booped = true;
             }
             bottomDetect++;
+            mario.canJump = false;
         }
         else {
             this.marioContact = false;
@@ -96,9 +98,12 @@ function Block(x,y,h,w,type='') {
         /////
         if (mario.x-5 < this.x+40 && mario.x-5 > this.x && slide < 0) {
             if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
-                mario.x += ((this.x+40) - (mario.x-5)) + 5;
-                mapOffset += ((this.x+40) - (mario.x-5)) + 5;
-                currentPos += ((this.x+40) - (mario.x-5)) + 5;
+                // mario.x += ((this.x+40) - (mario.x-5)) + 5;
+                // mapOffset += ((this.x+40) - (mario.x-5)) + 5;
+                // currentPos += ((this.x+40) - (mario.x-5)) + 5;
+                mario.x += 5;
+                mapOffset += 5;
+                currentPos += 5;
             }
             else if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
                 rightDetect++;
@@ -122,15 +127,16 @@ function Block(x,y,h,w,type='') {
         if(rightRegen && !mario.isJumping && !mario.isFalling && leftDetect == 0) {
             this.x -= Math.floor(slide/10);
         } else {
-            if(mario.isJumping) {
-                this.x-=5;
-            } else {
+            // if(mario.isJumping) {
+            //     this.x-=5;
+            // } 
+            //if {
                 if(slide < 10) {
                     this.x -= 1;
                 } else if(slide >= 10) {
                     this.x -= Math.floor(slide/10);
                 }
-            }
+           // }
         }
     }
 }

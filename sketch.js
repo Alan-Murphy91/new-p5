@@ -11,7 +11,7 @@ setup = () => {
 }
 
 draw = () => {
-    console.log(jumpHeight);
+    console.log(topDetect);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -96,15 +96,15 @@ draw = () => {
 
         if(currentPos >= 0 && slide >= 0) {
             currentPos = 0;
-            if(mario.isJumping) {
-                mapOffset +=5;
-            } else {
+            // if(mario.isJumping) {
+            //     mapOffset +=5;
+            // } else {
                 if(slide < 10) {
                     mapOffset += 1;
                 } else if(slide >= 10) {
                     mapOffset += Math.floor(slide/10);
                 }
-            }
+            //}
             for(let x=0; x<blocks.length; x++) {
                 blocks[x].goLeft();
                 if(enemies[x]) {
@@ -113,12 +113,12 @@ draw = () => {
         }
         } 
         else {
-            if(mario.isJumping) {
-                mapOffset +=5;
-                mario.x += 5;
-                currentPos +=5;
-                mapOffset +=5;
-            } else {
+            // if(mario.isJumping) {
+            //     mapOffset +=5;
+            //     mario.x += 5;
+            //     currentPos +=5;
+            //     mapOffset +=5;
+            // } else {
                 if(slide < 10) {
                     mario.x += 1;
                     currentPos += 1;
@@ -128,7 +128,7 @@ draw = () => {
                     currentPos += Math.floor(slide/10);
                     mapOffset += Math.floor(slide/10);
                 }
-            }
+            //}
         }
         }
 
@@ -140,12 +140,12 @@ draw = () => {
             if(leftRegen && !mario.isJumping && !mario.isFalling && rightDetect == 0) {
                 mario.x += Math.floor(slide/10);
             } else {
-                if(mario.isJumping) {
-                    mapOffset -=5;
-                    mario.x -=5;
-                    currentPos -= 5;
-                    mapOffset -= 5;
-                } else {
+                // if(mario.isJumping) {
+                //     mapOffset -=5;
+                //     mario.x -=5;
+                //     currentPos -= 5;
+                //     mapOffset -= 5;
+                // } else {
                     if(slide > -10) {
                         mario.x += -1
                         currentPos += -1;
@@ -155,7 +155,7 @@ draw = () => {
                         currentPos += Math.floor(slide/10);
                         mapOffset += Math.floor(slide/10);      
                     }
-                }
+                //}
             }
         }
     }
@@ -186,11 +186,16 @@ draw = () => {
     //     jumpDistance -=5;
     //     mario.y -=5;
     // }
-
+    
+    if(mario.isJumping) {
+        mario.y -= 5;
+        jumpHeight += 5;
+    }
     // ------  falling  ------- //
-    // if(mario.isFalling) {
-    //     mario.y +=5;
-    // }
+    if(mario.isFalling) {
+        mario.y +=5;
+        jumpHeight -=5;
+    }
 
     // ----- reset ----- //
     if(mario.y >= 640) {
@@ -237,9 +242,6 @@ draw = () => {
 
     //     }
     // } 
-    if(keyIsDown(32)) {
-
-    }
     // else {
     //     if(jumpHeight > 0) {
     //         mario.isJumping = false;
@@ -247,6 +249,19 @@ draw = () => {
     //         jumpHeight -=5;
     //     }
     // }
+    if(keyIsDown(32)) {
+        if(jumpHeight >= 0 && !mario.isFalling && mario.canJump) {
+            mario.isJumping = true;
+        } 
+        if(jumpHeight >= 200 && !mario.isFalling) {
+            mario.isFalling = true;
+            mario.isJumping = false;
+            mario.canJump = false;
+        }
+        else if(jumpHeight == 0 && mario.isFalling) {
+            mario.isFalling = false;
+        }
+    }
 }
 
 keyReleased = () => {
@@ -254,9 +269,9 @@ keyReleased = () => {
         rightRegen = true;
     } 
     if(keyCode == 32) {
+        mario.canJump = true;
         mario.isFalling = true;
         mario.isJumping = false;
-        jumpHeight = 0;
     }
     else if(keyCode == 37) {
         leftRegen = true;
