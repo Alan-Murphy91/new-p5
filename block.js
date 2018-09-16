@@ -87,7 +87,8 @@ function Block(x,y,h,w,type='',coin=false) {
             if(enemies[x].x+40 == this.x && enemies[x].y == this.y) {
                 enemies[x].stepRight = false;
                 enemies[x].stepLeft = true;
-            } else if(enemies[x].x == this.x+40 && enemies[x].y == this.y) {
+            }  
+            if(enemies[x].x == this.x+40 && enemies[x].y == this.y) {
                 enemies[x].stepRight = true;
                 enemies[x].stepLeft = false;             
             }
@@ -144,6 +145,7 @@ function Block(x,y,h,w,type='',coin=false) {
     }
 
     this.goLeft = () => {
+        this.x-=20;
         if(rightRegen && !mario.isJumping && !mario.isFalling && leftDetect == 0) {
             this.x -= Math.floor(slide/10);
         } else {

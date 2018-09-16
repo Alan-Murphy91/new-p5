@@ -13,6 +13,7 @@ setup = () => {
 
 draw = () => {
     //console.log(enemies[0].fainted);
+    mario.y=50
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -85,7 +86,7 @@ draw = () => {
             if(enemies[x].x < 960 && enemies[x].x > -40) {
                 enemies[x].show();
                 enemies[x].randomMove();
-                //enemies[x].detectMario();
+                enemies[x].detectMario();
                 enemies[x].topDetect();
             }
         }
@@ -260,7 +261,7 @@ draw = () => {
         if(jumpHeight >= 0 && !mario.isFalling && mario.canJump) {
             mario.isJumping = true;
         } 
-        if(jumpHeight >= 200 && !mario.isFalling) {
+        if(jumpHeight >= 220 && !mario.isFalling) {
             mario.isFalling = true;
             mario.isJumping = false;
             mario.canJump = false;

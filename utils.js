@@ -76,12 +76,108 @@ blocks.push(new Block(86*blockSize,4*blockSize,blockSize,blockSize,'block'));
 blocks.push(new Block(87*blockSize,4*blockSize,blockSize,blockSize,'block'));
 blocks.push(new Block(88*blockSize,4*blockSize,blockSize,blockSize,'block'));
 
+blocks.push(new Block(92*blockSize,4*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(93*blockSize,4*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(94*blockSize,4*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(95*blockSize,4*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(95*blockSize,9*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(101*blockSize,9*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(102*blockSize,9*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(106*blockSize,9*blockSize,blockSize,blockSize,'block',true));
+
+blocks.push(new Block(109*blockSize,9*blockSize,blockSize,blockSize,'block',true));
+blocks.push(new Block(109*blockSize,5*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(112*blockSize,9*blockSize,blockSize,blockSize,'block',true));
+
+blocks.push(new Block(118*blockSize,9*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(121*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(122*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(123*blockSize,5*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(128*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(129*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(130*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(131*blockSize,5*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(129*blockSize,9*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(130*blockSize,9*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(134*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(135*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(136*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(137*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(135*blockSize,11*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(136*blockSize,11*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(137*blockSize,11*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(136*blockSize,10*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(137*blockSize,10*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(137*blockSize,9*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(140*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(141*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(142*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(143*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(140*blockSize,11*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(141*blockSize,11*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(142*blockSize,11*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(140*blockSize,10*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(141*blockSize,10*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(140*blockSize,9*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(148*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(149*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(150*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(151*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(152*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(149*blockSize,11*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(150*blockSize,11*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(151*blockSize,11*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(152*blockSize,11*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(150*blockSize,10*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(151*blockSize,10*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(152*blockSize,10*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(151*blockSize,9*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(152*blockSize,9*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(155*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(156*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(157*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(158*blockSize,12*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(155*blockSize,11*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(156*blockSize,11*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(157*blockSize,11*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(155*blockSize,10*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(156*blockSize,10*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(155*blockSize,9*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(163*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(163*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(164*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(164*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
+
+blocks.push(new Block(168*blockSize,9*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(169*blockSize,9*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(170*blockSize,9*blockSize,blockSize,blockSize,'block',true));
+blocks.push(new Block(171*blockSize,9*blockSize,blockSize,blockSize,'block'));
+
+blocks.push(new Block(179*blockSize,7*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(179*blockSize,6*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(180*blockSize,7*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(180*blockSize,6*blockSize,blockSize,blockSize,'block'));
+
+
+
 
 
 
 // -- ground -- //
-for(let i=0;i<93;i++){
-        if(i == 71 || i == 70 || i == 87 || i == 88 || i == 89) {
+for(let i=0;i<254;i++){
+        if(i == 71 || i == 70 || i == 87 || i == 88 || i == 89 || i == 153 || i == 154) {
             continue;
         }
         else {
@@ -94,6 +190,6 @@ enemies = [];
 enemies.push(new Enemy(23*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(35*blockSize,12*blockSize,blockSize,blockSize,'koopatroopa'));
 // ------mario-------------------
-mario = new Mario(11*blockSize,12*blockSize,blockSize,blockSize)
+mario = new Mario(11*blockSize,11*blockSize,blockSize,blockSize)
 
 // ------functions---------------

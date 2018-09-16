@@ -1,6 +1,6 @@
 function Mario(x,y,h,w) {
-    this.x = x
-    this.y = y
+    this.x = x;
+    this.y = y;
     this.h = h;
     this.w = w;
     this.isJumping = false;
@@ -11,7 +11,7 @@ function Mario(x,y,h,w) {
     this.show = () => {
         fill(50);
         stroke(0);
-        rect(this.x,this.y,this.h,this.w);
+        rect(this.x,this.y,this.w,this.h);
     }
 
     this.showCentre = () => {

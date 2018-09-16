@@ -79,7 +79,7 @@ function Enemy(x,y,h,w,type='') {
                     mario.canJump = true;
                     mario.isFalling = true;
                     mario.isJumping = false;
-                },200);
+                },100);
             }
             else {
                 if(!this.shell && !this.power) {
@@ -90,7 +90,7 @@ function Enemy(x,y,h,w,type='') {
                         mario.canJump = true;
                         mario.isFalling = true;
                         mario.isJumping = false;
-                    },300);
+                    },100);
                 }
                 else if(this.shell && !this.power) {
                     this.shell = false;
@@ -101,7 +101,7 @@ function Enemy(x,y,h,w,type='') {
                         mario.canJump = true;
                         mario.isFalling = true;
                         mario.isJumping = false;
-                    },300);
+                    },100);
                 }
                 else if(this.power) {
                     this.power = false;
@@ -113,7 +113,7 @@ function Enemy(x,y,h,w,type='') {
                         mario.canJump = true;
                         mario.isFalling = true;
                         mario.isJumping = false;
-                    },300);
+                    },100);
                 }
             }
         } 
@@ -137,8 +137,8 @@ function Enemy(x,y,h,w,type='') {
             }
             if(this.stepLeft) {
                 if(this.power) {
-                    this.x -= 5;
-                    this.steps -= 1;
+                    this.x -= 2;
+                    this.steps = -1;
                 } else {
                     this.x -= 1;
                     this.steps -= 1;
@@ -146,8 +146,8 @@ function Enemy(x,y,h,w,type='') {
             }
             else if(this.stepRight) {
                 if(this.power) {
-                    this.x += 5;
-                    this.steps += 1;
+                    this.x += 2;
+                    this.steps = -1;
                 } else {
                     this.x += 1;
                     this.steps += 1;
