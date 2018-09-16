@@ -87,7 +87,7 @@ function Block(x,y,h,w,type='') {
                 currentPos -=5;
             } 
         } 
-        else if(mario.x+45 == this.x){
+        if(mario.x+45 == this.x){
             if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
                 leftDetect++;
             }
@@ -107,12 +107,12 @@ function Block(x,y,h,w,type='') {
             }
             else if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
                 rightDetect++;
-                mario.x +=5;
-                mapOffset +=5;
-                currentPos +=5;
+                mario.x += 5;
+                mapOffset += 5;
+                currentPos += 5;
             } 
         } 
-        else if(mario.x-5 == this.x+40){
+        if(mario.x-5 == this.x+40){
             if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
                 rightDetect++;
             }
@@ -121,7 +121,6 @@ function Block(x,y,h,w,type='') {
             }
         }
     }
-
 
     this.goLeft = () => {
         if(rightRegen && !mario.isJumping && !mario.isFalling && leftDetect == 0) {
