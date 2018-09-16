@@ -71,7 +71,7 @@ function Enemy(x,y,h,w,type='') {
             this.x -= 1;
             this.steps -= 1;
         }
-        if(this.stepRight) {
+        else if(this.stepRight) {
             this.x += 1;
             this.steps += 1;
         }
