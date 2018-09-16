@@ -175,9 +175,9 @@ draw = () => {
     mario.showCentre();
 
     // ------  jumping  ------- //
-    if(mario.isJumping) {
-        mario.y -= jumpHeight;
-    }
+    // if(mario.isJumping) {
+    //     mario.y -= 5;
+    // }
     // if(mario.isJumping) {
     //     if(jumpDistance <= 0) {
     //         mario.isJumping = false;
@@ -188,9 +188,9 @@ draw = () => {
     // }
 
     // ------  falling  ------- //
-    if(mario.isFalling) {
-        mario.y +=jumpHeight;
-    }
+    // if(mario.isFalling) {
+    //     mario.y +=5;
+    // }
 
     // ----- reset ----- //
     if(mario.y >= 640) {
@@ -222,16 +222,31 @@ draw = () => {
             loop();
         },50)
     }
-    if(keyIsDown(32) && !mario.isFalling) {
-        mario.isJumping = true;
-        if(jumpHeight < 200) {
-            jumpHeight+=10;
-        }
-    } else {
-        if(jumpHeight > 0) {
-            jumpHeight -=10;
-        }
+    // if(keyIsDown(32) && !mario.isFalling) {
+    //     if(jumpHeight < 100) {
+    //         jumpHeight+=5;
+    //         mario.y-=5;
+    //     } 
+    //     else if(jumpHeight == 0) {
+    //         mario.isFalling = false;
+    //         mario.isJumping = true;
+    //     }
+    //     else {
+    //         mario.isFalling = true;
+    //         mario.isJumping = false;
+
+    //     }
+    // } 
+    if(keyIsDown(32)) {
+
     }
+    // else {
+    //     if(jumpHeight > 0) {
+    //         mario.isJumping = false;
+    //         mario.isFalling = true;
+    //         jumpHeight -=5;
+    //     }
+    // }
 }
 
 keyReleased = () => {
