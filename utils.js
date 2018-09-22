@@ -9,6 +9,7 @@ let topDetect = 0;
 let bottomDetect = 0;
 let leftDetect = 0;
 let rightDetect = 0;
+let eTopDetect = 0;
 let eSideDetect = 0;
 let mapOffset = 0;
 let currentPos = 0;
@@ -27,7 +28,7 @@ blocks.push(new Block(17*blockSize,9*blockSize,blockSize,blockSize,'block',true)
 blocks.push(new Block(21*blockSize,9*blockSize,blockSize,blockSize,'block'));
 blocks.push(new Block(22*blockSize,9*blockSize,blockSize,blockSize,'block',true));
 blocks.push(new Block(23*blockSize,9*blockSize,blockSize,blockSize,'block'));
-        blocks.push(new Block(23*blockSize,5*blockSize,blockSize,blockSize,'block',true));
+blocks.push(new Block(23*blockSize,5*blockSize,blockSize,blockSize,'block',true));
 blocks.push(new Block(24*blockSize,9*blockSize,blockSize,blockSize,'block',true));
 blocks.push(new Block(25*blockSize,9*blockSize,blockSize,blockSize,'block'));
 
@@ -160,10 +161,10 @@ blocks.push(new Block(163*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(164*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(164*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
 
-blocks.push(new Block(168*blockSize,9*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(169*blockSize,9*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(170*blockSize,9*blockSize,blockSize,blockSize,'block',true));
-blocks.push(new Block(171*blockSize,9*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(168*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(169*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(170*blockSize,9*blockSize,blockSize,blockSize,'pipe',true));
+blocks.push(new Block(171*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
 
 blocks.push(new Block(179*blockSize,12*blockSize,blockSize,blockSize,'block'));
 blocks.push(new Block(179*blockSize,11*blockSize,blockSize,blockSize,'block'));
@@ -236,8 +237,24 @@ for(let i=0;i<254;i++){
 // -- enemies - //
 enemies = [];
 enemies.push(new Enemy(23*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
-enemies.push(new Enemy(35*blockSize,12*blockSize,blockSize,blockSize,'koopatroopa'));
+enemies.push(new Enemy(41*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(52*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(53*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+//enemies.push(new Enemy(81*blockSize,3*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(83*blockSize,3*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(100*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(101*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(108*blockSize,12*blockSize,blockSize,blockSize,'koopatroopa'));
+enemies.push(new Enemy(115*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(116*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+
+enemies.push(new Enemy(124*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(126*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(128*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(130*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(164*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(161*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 // ------mario-------------------
-mario = new Mario(11*blockSize,11*blockSize,blockSize,blockSize)
+mario = new Mario(11*blockSize,12*blockSize,blockSize,blockSize)
 
 // ------functions---------------

@@ -1,18 +1,10 @@
 
-
-// -fix mapOffset and currentPos for left and rightDetect
-// -transition from running right when currentPos < 0 to > 0 smoothly and account for mapoffset and currentPos
-// - fix all the bugs
-
-
-
 setup = () => {
     createCanvas(960,600);
     //console.log(enemies[0].type);
 }
 
 draw = () => {
-    //console.log(enemies[0].fainted);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -87,6 +79,17 @@ draw = () => {
                 enemies[x].randomMove();
                 enemies[x].detectMario();
                 enemies[x].topDetect();
+                
+                    console.log(eTopDetect);
+                    // if(enemies[x].y < 6*blockSize) {
+                    //     eTopDetect = 0;
+                    // } else {
+                    //     enemies[x].y += 5;
+                    // }
+                    // if(eTopDetect == 0) {
+                    //     enemies[x].y +=5;
+                    // }
+                
             }
         }
         if(mario.isJumping) {

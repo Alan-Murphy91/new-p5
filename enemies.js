@@ -12,6 +12,7 @@ function Enemy(x,y,h,w,type='') {
     this.fainted = false;
     this.shell = false;
     this.power = false;
+    //this.isFalling = false;
 
     this.show = () => {
         if(!this.fainted) {
@@ -124,10 +125,14 @@ function Enemy(x,y,h,w,type='') {
             this.steps = 0;
         } else {
             if(this.steps == 50) {
-                if(Math.random(1) > 0.5) {
+                if(this.y < 12*blockSize) {
                     this.stepLeft = true;
                 } else {
-                    this.stepRight = true;
+                    if(Math.random(1) > 0.5) {
+                        this.stepLeft = true;
+                    } else {
+                        this.stepRight = true;
+                    }
                 }
             } 
             if(this.steps == 0 || this.steps == 100) {
