@@ -92,9 +92,9 @@ function Block(x,y,h,w,type='',coin=false) {
                 enemies[x].stepRight = true;
                 enemies[x].stepLeft = false;             
             }
-            if(enemies[x].y < 12*blockSize && this.y == 4*blockSize && this.x < enemies[x].x+40) {
-                eTopDetect = 1;
-            }
+            // if(enemies[x].y < 12*blockSize && this.y == 4*blockSize && this.x < enemies[x].x+40) {
+            //     eTopDetect = 1;
+            // }
         }
     }
 

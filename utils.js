@@ -67,19 +67,19 @@ blocks.push(new Block(78*blockSize,9*blockSize,blockSize,blockSize,'block'));
 blocks.push(new Block(79*blockSize,9*blockSize,blockSize,blockSize,'block'));
 blocks.push(new Block(80*blockSize,9*blockSize,blockSize,blockSize,'block'));
 
-blocks.push(new Block(81*blockSize,4*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(82*blockSize,4*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(83*blockSize,4*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(84*blockSize,4*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(85*blockSize,4*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(86*blockSize,4*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(87*blockSize,4*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(88*blockSize,4*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(81*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(82*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(83*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(84*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(85*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(86*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(87*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(88*blockSize,5*blockSize,blockSize,blockSize,'block'));
 
-blocks.push(new Block(92*blockSize,4*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(93*blockSize,4*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(94*blockSize,4*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(95*blockSize,4*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(92*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(93*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(94*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(95*blockSize,5*blockSize,blockSize,blockSize,'block'));
 
 blocks.push(new Block(95*blockSize,9*blockSize,blockSize,blockSize,'block'));
 
@@ -236,11 +236,11 @@ for(let i=0;i<254;i++){
 // -- enemies - //
 enemies = [];
 enemies.push(new Enemy(23*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
-enemies.push(new Enemy(41*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(43*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(52*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(53*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
-enemies.push(new Enemy(81*blockSize,3*blockSize,blockSize,blockSize,'goomba'));
-enemies.push(new Enemy(83*blockSize,3*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(81*blockSize,4*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(83*blockSize,4*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(100*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(101*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(108*blockSize,12*blockSize,blockSize,blockSize,'koopatroopa'));

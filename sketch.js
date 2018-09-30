@@ -80,15 +80,19 @@ draw = () => {
                 enemies[x].detectMario();
                 enemies[x].topDetect();
                 
-                    // console.log(eTopDetect);
-                    // if(enemies[x].y < 6*blockSize) {
-                    //     eTopDetect = 0;
-                    // } else {
-                    //     enemies[x].y += 5;
-                    // }
-                    // if(eTopDetect == 0) {
-                    //     enemies[x].y +=5;
-                    // }
+                    //console.log(eTopDetect);
+                    if(x == 4 && enemies[4].x+40 < blocks[37].x && enemies[4].x+40 > blocks[34].x && enemies[4].y+40 != blocks[36].y && enemies[4].y != 480) {
+                        enemies[4].y += 5;
+                    }
+                    if(x == 4 && enemies[4].x+40 < blocks[34].x && enemies[4].y+40 != blocks[blocks.length-1].y && enemies[4].y != 480) {
+                        enemies[4].y += 5;
+                    }
+                    if(x == 5 && enemies[5].x+40 < blocks[37].x && enemies[5].x+40 > blocks[34].x && enemies[5].y+40 != blocks[36].y && enemies[5].y != 480) {
+                        enemies[5].y += 5;
+                    }
+                    if(x == 5 && enemies[5].x+40 < blocks[34].x && enemies[5].y+40 != blocks[blocks.length-1].y && enemies[5].y != 480) {
+                        enemies[5].y += 5;
+                    }
                 
             }
         }
@@ -263,7 +267,7 @@ draw = () => {
         if(jumpHeight >= 0 && !mario.isFalling && mario.canJump) {
             mario.isJumping = true;
         } 
-        if(jumpHeight >= 220 && !mario.isFalling) {
+        if(jumpHeight >= 180 && !mario.isFalling) {
             mario.isFalling = true;
             mario.isJumping = false;
             mario.canJump = false;
