@@ -81,6 +81,28 @@ draw = () => {
                 enemies[x].topDetect();
                 
                     //enemies beside each other and gaps events
+
+                    if(dist(enemies[2].x+20,enemies[2].y,enemies[3].x+20,enemies[3].y) <= 40) {
+                        console.log('d');
+                        if(enemies[2].stepLeft) {
+                            enemies[2].x+=2;
+                            enemies[2].stepLeft = false;
+                            enemies[2].stepRight = true;
+                            enemies[3].stepLeft = true;
+                            enemies[3].stepRight = false;
+                            enemies[2].steps = 50;
+                            enemies[3].steps = 50;
+                        } else {
+                            enemies[2].x-=2;
+                            enemies[2].stepLeft = true;
+                            enemies[2].stepRight = false;
+                            enemies[3].stepLeft = false;
+                            enemies[3].stepRight = true;
+                            enemies[2].steps = 50;
+                            enemies[3].steps = 50;
+                        }
+                    }
+
                     if(x == 4 && enemies[4].x+40 < blocks[37].x && enemies[4].x+40 > blocks[34].x && enemies[4].y+40 != blocks[36].y && enemies[4].y != 480) {
                         enemies[4].y += 5;
                     }
@@ -105,16 +127,16 @@ draw = () => {
                         enemies[5].stepRight = true;
                         enemies[5].steps = 50;
                     }
-                    if(x == 4 && enemies[4].x >= blocks[252].x) {
+                    if(x == 4 && enemies[4].x+40 >= blocks[252].x && enemies[4].y == 480) {
                         enemies[4].x -=2;
-                        enemies[4].stepLeft = true;
                         enemies[4].stepRight = false;
+                        enemies[4].stepLeft = true;
                         enemies[4].steps = 50;
                     }
-                    if(x == 5 && enemies[5].x <= blocks[252].x) {
+                    if(x == 5 && enemies[5].x+40 >= blocks[252].x && enemies[5].y == 480) {
                         enemies[5].x -=2;
-                        enemies[5].stepLeft = true;
                         enemies[5].stepRight = false;
+                        enemies[5].stepLeft = true;
                         enemies[5].steps = 50;
                     }
                 

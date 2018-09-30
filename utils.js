@@ -237,8 +237,8 @@ for(let i=0;i<254;i++){
 enemies = [];
 enemies.push(new Enemy(23*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(43*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
-enemies.push(new Enemy(52*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
-enemies.push(new Enemy(53*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(51*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(54*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(81*blockSize,4*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(83*blockSize,4*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(100*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
