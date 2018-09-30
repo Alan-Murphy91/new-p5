@@ -80,7 +80,7 @@ draw = () => {
                 enemies[x].detectMario();
                 enemies[x].topDetect();
                 
-                    console.log(eTopDetect);
+                    // console.log(eTopDetect);
                     // if(enemies[x].y < 6*blockSize) {
                     //     eTopDetect = 0;
                     // } else {

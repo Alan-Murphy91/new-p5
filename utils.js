@@ -13,7 +13,6 @@ let eTopDetect = 0;
 let eSideDetect = 0;
 let mapOffset = 0;
 let currentPos = 0;
-
 let jumpHeight = 0;
 
 let rightRegen = false;
@@ -240,7 +239,7 @@ enemies.push(new Enemy(23*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(41*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(52*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(53*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
-//enemies.push(new Enemy(81*blockSize,3*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(81*blockSize,3*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(83*blockSize,3*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(100*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(101*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
