@@ -82,7 +82,27 @@ draw = () => {
                 
                     //enemies beside each other and gaps events
 
-                    
+                    if(enemies[x+1]) {
+                    if(dist(enemies[x].x+20,enemies[x].y,enemies[x+1].x+20,enemies[x+1].y) <= 40) {
+                        if(enemies[x].stepLeft) {
+                            enemies[x].x+=2;
+                            enemies[x].stepLeft = false;
+                            enemies[x].stepRight = true;
+                            enemies[x+1].stepLeft = true;
+                            enemies[x+1].stepRight = false;
+                            enemies[x].steps = 50;
+                            enemies[x+1].steps = 50;
+                        } else {
+                            enemies[x].x-=2;
+                            enemies[x].stepLeft = true;
+                            enemies[x].stepRight = false;
+                            enemies[x+1].stepLeft = false;
+                            enemies[x+1].stepRight = true;
+                            enemies[x].steps = 50;
+                            enemies[x+1].steps = 50;
+                        }
+                    } 
+                    }
 
                     // if(dist(enemies[2].x+20,enemies[2].y,enemies[3].x+20,enemies[3].y) <= 40) {
                     //     console.log('d');
