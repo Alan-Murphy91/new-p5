@@ -104,27 +104,6 @@ draw = () => {
                     } 
                     }
 
-                    // if(dist(enemies[2].x+20,enemies[2].y,enemies[3].x+20,enemies[3].y) <= 40) {
-                    //     console.log('d');
-                    //     if(enemies[2].stepLeft) {
-                    //         enemies[2].x+=2;
-                    //         enemies[2].stepLeft = false;
-                    //         enemies[2].stepRight = true;
-                    //         enemies[3].stepLeft = true;
-                    //         enemies[3].stepRight = false;
-                    //         enemies[2].steps = 50;
-                    //         enemies[3].steps = 50;
-                    //     } else {
-                    //         enemies[2].x-=2;
-                    //         enemies[2].stepLeft = true;
-                    //         enemies[2].stepRight = false;
-                    //         enemies[3].stepLeft = false;
-                    //         enemies[3].stepRight = true;
-                    //         enemies[2].steps = 50;
-                    //         enemies[3].steps = 50;
-                    //     }
-                    // }
-
 
 
 

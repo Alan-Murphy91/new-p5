@@ -107,9 +107,9 @@ function Block(x,y,h,w,type='',coin=false) {
             }
             else if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
                 leftDetect++;
-                mario.x -=5;
-                mapOffset -=5;
-                currentPos -=5;
+                // mario.x -=5;
+                // mapOffset -=5;
+                // currentPos -=5;
             } 
         } 
         if(mario.x+45 == this.x){
