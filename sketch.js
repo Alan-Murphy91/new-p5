@@ -5,6 +5,7 @@ setup = () => {
 }
 
 draw = () => {
+    console.log(mapOffset);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -34,6 +35,7 @@ draw = () => {
     if(leftRegen) {
         if(slide < 0) {
             slide++;
+            mapOffset -= Math.floor(slide/10);
         } else {
             leftRegen = false;
         }
@@ -104,9 +106,6 @@ draw = () => {
                     } 
                     }
 
-
-
-
                     if(x == 4 && enemies[4].x+40 < blocks[37].x && enemies[4].x+40 > blocks[34].x && enemies[4].y+40 != blocks[36].y && enemies[4].y != 480) {
                         enemies[4].y += 5;
                     }
@@ -151,7 +150,7 @@ draw = () => {
         }
     }
 
-    if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating) || (rightRegen && leftDetect == 0)) {
+    if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating) || (rightRegen && leftDetect == 0) && !mario.isAnimating) {
         if(slide < 50) {
             slide++;
         }
@@ -194,7 +193,7 @@ draw = () => {
         }
         }
 
-    if((keyIsDown(LEFT_ARROW) && rightDetect == 0 && !mario.isAnimating) || (leftRegen && rightDetect == 0)) {
+    if((keyIsDown(LEFT_ARROW) && rightDetect == 0 && !mario.isAnimating) || (leftRegen && rightDetect == 0) && !mario.isAnimating) {
         if(slide > -50) {
             slide--;
         }

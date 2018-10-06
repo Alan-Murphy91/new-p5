@@ -65,12 +65,13 @@ function Enemy(x,y,h,w,type='') {
         if(mario.y == this.y && (dist(mario.x+40,mario.y,this.x,this.y) < 4 || dist(mario.x,mario.y,this.x+40,this.y) < 4)) {
             if(!mario.isAnimating && !this.fainted) {
                 mario.isAnimating = true;
+                slide = 0;
                 mario.animate();
             }
         }
     }
     this.topDetect = () => {
-        if((mario.x+40 >= this.x && mario.x+40 <= this.x+40 || mario.x >= this.x && mario.x-40 <= this.x+40) && dist(mario.x,mario.y+40,mario.x,this.y) <= 1) {
+        if((mario.x+40 >= this.x && mario.x+40 <= this.x+40 || mario.x >= this.x && mario.x-40 <= this.x+40) && dist(mario.x,mario.y+40,mario.x,this.y) <= 1 && !mario.isAnimating) {
             if(!mario.isAnimating && !mario.isJumping && this.type == 'goomba') {
                 this.fainted = true;
                 this.y = 700;
