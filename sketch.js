@@ -4,6 +4,8 @@ setup = () => {
     //console.log(enemies[0].type);
 }
 
+// TODO!   splice enemies from array on kill
+
 draw = () => {
     console.log(mapOffset);
     topDetect = 0;
@@ -19,13 +21,14 @@ draw = () => {
         if(slide > 0) {
             slide--;
             if(leftDetect == 0) {
-                mapOffset += Math.floor(slide/10);
+                //mapOffset += Math.floor(slide/10);
                 if(currentPos < 0) {
                     if((Math.floor(slide/10) + currentPos) > 0) {
                         currentPos = 0;
-                    } else {
-                        mapOffset += Math.floor(slide/10);
-                    }
+                    } 
+                    // else {
+                    //     mapOffset += Math.floor(slide/10);
+                    // }
                 }
             }
         } else {
@@ -35,7 +38,7 @@ draw = () => {
     if(leftRegen) {
         if(slide < 0) {
             slide++;
-            mapOffset -= Math.floor(slide/10);
+            //mapOffset += Math.floor(slide/10);
         } else {
             leftRegen = false;
         }
@@ -43,7 +46,7 @@ draw = () => {
     if(mario.x < -440) {
         mario.x = -440;
         currentPos = -440;
-        mapOffset = -440;
+        //mapOffset = -440;
     }
     if(rightRegen) {
         if(slide > 0) {
