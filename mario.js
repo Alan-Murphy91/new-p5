@@ -7,6 +7,7 @@ function Mario(x,y,h,w) {
     this.isFalling = false;
     this.canJump = true;
     this.isAnimating = false;
+    this.isBig = false;
     
     this.show = () => {
         fill(50);
