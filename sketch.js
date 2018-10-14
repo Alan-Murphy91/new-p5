@@ -7,7 +7,7 @@ setup = () => {
 // TODO!   splice enemies from array on kill
 
 draw = () => {
-    console.log(mapOffset);
+    //console.log(mapOffset);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -121,17 +121,19 @@ draw = () => {
                     if(x == 5 && enemies[5].x+40 < blocks[34].x && enemies[5].y+40 != blocks[blocks.length-1].y && enemies[5].y != 480) {
                         enemies[5].y += 5;
                     }
-                    if(x == 4 && enemies[4].x <= blocks[238].x) {
-                        enemies[4].x +=2;
-                        enemies[4].stepLeft = false;
-                        enemies[4].stepRight = true;
+                    if(x == 4 && enemies[4].x <= blocks[238].x-40) {
+                        //enemies[4].x +=2;
+                        enemies[4].stepLeft = true;
+                        //enemies[4].stepRight = true;
                         enemies[4].steps = 50;
+                        enemies[4].y += 1;
                     }
-                    if(x == 5 && enemies[5].x <= blocks[238].x) {
-                        enemies[5].x +=2;
-                        enemies[5].stepLeft = false;
-                        enemies[5].stepRight = true;
+                    if(x == 5 && enemies[5].x <= blocks[238].x-40) {
+                        //enemies[4].x +=2;
+                        enemies[5].stepLeft = true;
+                        //enemies[4].stepRight = true;
                         enemies[5].steps = 50;
+                        enemies[5].y += 1;
                     }
                     if(x == 4 && enemies[4].x+40 >= blocks[252].x && enemies[4].y == 480) {
                         enemies[4].x -=2;

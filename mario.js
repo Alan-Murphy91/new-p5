@@ -12,6 +12,7 @@ function Mario(x,y,h,w) {
     this.show = () => {
         fill(50);
         stroke(0);
+        //rect(this.x,this.y-40,this.w,this.h);
         rect(this.x,this.y,this.w,this.h);
     }
 
