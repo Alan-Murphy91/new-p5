@@ -25,7 +25,7 @@ blocks = [];
 blocks.push(new Block(17*blockSize,9*blockSize,blockSize,blockSize,'block',true));
 
 blocks.push(new Block(21*blockSize,9*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(22*blockSize,9*blockSize,blockSize,blockSize,'block',true));
+blocks.push(new Block(22*blockSize,9*blockSize,blockSize,blockSize,'block',false,true));
 blocks.push(new Block(23*blockSize,9*blockSize,blockSize,blockSize,'block'));
 blocks.push(new Block(23*blockSize,5*blockSize,blockSize,blockSize,'block',true));
 blocks.push(new Block(24*blockSize,9*blockSize,blockSize,blockSize,'block',true));

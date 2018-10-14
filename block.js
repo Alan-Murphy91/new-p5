@@ -1,4 +1,4 @@
-function Block(x,y,h,w,type='',coin=false) {
+function Block(x,y,h,w,type='',coin=false,mushroom=false) {
     this.x = x
     this.y = y
     this.h = h;
@@ -8,8 +8,13 @@ function Block(x,y,h,w,type='',coin=false) {
     this.booped = false;
     this.coin = coin;
     this.coinHit = false;
+    this.mushroom = mushroom;
+    this.mushroomHit = false;
     this.starY = this.y+20;
     this.starYMax = this.starY - 80;
+    this.mushroomX = 0;
+    this.mushroomY = 0; 
+    this.mushroomYMax = this.mushroomY - 40;
 
 
     this.show = () => {
@@ -62,6 +67,22 @@ function Block(x,y,h,w,type='',coin=false) {
             this.coin = false;
         }
     }
+
+    this.showMushroom = () => {
+        if(this.mushroom) {
+            fill(155,215,0);
+            rect(this.x + this.mushroomX,this.y + this.mushroomY,40,40);
+        }
+    }
+
+    this.raiseMushroom = () => {
+        if(this.mushroomY > this.mushroomYMax) {
+            this.mushroomY-=2;
+        } else {
+            this.mushroomX++;
+            // if(this.x+this.mushroomX > )
+        }
+    }
     
     this.detectMario = () => {
         if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y+40 <= this.y) || (mario.x >= this.x && mario.x <= this.x+39 && mario.y+40 <= this.y)) && dist(mario.x,this.y,mario.x,mario.y+40) == 0) {
@@ -72,7 +93,12 @@ function Block(x,y,h,w,type='',coin=false) {
         else if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y-40 >= this.y) || (mario.x >= this.x && mario.x <= this.x+39 && mario.y-40 >= this.y)) && dist(mario.x,this.y,mario.x,mario.y-40) == 0) {
             if(!mario.isFalling) {
                 this.booped = true;
-                this.coinHit = true;
+                if(this.coin) {
+                    this.coinHit = true;
+                }
+                if(this.mushroom) {
+                    this.mushroomHit = true;
+                }
             }
             bottomDetect++;
             mario.canJump = false;

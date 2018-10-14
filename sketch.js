@@ -7,7 +7,7 @@ setup = () => {
 // TODO!   splice enemies from array on kill
 
 draw = () => {
-    //console.log(mapOffset);
+    //console.log(blocks[2].mushroomX);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -70,8 +70,12 @@ draw = () => {
             blocks[x].detectMario();
             blocks[x].detectEnemy();
             blocks[x].showCoin();
+            blocks[x].showMushroom();
             if(blocks[x].coinHit) {
                 blocks[x].raiseCoin();
+            }
+            if(blocks[x].mushroomHit) {
+                blocks[x].raiseMushroom();
             }
             //blocks[x].showCentre();
             //blocks[x].showLanding();
@@ -85,7 +89,10 @@ draw = () => {
                 enemies[x].detectMario();
                 enemies[x].topDetect();
                 
-                    //enemies beside each other and gaps events
+                    //enemies beside each other, mushroom and gaps events
+                    // if(dist(blocks[6].x+40,blocks[6].y,blocks[2].x+blocks[2].mushroomX,blocks[2].y+blocks[2].mushroomY) < 5) {
+                    //     blocks[2].mushroomY += 2;
+                    // }
 
                     if(enemies[x+1]) {
                     if(dist(enemies[x].x+20,enemies[x].y,enemies[x+1].x+20,enemies[x+1].y) <= 40) {
@@ -108,7 +115,9 @@ draw = () => {
                         }
                     } 
                     }
-
+                    if(x == 0) {
+                        enemies[0].stepLeft = true;
+                    }
                     if(x == 4 && enemies[4].x+40 < blocks[37].x && enemies[4].x+40 > blocks[34].x && enemies[4].y+40 != blocks[36].y && enemies[4].y != 480) {
                         enemies[4].y += 5;
                     }
