@@ -78,12 +78,10 @@ draw = () => {
                 blocks[x].raiseMushroom();
             }
             if(blocks[x].mushroomActive) {
-                blocks[x].mushroomX += 3;
+                blocks[x].mushroomX += 2;
                 if(blocks[x].x+blocks[x].mushroomX > blocks[6].x+40) {
                     if(blocks[x].y+blocks[x].mushroomY < 480) {
-                        blocks[x].mushroomY += 2;
-                        console.log('ss');
-                    } else {
+                        blocks[x].mushroomY += 5;
                     }
                 }
             }            
