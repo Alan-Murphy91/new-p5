@@ -15,6 +15,7 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
     this.mushroomX = 0;
     this.mushroomY = 0; 
     this.mushroomYMax = this.mushroomY - 40;
+    this.mushroomActive = false;
 
 
     this.show = () => {
@@ -79,8 +80,7 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
         if(this.mushroomY > this.mushroomYMax) {
             this.mushroomY-=2;
         } else {
-            this.mushroomX++;
-            // if(this.x+this.mushroomX > )
+            this.mushroomActive = true;
         }
     }
     

@@ -77,9 +77,20 @@ draw = () => {
             if(blocks[x].mushroomHit) {
                 blocks[x].raiseMushroom();
             }
+            if(blocks[x].mushroomActive) {
+                blocks[x].mushroomX += 3;
+                if(blocks[x].x+blocks[x].mushroomX > blocks[6].x+40) {
+                    if(blocks[x].y+blocks[x].mushroomY < 480) {
+                        blocks[x].mushroomY += 2;
+                        console.log('ss');
+                    } else {
+                    }
+                }
+            }            
             //blocks[x].showCentre();
             //blocks[x].showLanding();
             blocks[x].adjust();
+
 
         }
         if(enemies[x]) {
