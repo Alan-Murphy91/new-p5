@@ -7,7 +7,7 @@ setup = () => {
 // TODO!   splice enemies from array on kill
 
 draw = () => {
-    //console.log(blocks[2].mushroomX);
+    console.log(enemies[0]);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;

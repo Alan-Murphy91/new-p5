@@ -93,7 +93,7 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
                 jumpHeight = 0;
         } 
         //else if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y-40 >= this.y) || (mario.x >= this.x && mario.x <= this.x+39 && mario.y-40 >= this.y)) && dist(mario.x,this.y,mario.x,mario.y-40) == 0) {
-        else if(this.type == 'block' && mario.x+20 > this.x && mario.x+20 < this.x+39 && mario.y-40 <= this.y) {
+        else if(this.y < mario.y && mario.x+20 > this.x && mario.x+20 < this.x+39 && mario.y-40 <= this.y) {
             if(!mario.isFalling) {
                 this.bumpEnemy = true;
                 this.y -= 5;

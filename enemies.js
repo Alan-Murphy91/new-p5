@@ -64,7 +64,7 @@ function Enemy(x,y,h,w,type='') {
     // }
     this.detectMario = () => {
         //if(mario.y == this.y && (dist(mario.x+40,mario.y,this.x,this.y) < 4 || dist(mario.x,mario.y,this.x+40,this.y) < 4)) {
-        if(!mario.isFalling && dist(mario.x+20,mario.y+20,this.x+20,this.y+20) <= 40) {
+        if(!this.bumped && !mario.isFalling && dist(mario.x+20,mario.y+20,this.x+20,this.y+20) <= 40) {
             if(!mario.invuln && mario.isSmall && !mario.isAnimating && !this.fainted) {
                 mario.isAnimating = true;
                 slide = 0;
@@ -76,7 +76,7 @@ function Enemy(x,y,h,w,type='') {
         }
     }
     this.topDetect = () => {
-        if((mario.x+40 >= this.x && mario.x+40 <= this.x+40 || mario.x >= this.x && mario.x-40 <= this.x+40) && dist(mario.x,mario.y+40,mario.x,this.y) <= 1 && !mario.isAnimating) {
+        if((!this.bumped && mario.x+40 >= this.x && mario.x+40 <= this.x+40 || mario.x >= this.x && mario.x-40 <= this.x+40) && dist(mario.x,mario.y+40,mario.x,this.y) <= 1 && !mario.isAnimating) {
             if(!mario.isAnimating && !mario.isJumping && this.type == 'goomba') {
                 this.fainted = true;
                 this.y = 700;
@@ -148,7 +148,7 @@ function Enemy(x,y,h,w,type='') {
             }
             if(this.stepLeft) {
                 if(this.power) {
-                    this.x -= 2;
+                    this.x -= 8;
                     this.steps = -1;
                 } else {
                     this.x -= 1;
