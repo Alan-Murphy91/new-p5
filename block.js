@@ -93,7 +93,26 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
                 jumpHeight = 0;
         } 
         //else if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y-40 >= this.y) || (mario.x >= this.x && mario.x <= this.x+39 && mario.y-40 >= this.y)) && dist(mario.x,this.y,mario.x,mario.y-40) == 0) {
-        else if(this.y < mario.y && mario.x+20 > this.x && mario.x+20 < this.x+39 && mario.y-40 <= this.y) {
+        else if(mario.isSmall && this.y < mario.y && mario.x+20 >= this.x-20 && mario.x+20 <= this.x+60 && mario.y-40 <= this.y) {
+            if(!mario.isFalling) {
+                this.bumpEnemy = true;
+                this.y -= 5;
+                setTimeout(() => {
+                    this.y +=5;
+                    this.bumpEnemy = false;
+                },150)
+                this.booped = true;
+                if(this.coin) {
+                    this.coinHit = true;
+                }
+                if(this.mushroom) {
+                    this.mushroomHit = true;
+                }
+            }
+            bottomDetect++;
+            mario.canJump = false;
+        }
+        else if(mario.isBig && this.y < mario.y && mario.x+20 >= this.x-20 && mario.x+20 <= this.x+60 && mario.y-80 <= this.y) {
             if(!mario.isFalling) {
                 this.bumpEnemy = true;
                 this.y -= 5;
@@ -140,12 +159,17 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
                 mapOffset -= (mario.x+45 - this.x) + 5;
                 currentPos -= (mario.x+45 - this.x) + 5;
             }
-            else if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
+            else if(mario.isBig && this.type != 'ground' && mario.y-40 >= this.y && mario.y-40 <= this.y+40) {
+                mario.x -= (mario.x+45 - this.x) + 5;
+                mapOffset -= (mario.x+45 - this.x) + 5;
+                currentPos -= (mario.x+45 - this.x) + 5;
+            }
+            else if(mario.isSmall && this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
                 leftDetect++;
                 // mario.x -=5;
                 // mapOffset -=5;
                 // currentPos -=5;
-            } 
+            }  
         } 
         if(mario.x+45 == this.x){
             if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
@@ -157,7 +181,15 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
         }
         /////
         if (mario.x-5 < this.x+40 && mario.x-5 > this.x && slide < 0) {
-            if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
+            if(mario.isSmall && this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
+                // mario.x += ((this.x+40) - (mario.x-5)) + 5;
+                // mapOffset += ((this.x+40) - (mario.x-5)) + 5;
+                // currentPos += ((this.x+40) - (mario.x-5)) + 5;
+                mario.x += 5;
+                mapOffset += 5;
+                currentPos += 5;
+            }
+            if(mario.isBig && this.type != 'ground' && mario.y-40 >= this.y && mario.y-40 <= this.y+40) {
                 // mario.x += ((this.x+40) - (mario.x-5)) + 5;
                 // mapOffset += ((this.x+40) - (mario.x-5)) + 5;
                 // currentPos += ((this.x+40) - (mario.x-5)) + 5;

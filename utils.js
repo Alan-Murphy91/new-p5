@@ -64,7 +64,7 @@ blocks.push(new Block(59*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(65*blockSize,8*blockSize,blockSize,blockSize,'block'));
 
 blocks.push(new Block(78*blockSize,9*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(79*blockSize,9*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(79*blockSize,9*blockSize,blockSize,blockSize,'block',false,true));
 blocks.push(new Block(80*blockSize,9*blockSize,blockSize,blockSize,'block'));
 
 blocks.push(new Block(81*blockSize,5*blockSize,blockSize,blockSize,'block'));

@@ -64,8 +64,10 @@ function Mario(x,y,h,w) {
         },500);
         setTimeout(() => {
             this.canShow = true;
-            this.invuln = false;
         },700);
+        setTimeout(() => {
+            this.invuln = false;
+        },1500)
     }
 
     this.hitAnimate = () => {

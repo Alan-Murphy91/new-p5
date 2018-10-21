@@ -15,7 +15,7 @@ setup = () => {
 
 
 draw = () => {
-    console.log(enemies[0]);
+    //console.log(mario.isBig);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -80,18 +80,12 @@ draw = () => {
             blocks[x].showCoin();
             blocks[x].showMushroom();
             if(blocks[x].bumpEnemy) {
-                if(enemies[4].x >= blocks[x].x-39 && enemies[4].x <= blocks[x].x+40 && enemies[4].y > 200) {
+                if(enemies[4].x >= blocks[x].x-39 && enemies[4].x <= blocks[x].x+40 && dist(blocks[x].x,blocks[x].y,enemies[4].x,enemies[4].y) <= 50) {
                     enemies[4].bump();
                 }
-                // if(enemies[4].x <= blocks[x].x-39 && enemies[4].x >= blocks[x].x+40 && enemies[4].y > 200) {
-                //     enemies[4].bump();
-                // }
-                if(enemies[5].x >= blocks[x].x-39 && enemies[5].x <= blocks[x].x+40 && enemies[5].y > 200) {
+                if(enemies[5].x >= blocks[x].x-39 && enemies[5].x <= blocks[x].x+40 && dist(blocks[x].x,blocks[x].y,enemies[5].x,enemies[5].y) <= 50) {
                     enemies[5].bump();
                 }
-                // if(enemies[5].x <= blocks[x].x-39 && enemies[5].x >= blocks[x].x+40 && enemies[5].y > 200) {
-                //     enemies[5].bump();
-                // }
             }
             if(blocks[x].coinHit) {
                 blocks[x].raiseCoin();
@@ -99,14 +93,12 @@ draw = () => {
             if(blocks[x].mushroomHit) {
                 blocks[x].raiseMushroom();
             }
-            if(blocks[x].mushroomActive) {
-                if(!mario.isBig) {
-                    if(dist(mario.x+20,mario.y+20,(blocks[x].x+blocks[x].mushroomX)+20,(blocks[x].y+blocks[x].mushroomY)) <= 40) {
-                        blocks[x].mushroom = false;
-                        blocks[x].mushroomActive = false;
-                        blocks[x].mushroomY = 999;
-                        mario.mushroomAnimate();
-                    }
+            if(x == 2 && blocks[x].mushroomActive) {
+                if(dist(mario.x+20,mario.y+20,(blocks[x].x+blocks[x].mushroomX)+20,(blocks[x].y+blocks[x].mushroomY)) <= 40) {
+                    blocks[x].mushroom = false;
+                    blocks[x].mushroomActive = false;
+                    blocks[x].mushroomY = 999;
+                    mario.mushroomAnimate();
                 }
 
                 blocks[x].mushroomX += blocks[x].mushroomXMove;
@@ -121,7 +113,31 @@ draw = () => {
                         blocks[x].mushroomY += 5;
                     }
                 }
-            }            
+            }   
+            if(x == 35 && blocks[x].mushroomActive) {
+                if(dist(mario.x+20,mario.y+20,(blocks[x].x+blocks[x].mushroomX)+20,(blocks[x].y+blocks[x].mushroomY)) <= 40) {
+                    blocks[x].mushroom = false;
+                    blocks[x].mushroomActive = false;
+                    blocks[x].mushroomY = 999;
+                    mario.mushroomAnimate();
+                }
+
+                blocks[x].mushroomX += blocks[x].mushroomXMove;
+                // if(blocks[x].x+blocks[x].mushroomX < blocks[7].x && blocks[x].x+blocks[x].mushroomX+40 > blocks[7].x) {
+                //     blocks[x].mushroomXMove = -2;
+                // }
+                if(!blocks[x].mushroomGround && blocks[x].x+blocks[x].mushroomX > blocks[36].x+40) {
+                    if(blocks[x].y+blocks[x].mushroomY > 480) {
+                        blocks[x].mushroomY = 480 - blocks[x].y;
+                        blocks[x].mushroomGround = true;
+                    } else {
+                        blocks[x].mushroomY += 5;
+                    }
+                }
+                if(blocks[x].x+blocks[x].mushroomX > blocks[42].x+40) {
+                    blocks[x].mushroomY += 5;
+                }
+            }          
             //blocks[x].showCentre();
             //blocks[x].showLanding();
             blocks[x].adjust();
@@ -144,7 +160,7 @@ draw = () => {
                     // }
 
                     if(enemies[x+1]) {
-                    if(dist(enemies[x].x+20,enemies[x].y,enemies[x+1].x+20,enemies[x+1].y) <= 40) {
+                    if(dist(enemies[x].x+20,enemies[x].y,enemies[x+1].x+20,enemies[x].y) <= 40) {
                         if(enemies[x].stepLeft) {
                             enemies[x].x+=2;
                             enemies[x].stepLeft = false;
