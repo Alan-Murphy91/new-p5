@@ -16,7 +16,8 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
     this.mushroomY = 0; 
     this.mushroomYMax = this.mushroomY - 40;
     this.mushroomActive = false;
-
+    this.mushroomGround = false;
+    this.mushroomXMove = 2;
 
     this.show = () => {
         if(!this.marioContact && !this.booped) {
@@ -77,7 +78,7 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
     }
 
     this.raiseMushroom = () => {
-        if(this.mushroomY > this.mushroomYMax) {
+        if(!this.mushroomActive && this.mushroomY > this.mushroomYMax) {
             this.mushroomY-=2;
         } else {
             this.mushroomActive = true;

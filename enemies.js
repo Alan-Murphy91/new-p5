@@ -63,10 +63,13 @@ function Enemy(x,y,h,w,type='') {
     // }
     this.detectMario = () => {
         if(mario.y == this.y && (dist(mario.x+40,mario.y,this.x,this.y) < 4 || dist(mario.x,mario.y,this.x+40,this.y) < 4)) {
-            if(!mario.isAnimating && !this.fainted) {
+            if(!mario.invuln && mario.isSmall && !mario.isAnimating && !this.fainted) {
                 mario.isAnimating = true;
                 slide = 0;
                 mario.animate();
+            }
+            if(!mario.invuln && mario.isBig && !mario.isAnimating && !this.fainted) {
+                mario.hitAnimate();
             }
         }
     }

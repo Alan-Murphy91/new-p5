@@ -254,6 +254,6 @@ enemies.push(new Enemy(130*blockSize,12*blockSize,blockSize,blockSize,'goomba'))
 enemies.push(new Enemy(164*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(161*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 // ------mario-------------------
-mario = new Mario(11*blockSize,12*blockSize,blockSize,blockSize)
+let mario = new Mario(11*blockSize,12*blockSize,blockSize,blockSize)
 
 // ------functions---------------

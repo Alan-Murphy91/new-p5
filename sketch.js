@@ -78,9 +78,24 @@ draw = () => {
                 blocks[x].raiseMushroom();
             }
             if(blocks[x].mushroomActive) {
-                blocks[x].mushroomX += 2;
-                if(blocks[x].x+blocks[x].mushroomX > blocks[6].x+40) {
-                    if(blocks[x].y+blocks[x].mushroomY < 480) {
+                if(!mario.isBig) {
+                    if(dist(mario.x+20,mario.y+20,(blocks[x].x+blocks[x].mushroomX)+20,(blocks[x].y+blocks[x].mushroomY)) <= 40) {
+                        blocks[x].mushroom = false;
+                        blocks[x].mushroomActive = false;
+                        blocks[x].mushroomY = 999;
+                        mario.mushroomAnimate();
+                    }
+                }
+
+                blocks[x].mushroomX += blocks[x].mushroomXMove;
+                if(blocks[x].x+blocks[x].mushroomX < blocks[7].x && blocks[x].x+blocks[x].mushroomX+40 > blocks[7].x) {
+                    blocks[x].mushroomXMove = -2;
+                }
+                if(!blocks[x].mushroomGround && blocks[x].x+blocks[x].mushroomX > blocks[6].x+40) {
+                    if(blocks[x].y+blocks[x].mushroomY > 480) {
+                        blocks[x].mushroomY = 480 - blocks[x].y;
+                        blocks[x].mushroomGround = true;
+                    } else {
                         blocks[x].mushroomY += 5;
                     }
                 }
@@ -126,6 +141,12 @@ draw = () => {
                     }
                     if(x == 0) {
                         enemies[0].stepLeft = true;
+                    }
+                    if(x == 4) {
+                        enemies[4].stepLeft = true;
+                    }
+                    if(x == 5) {
+                        enemies[5].stepLeft = true;
                     }
                     if(x == 4 && enemies[4].x+40 < blocks[37].x && enemies[4].x+40 > blocks[34].x && enemies[4].y+40 != blocks[36].y && enemies[4].y != 480) {
                         enemies[4].y += 5;
