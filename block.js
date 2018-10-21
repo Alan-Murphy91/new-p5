@@ -93,6 +93,10 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
         } 
         else if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y-40 >= this.y) || (mario.x >= this.x && mario.x <= this.x+39 && mario.y-40 >= this.y)) && dist(mario.x,this.y,mario.x,mario.y-40) == 0) {
             if(!mario.isFalling) {
+                this.y -= 5;
+                setTimeout(() => {
+                    this.y +=5;
+                },150)
                 this.booped = true;
                 if(this.coin) {
                     this.coinHit = true;
