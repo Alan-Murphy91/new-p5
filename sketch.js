@@ -5,6 +5,14 @@ setup = () => {
 }
 
 // TODO!   splice enemies from array on kill
+// setInterval(() => {
+//     for(i=0; i<enemies.length; i++) {
+//         if(enemies[i].fainted) {
+//             enemies.splice(i,1);
+//         }
+//     }
+// },1000);
+
 
 draw = () => {
     console.log(enemies[0]);
