@@ -62,7 +62,8 @@ function Enemy(x,y,h,w,type='') {
     //     this.x += 5;
     // }
     this.detectMario = () => {
-        if(mario.y == this.y && (dist(mario.x+40,mario.y,this.x,this.y) < 4 || dist(mario.x,mario.y,this.x+40,this.y) < 4)) {
+        //if(mario.y == this.y && (dist(mario.x+40,mario.y,this.x,this.y) < 4 || dist(mario.x,mario.y,this.x+40,this.y) < 4)) {
+        if(!mario.isFalling && dist(mario.x+20,mario.y+20,this.x+20,this.y+20) <= 40) {
             if(!mario.invuln && mario.isSmall && !mario.isAnimating && !this.fainted) {
                 mario.isAnimating = true;
                 slide = 0;
@@ -79,7 +80,7 @@ function Enemy(x,y,h,w,type='') {
                 this.fainted = true;
                 this.y = 700;
                 mario.isJumping = true;
-                mario.y-=20;
+                mario.y-=10;
                 setTimeout(()=> {
                     mario.canJump = true;
                     mario.isFalling = true;
@@ -90,7 +91,7 @@ function Enemy(x,y,h,w,type='') {
                 if(!this.shell && !this.power) {
                     this.shell = true;
                     mario.isJumping = true;
-                    mario.y-=60;
+                    mario.y-=20;
                     setTimeout(()=> {
                         mario.canJump = true;
                         mario.isFalling = true;
@@ -101,7 +102,7 @@ function Enemy(x,y,h,w,type='') {
                     this.shell = false;
                     this.power = true;
                     mario.isJumping = true;
-                    mario.y-=60;
+                    mario.y-=20;
                     setTimeout(()=> {
                         mario.canJump = true;
                         mario.isFalling = true;
@@ -113,7 +114,7 @@ function Enemy(x,y,h,w,type='') {
                     this.fainted = true;
                     this.y=700;
                     mario.isJumping = true;
-                    mario.y-=60;
+                    mario.y-=20;
                     setTimeout(()=> {
                         mario.canJump = true;
                         mario.isFalling = true;

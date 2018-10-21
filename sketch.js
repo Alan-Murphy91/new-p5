@@ -71,6 +71,20 @@ draw = () => {
             blocks[x].detectEnemy();
             blocks[x].showCoin();
             blocks[x].showMushroom();
+            if(blocks[x].bumpEnemy) {
+                if(enemies[4].x > blocks[x].x && enemies[4].x < blocks[x].x+40 && enemies[4].y > 160) {
+                    enemies[4].fainted = true;
+                }
+                if(enemies[4].x < blocks[x].x && enemies[4].x+40 > blocks[x].x+40 && enemies[4].y > 160) {
+                    enemies[4].fainted = true;
+                }
+                if(enemies[5].x > blocks[x].x && enemies[5].x < blocks[x].x+40 && enemies[5].y > 160) {
+                    enemies[5].fainted = true;
+                }
+                if(enemies[5].x < blocks[x].x && enemies[5].x+40 > blocks[x].x+40 && enemies[5].y > 160) {
+                    enemies[5].fainted = true;
+                }
+            }
             if(blocks[x].coinHit) {
                 blocks[x].raiseCoin();
             }
