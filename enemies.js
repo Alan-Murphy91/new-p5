@@ -12,6 +12,7 @@ function Enemy(x,y,h,w,type='') {
     this.fainted = false;
     this.shell = false;
     this.power = false;
+    this.bumped = false;
     //this.isFalling = false;
 
     this.show = () => {
@@ -164,5 +165,10 @@ function Enemy(x,y,h,w,type='') {
                 }
             }
         }
+    }
+
+    this.bump = () => {
+        this.y -= 10;
+        this.bumped = true;
     }
 }

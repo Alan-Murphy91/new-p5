@@ -72,18 +72,18 @@ draw = () => {
             blocks[x].showCoin();
             blocks[x].showMushroom();
             if(blocks[x].bumpEnemy) {
-                if(enemies[4].x > blocks[x].x && enemies[4].x < blocks[x].x+40 && enemies[4].y > 160) {
-                    enemies[4].fainted = true;
+                if(enemies[4].x >= blocks[x].x-39 && enemies[4].x <= blocks[x].x+40 && enemies[4].y > 200) {
+                    enemies[4].bump();
                 }
-                if(enemies[4].x < blocks[x].x && enemies[4].x+40 > blocks[x].x+40 && enemies[4].y > 160) {
-                    enemies[4].fainted = true;
+                // if(enemies[4].x <= blocks[x].x-39 && enemies[4].x >= blocks[x].x+40 && enemies[4].y > 200) {
+                //     enemies[4].bump();
+                // }
+                if(enemies[5].x >= blocks[x].x-39 && enemies[5].x <= blocks[x].x+40 && enemies[5].y > 200) {
+                    enemies[5].bump();
                 }
-                if(enemies[5].x > blocks[x].x && enemies[5].x < blocks[x].x+40 && enemies[5].y > 160) {
-                    enemies[5].fainted = true;
-                }
-                if(enemies[5].x < blocks[x].x && enemies[5].x+40 > blocks[x].x+40 && enemies[5].y > 160) {
-                    enemies[5].fainted = true;
-                }
+                // if(enemies[5].x <= blocks[x].x-39 && enemies[5].x >= blocks[x].x+40 && enemies[5].y > 200) {
+                //     enemies[5].bump();
+                // }
             }
             if(blocks[x].coinHit) {
                 blocks[x].raiseCoin();
@@ -126,6 +126,9 @@ draw = () => {
                 enemies[x].randomMove();
                 enemies[x].detectMario();
                 enemies[x].topDetect();
+                if(enemies[x].bumped) {
+                    enemies[x].y += 2;
+                }
                 
                     //enemies beside each other, mushroom and gaps events
                     // if(dist(blocks[6].x+40,blocks[6].y,blocks[2].x+blocks[2].mushroomX,blocks[2].y+blocks[2].mushroomY) < 5) {
