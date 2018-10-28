@@ -25,9 +25,9 @@ function background(x) {
 }
 
 let backg1 = new background(0);
-let backg1 = new background(960);
-let backg1 = new background(960*2);
-let backg1 = new background(960*3);
+let backg2 = new background(960);
+let backg3 = new background(960*2);
+let backg4 = new background(960*3);
 
 draw = () => {
     //console.log(mario.isBig);
@@ -38,7 +38,11 @@ draw = () => {
     clear();
     //background(200);
     //image(img, 0, 0);
-    backg1.show();    
+    backg1.show(); 
+    backg2.show();    
+    backg3.show();    
+    backg4.show();    
+   
     if(mario.x < 440) {
         currentPos = mario.x-440;
     }
@@ -254,6 +258,9 @@ draw = () => {
 
     if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating)) {
         backg1.move();    
+        backg2.move();    
+        backg3.move();    
+        backg4.move();    
     }
     if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating) || (rightRegen && leftDetect == 0) && !mario.isAnimating) {
         if(slide < 50) {
