@@ -1,6 +1,7 @@
 
 setup = () => {
     createCanvas(960,600);
+    img = loadImage('img/map.png');  // Load the image
     //console.log(enemies[0].type);
 }
 
@@ -13,6 +14,20 @@ setup = () => {
 //     }
 // },1000);
 
+function background(x) {
+    this.x = x;
+    this.show = () => {
+        image(img, this.x, 0, img.width*2, img.height*2.25);
+    }
+    this.move = () => {
+        this.x -=1;
+    }
+}
+
+let backg1 = new background(0);
+let backg1 = new background(960);
+let backg1 = new background(960*2);
+let backg1 = new background(960*3);
 
 draw = () => {
     //console.log(mario.isBig);
@@ -21,7 +36,9 @@ draw = () => {
     leftDetect = 0;
     rightDetect = 0;
     clear();
-    background(200);
+    //background(200);
+    //image(img, 0, 0);
+    backg1.show();    
     if(mario.x < 440) {
         currentPos = mario.x-440;
     }
@@ -235,6 +252,9 @@ draw = () => {
         }
     }
 
+    if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating)) {
+        backg1.move();    
+    }
     if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating) || (rightRegen && leftDetect == 0) && !mario.isAnimating) {
         if(slide < 50) {
             slide++;
@@ -345,35 +365,36 @@ draw = () => {
 
     // ----- reset ----- //
     if(mario.y >= 640) {
-        noLoop();
-        clear();
-        background(200);
-        for(let x=0; x<blocks.length; x++) {
-            blocks[x].x += mapOffset;
-            blocks[x].show();
-            //blocks[x].showCentre();
-            blocks[x].showCoin();
-            blocks[x].booped = false;
-            if(enemies[x]) {
-                enemies[x].x = enemies[x].originX;
-                enemies[x].y = enemies[x].originY;
-                enemies[x].steps = 100;
-                enemies[x].show();
-                enemies[x].fainted = false;
-            }
-        }
-        mapOffset = 0;
-        mario.x = 11*blockSize;
-        mario.y = 12*blockSize;
-        mario.isJumping = false;
-        mario.isFalling = false;
-        mario.isAnimating = false;
-        mario.canJump = true;
-        mario.show();
-        mario.showCentre();
-        setTimeout(() => {
-            loop();
-        },50)
+        location.reload();
+        // noLoop();
+        // clear();
+        // background(200);
+        // for(let x=0; x<blocks.length; x++) {
+        //     blocks[x].x += mapOffset;
+        //     blocks[x].show();
+        //     //blocks[x].showCentre();
+        //     blocks[x].showCoin();
+        //     blocks[x].booped = false;
+        //     if(enemies[x]) {
+        //         enemies[x].x = enemies[x].originX;
+        //         enemies[x].y = enemies[x].originY;
+        //         enemies[x].steps = 100;
+        //         enemies[x].show();
+        //         enemies[x].fainted = false;
+        //     }
+        // }
+        // mapOffset = 0;
+        // mario.x = 11*blockSize;
+        // mario.y = 12*blockSize;
+        // mario.isJumping = false;
+        // mario.isFalling = false;
+        // mario.isAnimating = false;
+        // mario.canJump = true;
+        // mario.show();
+        // mario.showCentre();
+        // setTimeout(() => {
+        //     loop();
+        // },50)
     }
     // if(keyIsDown(32) && !mario.isFalling) {
     //     if(jumpHeight < 100) {

@@ -97,7 +97,7 @@ function Enemy(x,y,h,w,type='') {
                         mario.canJump = true;
                         mario.isFalling = true;
                         mario.isJumping = false;
-                    },100);
+                    },250);
                 }
                 else if(this.shell && !this.power) {
                     this.shell = false;
@@ -108,7 +108,7 @@ function Enemy(x,y,h,w,type='') {
                         mario.canJump = true;
                         mario.isFalling = true;
                         mario.isJumping = false;
-                    },100);
+                    },250);
                 }
                 else if(this.power) {
                     this.power = false;
@@ -120,7 +120,7 @@ function Enemy(x,y,h,w,type='') {
                         mario.canJump = true;
                         mario.isFalling = true;
                         mario.isJumping = false;
-                    },100);
+                    },250);
                 }
             }
         } 

@@ -19,6 +19,8 @@ let rightRegen = false;
 let leftRegen = false;
 let slide = 0;
 
+let img = '';
+
 // ------blocks------------------
 blocks = [];
 
