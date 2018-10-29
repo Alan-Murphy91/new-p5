@@ -19,7 +19,7 @@ let rightRegen = false;
 let leftRegen = false;
 let slide = 0;
 
-let img = '';
+let img = goomba1 = '';
 
 // ------blocks------------------
 blocks = [];

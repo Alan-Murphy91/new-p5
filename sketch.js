@@ -2,6 +2,7 @@
 setup = () => {
     createCanvas(960,600);
     img = loadImage('img/map.png');  // Load the image
+    goomba1 = loadImage('img/goomba1.png');
     //console.log(enemies[0].type);
 }
 
@@ -30,7 +31,7 @@ let backg3 = new background(960*2);
 let backg4 = new background(960*3);
 
 draw = () => {
-    //console.log(mario.isBig);
+    // console.log(mario.x,mario.y);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -256,11 +257,13 @@ draw = () => {
         }
     }
 
-    if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating)) {
-        backg1.move();    
-        backg2.move();    
-        backg3.move();    
-        backg4.move();    
+    if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating)) {  
+        if(currentPos >= 0) {
+            backg1.move();    
+            backg2.move();    
+            backg3.move();    
+            backg4.move(); 
+        }  
     }
     if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating) || (rightRegen && leftDetect == 0) && !mario.isAnimating) {
         if(slide < 50) {

@@ -153,18 +153,21 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
     }
 
     this.adjust = () => {
+        if(mario.isBig && this.type != 'ground' && dist(mario.x+20,mario.y+20,this.x+20,this.y+20) <= 50) {
+            leftDetect++;
+        }
         if (mario.x+45 > this.x && mario.x+75 < this.x+40) {
             if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
-                mario.x -= (mario.x+45 - this.x) + 5;
-                mapOffset -= (mario.x+45 - this.x) + 5;
-                currentPos -= (mario.x+45 - this.x) + 5;
+                mario.x -= (mario.x+45 - this.x);
+                mapOffset -= (mario.x+45 - this.x);
+                currentPos -= (mario.x+45 - this.x);
             }
-            else if(mario.isBig && this.type != 'ground' && mario.y-40 >= this.y && mario.y-40 <= this.y+40) {
-                mario.x -= (mario.x+45 - this.x) + 5;
-                mapOffset -= (mario.x+45 - this.x) + 5;
-                currentPos -= (mario.x+45 - this.x) + 5;
-            }
-            else if(mario.isSmall && this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
+            // if(mario.isBig && this.type != 'ground' && mario.y-40 >= this.y && mario.y-40 <= this.y+40) {
+            //     mario.x -= (mario.x+45 - this.x) + 5;
+            //     mapOffset -= (mario.x+45 - this.x) + 5;
+            //     currentPos -= (mario.x+45 - this.x) + 5;
+            // }
+            if(mario.isSmall && this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
                 leftDetect++;
                 // mario.x -=5;
                 // mapOffset -=5;
@@ -175,40 +178,53 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
             if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
                 leftDetect++;
             }
-            else if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
+            if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
                 leftDetect++;
             }
         }
         /////
         if (mario.x-5 < this.x+40 && mario.x-5 > this.x && slide < 0) {
             if(mario.isSmall && this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
-                // mario.x += ((this.x+40) - (mario.x-5)) + 5;
-                // mapOffset += ((this.x+40) - (mario.x-5)) + 5;
-                // currentPos += ((this.x+40) - (mario.x-5)) + 5;
-                mario.x += 5;
-                mapOffset += 5;
-                currentPos += 5;
+                // mario.x += ((this.x+40) - (mario.x-5));
+                // mapOffset += ((this.x+40) - (mario.x-5));
+                // currentPos += ((this.x+40) - (mario.x-5));
+                // mario.x += 5;
+                // mapOffset += 5;
+                // currentPos += 5;
+
+
+                mario.x += ((this.x+40) - (mario.x-5));
+                mapOffset += ((this.x+40) - (mario.x-5));
+                currentPos += ((this.x+40) - (mario.x-5));
             }
             if(mario.isBig && this.type != 'ground' && mario.y-40 >= this.y && mario.y-40 <= this.y+40) {
-                // mario.x += ((this.x+40) - (mario.x-5)) + 5;
-                // mapOffset += ((this.x+40) - (mario.x-5)) + 5;
-                // currentPos += ((this.x+40) - (mario.x-5)) + 5;
-                mario.x += 5;
-                mapOffset += 5;
-                currentPos += 5;
+                // mario.x += ((this.x+40) - (mario.x-5));
+                // mapOffset += ((this.x+40) - (mario.x-5));
+                // currentPos += ((this.x+40) - (mario.x-5));
+                // mario.x += 5;
+                // mapOffset += 5;
+                // currentPos += 5;
+
+                mario.x += ((this.x+40) - (mario.x-5));
+                mapOffset += ((this.x+40) - (mario.x-5));
+                currentPos += ((this.x+40) - (mario.x-5));
             }
-            else if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
+            if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
                 rightDetect++;
                 // mario.x += 5;
                 // mapOffset += 5;
                 // currentPos += 5;
+
+                mario.x += ((this.x+40) - (mario.x-5));
+                mapOffset += ((this.x+40) - (mario.x-5));
+                currentPos += ((this.x+40) - (mario.x-5));
             } 
         } 
         if(mario.x-5 == this.x+40){
             if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
                 rightDetect++;
             }
-            else if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
+            if(this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
                 rightDetect++;
             }
         }
