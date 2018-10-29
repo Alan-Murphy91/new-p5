@@ -153,7 +153,7 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
     }
 
     this.adjust = () => {
-        if(mario.isBig && this.type != 'ground' && dist(mario.x+20,mario.y+20,this.x+20,this.y+20) <= 50) {
+        if(mario.isBig && this.type != 'ground' && mario.y+40 > this.y && dist(mario.x+20,mario.y+20,this.x+20,this.y+20) <= 40) {
             leftDetect++;
         }
         if (mario.x+45 > this.x && mario.x+75 < this.x+40) {
