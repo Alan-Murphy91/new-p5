@@ -19,7 +19,7 @@ let rightRegen = false;
 let leftRegen = false;
 let slide = 0;
 
-let img = goomba1 = '';
+let img = goomba1 = goomba2 = goomba3 = ground = question = '';
 
 // ------blocks------------------
 blocks = [];
@@ -254,7 +254,7 @@ enemies.push(new Enemy(126*blockSize,12*blockSize,blockSize,blockSize,'goomba'))
 enemies.push(new Enemy(128*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(130*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(164*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
-enemies.push(new Enemy(161*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+enemies.push(new Enemy(171*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 // ------mario-------------------
 let mario = new Mario(11*blockSize,12*blockSize,blockSize,blockSize)
 

@@ -13,15 +13,14 @@ function Enemy(x,y,h,w,type='') {
     this.shell = false;
     this.power = false;
     this.bumped = false;
-    this.imageState = 1;
     //this.isFalling = false;
 
-    this.show = () => {
+    this.show = (a,b) => {
         if(!this.fainted) {
             if(this.type == 'goomba') {
                 fill(255,255,0);
                 rect(this.x,this.y,this.h,this.w);
-                //image(this.image, this.x, this.y, img.width, img.height);
+                //image(a, this.x, this.y, a.width/9, a.height/9);
             } 
             else if(this.type == 'koopatroopa') {
                 if(!this.shell && !this.power) {

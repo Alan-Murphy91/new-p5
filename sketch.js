@@ -3,6 +3,10 @@ setup = () => {
     createCanvas(960,600);
     img = loadImage('img/map.png');  // Load the image
     goomba1 = loadImage('img/goomba1.png');
+    goomba2 = loadImage('img/goomba2.png');
+    goomba3 = loadImage('img/goomba3.png');
+    ground = loadImage('img/ground.png');
+    question = loadImage('img/question.png');
     //console.log(enemies[0].type);
 }
 
@@ -19,6 +23,7 @@ function background(x) {
     this.x = x;
     this.show = () => {
         image(img, this.x, 0, img.width*2, img.height*2.25);
+        //image(goomba1, 200, 200, img.width/9, img.height/9);
     }
     this.move = () => {
         this.x -=1;
@@ -30,8 +35,18 @@ let backg2 = new background(960);
 let backg3 = new background(960*2);
 let backg4 = new background(960*3);
 
+let state = 0;
+setInterval(() => {
+    //state == 0 ? 1 : 0;
+    if(state == 0) {
+        state = 1;
+    } else {
+        state = 0;
+    }
+},300);
+
 draw = () => {
-    // console.log(mario.x,mario.y);
+    // console.log(state);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -97,6 +112,13 @@ draw = () => {
         //only draw whats on the screen
          if(blocks[x].x < 960 && blocks[x].x > -40) {
             blocks[x].show();
+            if(blocks[x].type == 'ground') {
+                image(ground, blocks[x].x, blocks[x].y, ground.width, ground.height);
+                image(ground, blocks[x].x, blocks[x].y+40, ground.width, ground.height);
+            }
+            if(blocks[x].coin || blocks[x].mushroom) {
+                image(question, blocks[x].x, blocks[x].y, question.width, question.height);
+            }
             blocks[x].detectMario();
             blocks[x].detectEnemy();
             blocks[x].showCoin();
@@ -168,7 +190,18 @@ draw = () => {
         }
         if(enemies[x]) {
             if(enemies[x].x < 960 && enemies[x].x > -40) {
-                enemies[x].show();
+                //enemies[x].show();
+                if(enemies[x].type === 'goomba' && !enemies[x].bumped) {
+                    if(state === 0) {
+                        image(goomba1, enemies[x].x, enemies[x].y, goomba1.width, goomba1.height);
+                    }
+                    if(state === 1) {
+                        image(goomba2, enemies[x].x, enemies[x].y, goomba1.width, goomba1.height);
+                    }
+                }
+                if(enemies[x].type === 'goomba' && enemies[x].bumped) {
+                    image(goomba3, enemies[x].x, enemies[x].y, goomba1.width, goomba1.height);
+                }
                 enemies[x].randomMove();
                 enemies[x].detectMario();
                 enemies[x].topDetect();
