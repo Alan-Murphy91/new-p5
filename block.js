@@ -19,12 +19,13 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
     this.mushroomGround = false;
     this.mushroomXMove = 2;
     this.bumpEnemy = false;
+    this.solid = false;
 
     this.show = () => {
         if(!this.marioContact && !this.booped) {
             switch(this.type) {
                 case 'block':
-                    fill(150);
+                    //fill(150);
                     break;
                 // case 'ground':
                 //     fill(120);
@@ -35,10 +36,10 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
             }
         } 
         else if(this.booped) {
-            fill(255,0,0);
+            //fill(255,0,0);
         } 
         else {
-            fill(50,200,100);
+            //fill(50,200,100);
         }
         stroke(0);
         rect(this.x,this.y,this.h,this.w);
@@ -102,11 +103,13 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
                     this.bumpEnemy = false;
                 },150)
                 this.booped = true;
-                if(this.coin) {
-                    this.coinHit = true;
-                }
                 if(this.mushroom) {
                     this.mushroomHit = true;
+                    this.solid = true;
+                }
+                if(this.coin) {
+                    this.coinHit = true;
+                    this.solid = true;
                 }
             }
             bottomDetect++;
@@ -121,11 +124,19 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
                     this.bumpEnemy = false;
                 },150)
                 this.booped = true;
-                if(this.coin) {
-                    this.coinHit = true;
-                }
-                if(this.mushroom) {
-                    this.mushroomHit = true;
+                if(this.mushroom || this.coin) {
+                    if(this.mushroom) {
+                        this.mushroomHit = true;
+                        this.solid = true;
+                    }
+                    if(this.coin) {
+                        this.coinHit = true;
+                        this.solid = true;
+                    } 
+                }   else {
+                    if(!this.solid) {
+                        this.y = 999;
+                    }
                 }
             }
             bottomDetect++;

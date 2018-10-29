@@ -7,6 +7,9 @@ setup = () => {
     goomba3 = loadImage('img/goomba3.png');
     ground = loadImage('img/ground.png');
     question = loadImage('img/question.png');
+    solid = loadImage('img/solid.png');
+    block = loadImage('img/block.png');
+    brick = loadImage('img/brick.png');
     //console.log(enemies[0].type);
 }
 
@@ -46,7 +49,7 @@ setInterval(() => {
 },300);
 
 draw = () => {
-    // console.log(state);
+    //console.log(blocks[2].solid);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -118,6 +121,12 @@ draw = () => {
             }
             if(blocks[x].coin || blocks[x].mushroom) {
                 image(question, blocks[x].x, blocks[x].y, question.width, question.height);
+            }
+            if(blocks[x].solid) {
+                image(solid, blocks[x].x, blocks[x].y, solid.width, solid.height);
+            }
+            if(blocks[x].type == 'block' && !blocks[x].coin && !blocks[x].mushroom && !blocks[x].solid) {
+                image(brick, blocks[x].x, blocks[x].y, brick.width, brick.height);
             }
             blocks[x].detectMario();
             blocks[x].detectEnemy();
