@@ -88,7 +88,7 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
     }
     
     this.detectMario = () => {
-        if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y+40 <= this.y) || (mario.x >= this.x && mario.x <= this.x+39 && mario.y+40 <= this.y)) && dist(mario.x,this.y,mario.x,mario.y+40) == 0) {
+        if(((mario.x+39 >= this.x && mario.x+39 <= this.x+40 && mario.y+40 <= this.y) || (mario.x >= this.x && mario.x <= this.x+39 && mario.y+40 <= this.y)) && dist(mario.x,this.y,mario.x,mario.y+40) == 0) {
             this.marioContact = true;
                 topDetect++;
                 jumpHeight = 0;
@@ -164,7 +164,7 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
     }
 
     this.adjust = () => {
-        if(mario.isBig && this.type != 'ground' && mario.y+40 > this.y && dist(mario.x+20,mario.y+20,this.x+20,this.y+20) <= 50) {
+        if(mario.isBig && this.type != 'ground' && mario.y+40 > this.y && dist(mario.x+20,mario.y+20,this.x+20,this.y+20) < 45) {
             leftDetect++;
         }
         if(mario.isAnim && this.type != 'ground' && mario.y+40 > this.y && dist(mario.x+20,mario.y+20,this.x+20,this.y+20) <= 40) {
