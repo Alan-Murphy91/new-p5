@@ -19,7 +19,7 @@ let rightRegen = false;
 let leftRegen = false;
 let slide = 0;
 
-let img = goomba1 = goomba2 = goomba3 = ground = question = solid = block = brick = '';
+let img = goomba1 = goomba2 = goomba3 = ground = question = solid = block = brick = mushroom = pipeg4 = koopaleft = kooparight = '';
 
 // ------blocks------------------
 blocks = [];

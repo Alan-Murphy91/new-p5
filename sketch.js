@@ -10,6 +10,10 @@ setup = () => {
     solid = loadImage('img/solid.png');
     block = loadImage('img/block.png');
     brick = loadImage('img/brick.png');
+    mushroom = loadImage('img/mushroom.png');
+    pipeg4 = loadImage('img/pipeg4.png');
+    koopaleft = loadImage('img/koopaleft.png');
+    kooparight = loadImage('img/kooparight.png');
     //console.log(enemies[0].type);
 }
 
@@ -49,7 +53,7 @@ setInterval(() => {
 },300);
 
 draw = () => {
-    //console.log(blocks[2].solid);
+    console.log(blocks[34].y);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -132,6 +136,10 @@ draw = () => {
             blocks[x].detectEnemy();
             blocks[x].showCoin();
             blocks[x].showMushroom();
+            if(blocks[x].mushroom && (blocks[x].mushroomY != 0 || blocks[x].mushroomActive)) {
+                image(mushroom, blocks[x].x + blocks[x].mushroomX,blocks[x].y + blocks[x].mushroomY,40,40);
+            }
+
             if(blocks[x].bumpEnemy) {
                 if(enemies[4].x >= blocks[x].x-39 && enemies[4].x <= blocks[x].x+40 && dist(blocks[x].x,blocks[x].y,enemies[4].x,enemies[4].y) <= 50) {
                     enemies[4].bump();
@@ -151,7 +159,9 @@ draw = () => {
                     blocks[x].mushroom = false;
                     blocks[x].mushroomActive = false;
                     blocks[x].mushroomY = 999;
-                    mario.mushroomAnimate();
+                    if(!mario.isBig && !mario.isAnim) {
+                        mario.mushroomAnimate();
+                    }
                 }
 
                 blocks[x].mushroomX += blocks[x].mushroomXMove;
@@ -172,7 +182,9 @@ draw = () => {
                     blocks[x].mushroom = false;
                     blocks[x].mushroomActive = false;
                     blocks[x].mushroomY = 999;
-                    mario.mushroomAnimate();
+                    if(!mario.isBig && !mario.isAnim) {
+                        mario.mushroomAnimate();
+                    }
                 }
 
                 blocks[x].mushroomX += blocks[x].mushroomXMove;
@@ -210,6 +222,12 @@ draw = () => {
                 }
                 if(enemies[x].type === 'goomba' && enemies[x].bumped) {
                     image(goomba3, enemies[x].x, enemies[x].y, goomba1.width, goomba1.height);
+                }
+                if(enemies[x].type === 'koopatroopa' && enemies[x].stepLeft) {
+                    image(koopaleft, enemies[x].x, enemies[x].y-18, koopaleft.width, koopaleft.height);
+                }
+                if(enemies[x].type === 'koopatroopa' && enemies[x].stepRight) {
+                    image(kooparight, enemies[x].x, enemies[x].y-18, kooparight.width, kooparight.height);
                 }
                 enemies[x].randomMove();
                 enemies[x].detectMario();
@@ -254,6 +272,12 @@ draw = () => {
                         enemies[5].stepLeft = true;
                     }
                     if(x == 4 && enemies[4].x+40 < blocks[37].x && enemies[4].x+40 > blocks[34].x && enemies[4].y+40 != blocks[36].y && enemies[4].y != 480) {
+                        enemies[4].y += 5;
+                    }
+                    if(blocks[35].y === 999 && x == 4 && enemies[4].x+40 < blocks[36].x && enemies[4].y+40 != blocks[blocks.length-1].y && enemies[4].y != 480) {
+                        enemies[4].y += 5;
+                    }
+                    if(blocks[34].y === 999 && x == 4 && enemies[4].x+40 < blocks[35].x && enemies[4].y+40 != blocks[blocks.length-1].y && enemies[4].y != 480) {
                         enemies[4].y += 5;
                     }
                     if(x == 4 && enemies[4].x+40 < blocks[34].x && enemies[4].y+40 != blocks[blocks.length-1].y && enemies[4].y != 480) {

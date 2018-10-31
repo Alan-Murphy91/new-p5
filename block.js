@@ -75,7 +75,7 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
     this.showMushroom = () => {
         if(this.mushroom) {
             fill(155,215,0);
-            rect(this.x + this.mushroomX,this.y + this.mushroomY,40,40);
+            //rect(this.x + this.mushroomX,this.y + this.mushroomY,40,40);
         }
     }
 
@@ -171,6 +171,24 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
             leftDetect++;
         }
         if (mario.x+45 > this.x && mario.x+75 < this.x+40) {
+            if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
+                mario.x -= (mario.x+45 - this.x);
+                mapOffset -= (mario.x+45 - this.x);
+                currentPos -= (mario.x+45 - this.x);
+            }
+            // if(mario.isBig && this.type != 'ground' && mario.y-40 >= this.y && mario.y-40 <= this.y+40) {
+            //     mario.x -= (mario.x+45 - this.x) + 5;
+            //     mapOffset -= (mario.x+45 - this.x) + 5;
+            //     currentPos -= (mario.x+45 - this.x) + 5;
+            // }
+            if(mario.isSmall && this.type != 'ground' && mario.y <= this.y && mario.y+40 > this.y) {
+                leftDetect++;
+                // mario.x -=5;
+                // mapOffset -=5;
+                // currentPos -=5;
+            }  
+        } 
+        if (mario.x+45 > this.x && mario.x+65 < this.x+40) {
             if(this.type != 'ground' && mario.y >= this.y && mario.y <= this.y+40) {
                 mario.x -= (mario.x+45 - this.x);
                 mapOffset -= (mario.x+45 - this.x);

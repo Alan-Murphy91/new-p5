@@ -67,7 +67,7 @@ function Mario(x,y,h,w) {
         },700);
         setTimeout(() => {
             this.invuln = false;
-        },1500)
+        },2000)
     }
 
     this.hitAnimate = () => {
