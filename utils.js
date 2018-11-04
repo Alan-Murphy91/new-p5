@@ -19,7 +19,7 @@ let rightRegen = false;
 let leftRegen = false;
 let slide = 0;
 
-let img = goomba1 = goomba2 = goomba3 = ground = question = solid = block = brick = mushroom = pipeg4 = koopaleft = kooparight = '';
+let img = goomba1 = goomba2 = goomba3 = ground = question = solid = block = brick = mushroom = pipeg4 = koopaleft = kooparight = shell = '';
 
 // ------blocks------------------
 blocks = [];
@@ -162,10 +162,10 @@ blocks.push(new Block(163*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(164*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(164*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
 
-blocks.push(new Block(168*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
-blocks.push(new Block(169*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
-blocks.push(new Block(170*blockSize,9*blockSize,blockSize,blockSize,'pipe',true));
-blocks.push(new Block(171*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(168*blockSize,9*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(169*blockSize,9*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(170*blockSize,9*blockSize,blockSize,blockSize,'block',true));
+blocks.push(new Block(171*blockSize,9*blockSize,blockSize,blockSize,'block'));
 
 blocks.push(new Block(179*blockSize,12*blockSize,blockSize,blockSize,'block'));
 blocks.push(new Block(179*blockSize,11*blockSize,blockSize,blockSize,'block'));
@@ -253,7 +253,7 @@ enemies.push(new Enemy(124*blockSize,12*blockSize,blockSize,blockSize,'goomba'))
 enemies.push(new Enemy(126*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(128*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(130*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
-enemies.push(new Enemy(164*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
+//enemies.push(new Enemy(164*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 enemies.push(new Enemy(171*blockSize,12*blockSize,blockSize,blockSize,'goomba'));
 // ------mario-------------------
 let mario = new Mario(11*blockSize,12*blockSize,blockSize,blockSize)

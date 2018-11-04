@@ -90,7 +90,7 @@ function Enemy(x,y,h,w,type='') {
                 },100);
             }
             else {
-                if(!this.shell && !this.power) {
+                if(!this.shell && !this.power && this.type == 'koopatroopa') {
                     this.shell = true;
                     mario.isJumping = true;
                     mario.y-=20;
@@ -100,7 +100,15 @@ function Enemy(x,y,h,w,type='') {
                         mario.isJumping = false;
                     },250);
                 }
-                else if(this.shell && !this.power) {
+                else if(this.shell && !this.power && this.type == 'koopatroopa') {
+                    if(mario.x < this.x+20) {
+                        this.stepLeft = false;
+                        this.stepRight = true;
+                    }
+                    if(mario.x > this.x+20) {
+                        this.stepRight = false;
+                        this.stepLeft = true;
+                    }
                     this.shell = false;
                     this.power = true;
                     mario.isJumping = true;
@@ -111,7 +119,7 @@ function Enemy(x,y,h,w,type='') {
                         mario.isJumping = false;
                     },250);
                 }
-                else if(this.power) {
+                else if(this.power && this.type == 'koopatroopa') {
                     this.power = false;
                     this.fainted = true;
                     this.y=700;
@@ -149,6 +157,7 @@ function Enemy(x,y,h,w,type='') {
             }
             if(this.stepLeft) {
                 if(this.power) {
+                    this.steps = 999;
                     this.x -= 8;
                     this.steps = -1;
                 } else {
@@ -158,7 +167,8 @@ function Enemy(x,y,h,w,type='') {
             }
             else if(this.stepRight) {
                 if(this.power) {
-                    this.x += 2;
+                    this.steps = 999;
+                    this.x += 8;
                     this.steps = -1;
                 } else {
                     this.x += 1;

@@ -120,8 +120,8 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
                 this.bumpEnemy = true;
                 this.y -= 5;
                 setTimeout(() => {
-                    this.y +=5;
-                    this.bumpEnemy = false;
+                this.y +=5;
+                this.bumpEnemy = false;
                 },150)
                 this.booped = true;
                 if(this.mushroom || this.coin) {

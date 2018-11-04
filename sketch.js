@@ -14,6 +14,7 @@ setup = () => {
     pipeg4 = loadImage('img/pipeg4.png');
     koopaleft = loadImage('img/koopaleft.png');
     kooparight = loadImage('img/kooparight.png');
+    shell = loadImage('img/shell.png');
     //console.log(enemies[0].type);
 }
 
@@ -53,7 +54,8 @@ setInterval(() => {
 },300);
 
 draw = () => {
-    console.log(blocks[34].y);
+    //console.log(blocks[34].y);
+    fill(0);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -115,6 +117,124 @@ draw = () => {
         }
     }
 
+    if(blocks[2].mushroom && (blocks[2].mushroomY != 0 || blocks[2].mushroomActive)) {
+        image(mushroom, blocks[2].x + blocks[2].mushroomX,blocks[2].y + blocks[2].mushroomY,40,40);
+    }
+
+    if(blocks[2].mushroomActive) {
+        if(dist(mario.x+20,mario.y+20,(blocks[2].x+blocks[2].mushroomX)+20,(blocks[2].y+blocks[2].mushroomY)) <= 40) {
+            blocks[2].mushroom = false;
+            blocks[2].mushroomActive = false;
+            blocks[2].mushroomY = 999;
+            if(!mario.isBig && !mario.isAnim) {
+                mario.mushroomAnimate();
+            }
+        }
+
+        blocks[2].mushroomX += blocks[2].mushroomXMove;
+        if(blocks[2].x+blocks[2].mushroomX < blocks[7].x && blocks[2].x+blocks[2].mushroomX+40 > blocks[7].x) {
+            blocks[2].mushroomXMove = -2;
+        }
+        if(!blocks[2].mushroomGround && blocks[2].x+blocks[2].mushroomX > blocks[6].x+40) {
+            if(blocks[2].y+blocks[2].mushroomY > 480) {
+                blocks[2].mushroomY = 480 - blocks[2].y;
+                blocks[2].mushroomGround = true;
+            } else {
+                blocks[2].mushroomY += 5;
+            }
+        }
+    }   
+
+    if(blocks[35].mushroomActive) {
+        if(dist(mario.x+20,mario.y+20,(blocks[35].x+blocks[35].mushroomX)+20,(blocks[35].y+blocks[35].mushroomY)) <= 40) {
+            blocks[35].mushroom = false;
+            blocks[35].mushroomActive = false;
+            blocks[35].mushroomY = 999;
+            if(!mario.isBig && !mario.isAnim) {
+                mario.mushroomAnimate();
+            }
+        }
+
+        blocks[35].mushroomX += blocks[35].mushroomXMove;
+
+        if(!blocks[35].mushroomGround && (blocks[36].y === 999 || blocks[36].y === 1004) && blocks[35].x+blocks[35].mushroomX > blocks[35].x+40) {
+            if(blocks[35].y+blocks[35].mushroomY > 480) {
+                blocks[35].mushroomY = 480 - blocks[35].y;
+                blocks[35].mushroomGround = true;
+            } else {
+                blocks[35].mushroomY += 5;
+            }
+        }
+        if(!blocks[35].mushroomGround && blocks[35].x+blocks[35].mushroomX > blocks[36].x+40) {
+            if(blocks[35].y+blocks[35].mushroomY > 480) {
+                blocks[35].mushroomY = 480 - blocks[35].y;
+                blocks[35].mushroomGround = true;
+            } else {
+                blocks[35].mushroomY += 5;
+            }
+        }
+        if(blocks[35].x+blocks[35].mushroomX > blocks[42].x+40) {
+            blocks[35].mushroomY += 5;
+        }
+    }  
+
+    if(enemies[8].x < 960 && enemies[8].x > -40 || enemies[8].power) {
+        enemies[8].randomMove();
+    }
+        enemies[8].detectMario();
+        enemies[8].topDetect();
+        if(enemies[8].x+40 >= blocks[66].x) {
+            enemies[8].stepRight = false;
+            enemies[8].stepLeft = true;
+        }
+        if(enemies[8].x+40 < blocks[42].x+160 && enemies[8].x > blocks[42].x+160) {
+            enemies[8].stepRight = false;
+            enemies[8].stepLeft = true;
+            enemies[8].y+=5
+        }
+        if(enemies[8].x < blocks[42].x+160) {
+            enemies[8].stepRight = false;
+            enemies[8].stepLeft = true;
+            enemies[8].y+=5;
+        }
+
+
+
+        if(enemies[8].power) {
+            if(dist(enemies[8].x,enemies[8].y,enemies[5].x,enemies[5].y) <= 40) {
+                enemies[5].bump();
+            }
+            if(dist(enemies[8].x,enemies[8].y,enemies[7].x,enemies[7].y) <= 40) {
+                enemies[7].bump();
+            }
+            if(dist(enemies[8].x,enemies[8].y,enemies[6].x,enemies[6].y) <= 40) {
+                enemies[6].bump();
+            }
+            if(dist(enemies[8].x,enemies[8].y,enemies[7].x,enemies[7].y) <= 40) {
+                enemies[7].bump();
+            }
+            if(dist(enemies[8].x,enemies[8].y,enemies[9].x,enemies[9].y) <= 40) {
+                enemies[9].bump();
+            }
+            if(dist(enemies[8].x,enemies[8].y,enemies[10].x,enemies[10].y) <= 40) {
+                enemies[10].bump();
+            }
+            if(dist(enemies[8].x,enemies[8].y,enemies[11].x,enemies[11].y) <= 40) {
+                enemies[11].bump();
+            }
+            if(dist(enemies[8].x,enemies[8].y,enemies[12].x,enemies[12].y) <= 40) {
+                enemies[12].bump();
+            }
+            if(dist(enemies[8].x,enemies[8].y,enemies[13].x,enemies[13].y) <= 40) {
+                enemies[13].bump();
+            }
+            if(dist(enemies[8].x,enemies[8].y,enemies[14].x,enemies[14].y) <= 40) {
+                enemies[14].bump();
+            }
+                
+            }
+
+
     for(let x=0; x<blocks.length; x++) {
         //only draw whats on the screen
          if(blocks[x].x < 960 && blocks[x].x > -40) {
@@ -154,60 +274,58 @@ draw = () => {
             if(blocks[x].mushroomHit) {
                 blocks[x].raiseMushroom();
             }
-            if(x == 2 && blocks[x].mushroomActive) {
-                if(dist(mario.x+20,mario.y+20,(blocks[x].x+blocks[x].mushroomX)+20,(blocks[x].y+blocks[x].mushroomY)) <= 40) {
-                    blocks[x].mushroom = false;
-                    blocks[x].mushroomActive = false;
-                    blocks[x].mushroomY = 999;
-                    if(!mario.isBig && !mario.isAnim) {
-                        mario.mushroomAnimate();
-                    }
-                }
+            // if(x == 2 && blocks[x].mushroomActive) {
+            //     if(dist(mario.x+20,mario.y+20,(blocks[x].x+blocks[x].mushroomX)+20,(blocks[x].y+blocks[x].mushroomY)) <= 40) {
+            //         blocks[x].mushroom = false;
+            //         blocks[x].mushroomActive = false;
+            //         blocks[x].mushroomY = 999;
+            //         if(!mario.isBig && !mario.isAnim) {
+            //             mario.mushroomAnimate();
+            //         }
+            //     }
 
-                blocks[x].mushroomX += blocks[x].mushroomXMove;
-                if(blocks[x].x+blocks[x].mushroomX < blocks[7].x && blocks[x].x+blocks[x].mushroomX+40 > blocks[7].x) {
-                    blocks[x].mushroomXMove = -2;
-                }
-                if(!blocks[x].mushroomGround && blocks[x].x+blocks[x].mushroomX > blocks[6].x+40) {
-                    if(blocks[x].y+blocks[x].mushroomY > 480) {
-                        blocks[x].mushroomY = 480 - blocks[x].y;
-                        blocks[x].mushroomGround = true;
-                    } else {
-                        blocks[x].mushroomY += 5;
-                    }
-                }
-            }   
-            if(x == 35 && blocks[x].mushroomActive) {
-                if(dist(mario.x+20,mario.y+20,(blocks[x].x+blocks[x].mushroomX)+20,(blocks[x].y+blocks[x].mushroomY)) <= 40) {
-                    blocks[x].mushroom = false;
-                    blocks[x].mushroomActive = false;
-                    blocks[x].mushroomY = 999;
-                    if(!mario.isBig && !mario.isAnim) {
-                        mario.mushroomAnimate();
-                    }
-                }
+            //     blocks[x].mushroomX += blocks[x].mushroomXMove;
+            //     if(blocks[x].x+blocks[x].mushroomX < blocks[7].x && blocks[x].x+blocks[x].mushroomX+40 > blocks[7].x) {
+            //         blocks[x].mushroomXMove = -2;
+            //     }
+            //     if(!blocks[x].mushroomGround && blocks[x].x+blocks[x].mushroomX > blocks[6].x+40) {
+            //         if(blocks[x].y+blocks[x].mushroomY > 480) {
+            //             blocks[x].mushroomY = 480 - blocks[x].y;
+            //             blocks[x].mushroomGround = true;
+            //         } else {
+            //             blocks[x].mushroomY += 5;
+            //         }
+            //     }
+            // }   
+            // if(x == 35 && blocks[x].mushroomActive) {
+            //     if(dist(mario.x+20,mario.y+20,(blocks[x].x+blocks[x].mushroomX)+20,(blocks[x].y+blocks[x].mushroomY)) <= 40) {
+            //         blocks[x].mushroom = false;
+            //         blocks[x].mushroomActive = false;
+            //         blocks[x].mushroomY = 999;
+            //         if(!mario.isBig && !mario.isAnim) {
+            //             mario.mushroomAnimate();
+            //         }
+            //     }
 
-                blocks[x].mushroomX += blocks[x].mushroomXMove;
-                // if(blocks[x].x+blocks[x].mushroomX < blocks[7].x && blocks[x].x+blocks[x].mushroomX+40 > blocks[7].x) {
-                //     blocks[x].mushroomXMove = -2;
-                // }
-                if(!blocks[x].mushroomGround && blocks[x].x+blocks[x].mushroomX > blocks[36].x+40) {
-                    if(blocks[x].y+blocks[x].mushroomY > 480) {
-                        blocks[x].mushroomY = 480 - blocks[x].y;
-                        blocks[x].mushroomGround = true;
-                    } else {
-                        blocks[x].mushroomY += 5;
-                    }
-                }
-                if(blocks[x].x+blocks[x].mushroomX > blocks[42].x+40) {
-                    blocks[x].mushroomY += 5;
-                }
-            }          
+            //     blocks[x].mushroomX += blocks[x].mushroomXMove;
+            //     // if(blocks[x].x+blocks[x].mushroomX < blocks[7].x && blocks[x].x+blocks[x].mushroomX+40 > blocks[7].x) {
+            //     //     blocks[x].mushroomXMove = -2;
+            //     // }
+            //     if(!blocks[x].mushroomGround && blocks[x].x+blocks[x].mushroomX > blocks[36].x+40) {
+            //         if(blocks[x].y+blocks[x].mushroomY > 480) {
+            //             blocks[x].mushroomY = 480 - blocks[x].y;
+            //             blocks[x].mushroomGround = true;
+            //         } else {
+            //             blocks[x].mushroomY += 5;
+            //         }
+            //     }
+            //     if(blocks[x].x+blocks[x].mushroomX > blocks[42].x+40) {
+            //         blocks[x].mushroomY += 5;
+            //     }
+            // }          
             //blocks[x].showCentre();
             //blocks[x].showLanding();
             blocks[x].adjust();
-
-
         }
         if(enemies[x]) {
             if(enemies[x].x < 960 && enemies[x].x > -40) {
@@ -223,15 +341,24 @@ draw = () => {
                 if(enemies[x].type === 'goomba' && enemies[x].bumped) {
                     image(goomba3, enemies[x].x, enemies[x].y, goomba1.width, goomba1.height);
                 }
-                if(enemies[x].type === 'koopatroopa' && enemies[x].stepLeft) {
+                // if(!enemies[x].shell && !enemies[x].power && enemies[x].type === 'koopatroopa' && enemies[x].stepLeft && !enemies[x].stepRight) {
+                //     image(koopaleft, enemies[x].x, enemies[x].y-18, koopaleft.width, koopaleft.height);
+                // }
+                // if(!enemies[x].shell && !enemies[x].power && enemies[x].type === 'koopatroopa' && enemies[x].stepRight && !enemies[x].stepLeft) {
+                //     image(kooparight, enemies[x].x, enemies[x].y-18, kooparight.width, kooparight.height);
+                // }
+                if(enemies[x].type === 'koopatroopa' && !enemies[x].shell && !enemies[x].power) {
                     image(koopaleft, enemies[x].x, enemies[x].y-18, koopaleft.width, koopaleft.height);
                 }
-                if(enemies[x].type === 'koopatroopa' && enemies[x].stepRight) {
-                    image(kooparight, enemies[x].x, enemies[x].y-18, kooparight.width, kooparight.height);
+                if((enemies[x].shell || enemies[x].power)) {
+                    image(shell, enemies[x].x, enemies[x].y, shell.width, shell.height);
                 }
-                enemies[x].randomMove();
-                enemies[x].detectMario();
-                enemies[x].topDetect();
+                if(x !== 8) {
+                    enemies[x].randomMove();
+                    enemies[x].detectMario();
+                    enemies[x].topDetect();
+                } 
+
                 if(enemies[x].bumped) {
                     enemies[x].y += 2;
                 }
@@ -241,20 +368,20 @@ draw = () => {
                     //     blocks[2].mushroomY += 2;
                     // }
 
-                    if(enemies[x+1]) {
+                    if(enemies[x+1] && !enemies[x].power) {
                     if(dist(enemies[x].x+20,enemies[x].y,enemies[x+1].x+20,enemies[x].y) <= 40) {
                         if(enemies[x].stepLeft) {
                             enemies[x].x+=2;
                             enemies[x].stepLeft = false;
                             enemies[x].stepRight = true;
-                            enemies[x+1].stepLeft = true;
                             enemies[x+1].stepRight = false;
+                            enemies[x+1].stepLeft = true;
                             enemies[x].steps = 50;
                             enemies[x+1].steps = 50;
                         } else {
                             enemies[x].x-=2;
-                            enemies[x].stepLeft = true;
                             enemies[x].stepRight = false;
+                            enemies[x].stepLeft = true;
                             enemies[x+1].stepLeft = false;
                             enemies[x+1].stepRight = true;
                             enemies[x].steps = 50;
@@ -265,6 +392,18 @@ draw = () => {
                     if(x == 0) {
                         enemies[0].stepLeft = true;
                     }
+                    if(enemies[2].x <= blocks[21].x+40) {
+                        enemies[2].stepLeft = false;
+                        enemies[2].stepRight = true;
+                        enemies[3].stepLeft = false;
+                        enemies[3].stepRight = true;
+                    }
+                    if(enemies[3].x+40 >= blocks[25].x) {
+                        enemies[3].stepLeft = true;
+                        enemies[3].stepRight = false;
+                        enemies[4].stepLeft = true;
+                        enemies[4].stepRight = false;
+                    }
                     if(x == 4) {
                         enemies[4].stepLeft = true;
                     }
@@ -274,17 +413,23 @@ draw = () => {
                     if(x == 4 && enemies[4].x+40 < blocks[37].x && enemies[4].x+40 > blocks[34].x && enemies[4].y+40 != blocks[36].y && enemies[4].y != 480) {
                         enemies[4].y += 5;
                     }
-                    if(blocks[35].y === 999 && x == 4 && enemies[4].x+40 < blocks[36].x && enemies[4].y+40 != blocks[blocks.length-1].y && enemies[4].y != 480) {
-                        enemies[4].y += 5;
-                    }
-                    if(blocks[34].y === 999 && x == 4 && enemies[4].x+40 < blocks[35].x && enemies[4].y+40 != blocks[blocks.length-1].y && enemies[4].y != 480) {
-                        enemies[4].y += 5;
+                    if(x == 4 && (blocks[34].y === 999 || blocks[34].y === 1004) && enemies[4].x+40 < blocks[35].x && enemies[4].y != 480) {
+                        enemies[4].y += 1;
+                        if(enemies[4].y > 480 && enemies[4].x >= blocks[238].x-40 && !enemies[4].bumped) {
+                            enemies[4].y = 480;
+                        }
                     }
                     if(x == 4 && enemies[4].x+40 < blocks[34].x && enemies[4].y+40 != blocks[blocks.length-1].y && enemies[4].y != 480) {
                         enemies[4].y += 5;
                     }
                     if(x == 5 && enemies[5].x+40 < blocks[37].x && enemies[5].x+40 > blocks[34].x && enemies[5].y+40 != blocks[36].y && enemies[5].y != 480) {
                         enemies[5].y += 5;
+                    }
+                    if(x == 5 && (blocks[34].y === 999 || blocks[34].y === 1004) && enemies[5].x+40 < blocks[35].x && enemies[5].y != 480) {
+                        enemies[5].y += 1;
+                        if(enemies[5].y > 480 && enemies[5].x >= blocks[238].x-40 && !enemies[5].bumped) {
+                            enemies[5].y = 480;
+                        }
                     }
                     if(x == 5 && enemies[5].x+40 < blocks[34].x && enemies[5].y+40 != blocks[blocks.length-1].y && enemies[5].y != 480) {
                         enemies[5].y += 5;
@@ -314,6 +459,34 @@ draw = () => {
                         enemies[5].stepRight = false;
                         enemies[5].stepLeft = true;
                         enemies[5].steps = 50;
+                    }
+
+
+
+                    if(x == 7 && enemies[7].x+40 >= enemies[8].x && enemies[8].y == 480 && enemies[7].y == 480) {
+                        enemies[7].stepRight = false;
+                        enemies[7].stepLeft = true;
+                        enemies[6].stepRight = false;
+                        enemies[6].stepLeft = true;
+                    }
+                    if(x == 6 && enemies[6].x+40 >= enemies[8].x && enemies[8].y == 480 && enemies[6].y == 480) {
+                        enemies[7].stepRight = false;
+                        enemies[7].stepLeft = true;
+                        enemies[6].stepRight = false;
+                        enemies[6].stepLeft = true;
+                    }
+
+                    if(x == 9 && enemies[9].x <= enemies[8].x+40 && enemies[8].y == 480 && enemies[9].y == 480) {
+                        enemies[9].stepRight = true;
+                        enemies[9].stepLeft = false;
+                        enemies[10].stepRight = true;
+                        enemies[10].stepLeft = false;
+                    }
+                    if(x == 10 && enemies[10].x <= enemies[8].x+40 && enemies[8].y == 480 && enemies[10].y == 480) {
+                        enemies[9].stepRight = true;
+                        enemies[9].stepLeft = false;
+                        enemies[10].stepRight = true;
+                        enemies[10].stepLeft = false;
                     }
                 
             }
@@ -507,6 +680,16 @@ draw = () => {
             mario.isFalling = false;
         }
     }
+
+    enemies[6].stepLeft = true;
+    enemies[7].stepLeft = true;
+    enemies[8].stepLeft = true;
+    enemies[9].stepLeft = true;
+    enemies[10].stepLeft = true;
+    enemies[11].stepLeft = true;
+    enemies[12].stepLeft = true;
+    enemies[13].stepLeft = true;
+    enemies[14].stepLeft = true;
 }
 
 keyReleased = () => {
