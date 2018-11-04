@@ -15,6 +15,7 @@ setup = () => {
     koopaleft = loadImage('img/koopaleft.png');
     kooparight = loadImage('img/kooparight.png');
     shell = loadImage('img/shell.png');
+    block120 = loadImage('img/block120.png');
     //console.log(enemies[0].type);
 }
 
@@ -66,8 +67,10 @@ draw = () => {
     backg1.show(); 
     backg2.show();    
     backg3.show();    
-    backg4.show();    
-   
+    backg4.show();  
+
+    //image(block120, blocks[11].x, blocks[11].y-40, block120.width, block120.height);
+
     if(mario.x < 440) {
         currentPos = mario.x-440;
     }
@@ -251,6 +254,9 @@ draw = () => {
             }
             if(blocks[x].type == 'block' && !blocks[x].coin && !blocks[x].mushroom && !blocks[x].solid) {
                 image(brick, blocks[x].x, blocks[x].y, brick.width, brick.height);
+            }
+            if(blocks[x].type == 'brick') {
+                image(block,blocks[x].x, blocks[x].y, block.width, block.height);
             }
             blocks[x].detectMario();
             blocks[x].detectEnemy();
