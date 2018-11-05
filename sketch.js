@@ -15,7 +15,9 @@ setup = () => {
     koopaleft = loadImage('img/koopaleft.png');
     kooparight = loadImage('img/kooparight.png');
     shell = loadImage('img/shell.png');
+    block80 = loadImage('img/block80.png');
     block120 = loadImage('img/block120.png');
+    block160 = loadImage('img/block160.png');
     //console.log(enemies[0].type);
 }
 
@@ -69,7 +71,8 @@ draw = () => {
     backg3.show();    
     backg4.show();  
 
-    //image(block120, blocks[11].x, blocks[11].y-40, block120.width, block120.height);
+    image(block80, blocks[8].x, blocks[8].y-40, block80.width, block80.height);
+    image(block120, blocks[11].x, blocks[11].y-40, block120.width, block120.height);
 
     if(mario.x < 440) {
         currentPos = mario.x-440;
@@ -267,10 +270,10 @@ draw = () => {
             }
 
             if(blocks[x].bumpEnemy) {
-                if(enemies[4].x >= blocks[x].x-39 && enemies[4].x <= blocks[x].x+40 && dist(blocks[x].x,blocks[x].y,enemies[4].x,enemies[4].y) <= 50) {
+                if(enemies[4].x > blocks[x].x-39 && enemies[4].x < blocks[x].x+40 && dist(blocks[x].x,blocks[x].y,enemies[4].x,enemies[4].y) <= 50) {
                     enemies[4].bump();
                 }
-                if(enemies[5].x >= blocks[x].x-39 && enemies[5].x <= blocks[x].x+40 && dist(blocks[x].x,blocks[x].y,enemies[5].x,enemies[5].y) <= 50) {
+                if(enemies[5].x > blocks[x].x-39 && enemies[5].x < blocks[x].x+40 && dist(blocks[x].x,blocks[x].y,enemies[5].x,enemies[5].y) <= 50) {
                     enemies[5].bump();
                 }
             }
