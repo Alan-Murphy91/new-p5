@@ -424,8 +424,9 @@ draw = () => {
                     if(x == 5) {
                         enemies[5].stepLeft = true;
                     }
-                    if(x == 4 && enemies[4].x+40 < blocks[37].x && enemies[4].x+40 > blocks[34].x && enemies[4].y+40 != blocks[36].y && enemies[4].y != 480) {
+                    if(x == 4 && enemies[4].x+40 < blocks[37].x && enemies[4].x+40 > blocks[34].x && enemies[4].y+40 != blocks[36].y && !blocks[36].bumpEnemy && enemies[4].y != 480) {
                         enemies[4].y += 5;
+                        console.log('s');
                     }
                     if(x == 4 && (blocks[34].y === 999 || blocks[34].y === 1004) && enemies[4].x+40 < blocks[35].x && enemies[4].y != 480) {
                         enemies[4].y += 1;
@@ -436,7 +437,7 @@ draw = () => {
                     if(x == 4 && enemies[4].x+40 < blocks[34].x && enemies[4].y+40 != blocks[blocks.length-1].y && enemies[4].y != 480) {
                         enemies[4].y += 5;
                     }
-                    if(x == 5 && enemies[5].x+40 < blocks[37].x && enemies[5].x+40 > blocks[34].x && enemies[5].y+40 != blocks[36].y && enemies[5].y != 480) {
+                    if(x == 5 && enemies[5].x+40 < blocks[37].x && enemies[5].x+40 > blocks[34].x && enemies[5].y+40 != blocks[36].y && !blocks[36].bumpEnemy && enemies[5].y != 480) {
                         enemies[5].y += 5;
                     }
                     if(x == 5 && (blocks[34].y === 999 || blocks[34].y === 1004) && enemies[5].x+40 < blocks[35].x && enemies[5].y != 480) {
