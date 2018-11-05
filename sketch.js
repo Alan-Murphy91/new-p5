@@ -71,7 +71,7 @@ draw = () => {
     backg3.show();    
     backg4.show();  
 
-    image(block80, blocks[8].x, blocks[8].y-40, block80.width, block80.height);
+    image(block80, blocks[7].x, blocks[7].y, block80.width, block80.height);
     image(block120, blocks[11].x, blocks[11].y-40, block120.width, block120.height);
 
     if(mario.x < 440) {
