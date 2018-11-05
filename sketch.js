@@ -73,6 +73,11 @@ draw = () => {
 
     image(block80, blocks[7].x, blocks[7].y, block80.width, block80.height);
     image(block120, blocks[11].x, blocks[11].y-40, block120.width, block120.height);
+    image(block160, blocks[20].x, blocks[20].y, block160.width, block160.height);
+    image(block160, blocks[28].x, blocks[28].y, block160.width, block160.height);
+    image(block80, blocks[111].x, blocks[111].y, block80.width, block80.height);
+
+
 
     if(mario.x < 440) {
         currentPos = mario.x-440;

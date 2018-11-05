@@ -48,7 +48,7 @@ blocks.push(new Block(40*blockSize,10*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(47*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(47*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(47*blockSize,10*blockSize,blockSize,blockSize,'pipe'));
-blocks.push(new Block(47*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(47*blockSize,9*blockSize,blockSize,blockSize,'pipe')); //20
 blocks.push(new Block(48*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(48*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(48*blockSize,10*blockSize,blockSize,blockSize,'pipe'));
@@ -57,7 +57,7 @@ blocks.push(new Block(48*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(58*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(58*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(58*blockSize,10*blockSize,blockSize,blockSize,'pipe'));
-blocks.push(new Block(58*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(58*blockSize,9*blockSize,blockSize,blockSize,'pipe')); //28
 blocks.push(new Block(59*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(59*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(59*blockSize,10*blockSize,blockSize,blockSize,'pipe'));
@@ -158,7 +158,7 @@ blocks.push(new Block(156*blockSize,10*blockSize,blockSize,blockSize,'brick'));
 blocks.push(new Block(155*blockSize,9*blockSize,blockSize,blockSize,'brick'));
 
 blocks.push(new Block(163*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
-blocks.push(new Block(163*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(163*blockSize,11*blockSize,blockSize,blockSize,'pipe')); //111
 blocks.push(new Block(164*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(164*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
 
