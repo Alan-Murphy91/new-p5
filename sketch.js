@@ -429,7 +429,7 @@ draw = () => {
                     }
                     if(x == 4 && (blocks[34].y === 999 || blocks[34].y === 1004) && enemies[4].x+40 < blocks[35].x && enemies[4].y != 480) {
                         enemies[4].y += 1;
-                        if(enemies[4].y > 480 && enemies[4].x >= blocks[238].x-40 && !enemies[4].bumped) {
+                        if(enemies[4].y > 480 && enemies[4].x >= blocks[238].x-40 && !enemies[4].bumped && !enemies[4].fainted) {
                             enemies[4].y = 480;
                         }
                     }
@@ -441,7 +441,7 @@ draw = () => {
                     }
                     if(x == 5 && (blocks[34].y === 999 || blocks[34].y === 1004) && enemies[5].x+40 < blocks[35].x && enemies[5].y != 480) {
                         enemies[5].y += 1;
-                        if(enemies[5].y > 480 && enemies[5].x >= blocks[238].x-40 && !enemies[5].bumped) {
+                        if(enemies[5].y > 480 && enemies[5].x >= blocks[238].x-40 && !enemies[5].bumped && !enemies[5].fainted) {
                             enemies[5].y = 480;
                         }
                     }
