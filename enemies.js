@@ -101,14 +101,16 @@ function Enemy(x,y,h,w,type='') {
                     },250);
                 }
                 else if(this.shell && !this.power && this.type == 'koopatroopa') {
-                    if(mario.x < this.x+20) {
+                    if(mario.x+20 < this.x+20) {
+                        console.log('right');
                         this.stepLeft = false;
                         this.stepRight = true;
-                    }
-                    if(mario.x > this.x+20) {
+                    } else {
+                        console.log('left');
                         this.stepRight = false;
                         this.stepLeft = true;
                     }
+
                     this.shell = false;
                     this.power = true;
                     mario.isJumping = true;

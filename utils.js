@@ -91,7 +91,7 @@ blocks.push(new Block(102*blockSize,9*blockSize,blockSize,blockSize,'block'));
 blocks.push(new Block(106*blockSize,9*blockSize,blockSize,blockSize,'block',true));
 
 blocks.push(new Block(109*blockSize,9*blockSize,blockSize,blockSize,'block',true));
-blocks.push(new Block(109*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(109*blockSize,5*blockSize,blockSize,blockSize,'block',true));
 
 blocks.push(new Block(112*blockSize,9*blockSize,blockSize,blockSize,'block',true));
 
@@ -226,7 +226,7 @@ blocks.push(new Block(198*blockSize,12*blockSize,blockSize,blockSize,'brick'));
 
 
 // -- ground -- //
-for(let i=0;i<254;i++){
+for(let i=0;i<204;i++){
         if(i == 71 || i == 70 || i == 87 || i == 88 || i == 89 || i == 153 || i == 154) {
             continue;
         }

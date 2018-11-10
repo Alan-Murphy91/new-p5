@@ -628,7 +628,7 @@ draw = () => {
 
     // ----- reset ----- //
     if(mario.y >= 640) {
-        location.reload();
+        history.go(0);
         // noLoop();
         // clear();
         // background(200);
@@ -701,7 +701,9 @@ draw = () => {
 
     enemies[6].stepLeft = true;
     enemies[7].stepLeft = true;
-    enemies[8].stepLeft = true;
+    if(!enemies[8].power) {
+        enemies[8].stepLeft = true;
+    }
     enemies[9].stepLeft = true;
     enemies[10].stepLeft = true;
     enemies[11].stepLeft = true;
