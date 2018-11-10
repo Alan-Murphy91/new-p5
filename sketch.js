@@ -57,7 +57,7 @@ setInterval(() => {
 },300);
 
 draw = () => {
-    //console.log(blocks[34].y);
+    //console.log(mario.isJumping, jumpHeight);
     fill(0);
     topDetect = 0;
     bottomDetect = 0;
@@ -426,7 +426,6 @@ draw = () => {
                     }
                     if(x == 4 && enemies[4].x+40 < blocks[37].x && enemies[4].x+40 > blocks[34].x && enemies[4].y+40 != blocks[36].y && !blocks[36].bumpEnemy && enemies[4].y != 480) {
                         enemies[4].y += 5;
-                        console.log('s');
                     }
                     if(x == 4 && (blocks[34].y === 999 || blocks[34].y === 1004) && enemies[4].x+40 < blocks[35].x && enemies[4].y != 480) {
                         enemies[4].y += 1;
@@ -682,19 +681,23 @@ draw = () => {
     //         jumpHeight -=5;
     //     }
     // }
-    if(keyIsDown(32)) {
-        if(jumpHeight >= 0 && !mario.isFalling && mario.canJump) {
-            mario.isJumping = true;
-        } 
+    if(keyIsDown(32) && jumpHeight >= 90) {
         if(jumpHeight >= 180 && !mario.isFalling) {
             mario.isFalling = true;
             mario.isJumping = false;
             mario.canJump = false;
         }
-        else if(jumpHeight == 0 && mario.isFalling) {
-            mario.isFalling = false;
-        }
+        // else if(jumpHeight == 0 && mario.isFalling) {
+        //     mario.isFalling = false;
+        // }
     }
+    if(!keyIsDown(32) && jumpHeight >= 90) {
+        mario.isFalling = true;
+        mario.isJumping = false;
+        mario.canJump = false;
+    }
+    
+
 
     enemies[6].stepLeft = true;
     enemies[7].stepLeft = true;
@@ -712,11 +715,19 @@ keyReleased = () => {
         rightRegen = true;
     } 
     if(keyCode == 32) {
-        mario.canJump = true;
-        mario.isFalling = true;
-        mario.isJumping = false;
+        if(mario.isJumping && jumpHeight > 90) {
+            mario.canJump = true;
+            mario.isFalling = true;
+            mario.isJumping = false;
+        }
     }
     else if(keyCode == 37) {
         leftRegen = true;
     }
+}
+
+function keyPressed() {
+    if (keyCode === 32 && !mario.isJumping && !mario.isFalling) {
+      mario.isJumping = true;
+    } 
 }
