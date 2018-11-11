@@ -102,11 +102,13 @@ function Enemy(x,y,h,w,type='') {
                 }
                 else if(this.shell && !this.power && this.type == 'koopatroopa') {
                     if(mario.x+20 < this.x+20) {
-                        console.log('right');
+                        this.steps = 999;
+                        console.log(mario.x+20,this.x+20, 'right');
                         this.stepLeft = false;
                         this.stepRight = true;
                     } else {
-                        console.log('left');
+                        console.log(mario.x+20,this.x+20, 'left');
+                        this.steps = 999;
                         this.stepRight = false;
                         this.stepLeft = true;
                     }
@@ -159,7 +161,6 @@ function Enemy(x,y,h,w,type='') {
             }
             if(this.stepLeft) {
                 if(this.power) {
-                    this.steps = 999;
                     this.x -= 8;
                     this.steps = -1;
                 } else {

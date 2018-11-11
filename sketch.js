@@ -18,7 +18,7 @@ setup = () => {
     block80 = loadImage('img/block80.png');
     block120 = loadImage('img/block120.png');
     block160 = loadImage('img/block160.png');
-    //console.log(enemies[0].type);
+    marioright = loadImage('img/marioright.png');
 }
 
 // TODO!   splice enemies from array on kill
@@ -57,7 +57,7 @@ setInterval(() => {
 },300);
 
 draw = () => {
-    //console.log(mario.isJumping, jumpHeight);
+    console.log(enemies[8].stepLeft, enemies[8].stepRight);
     fill(0);
     topDetect = 0;
     bottomDetect = 0;
@@ -245,6 +245,13 @@ draw = () => {
                 
             }
 
+    for(let x=0; x<enemies.length; x++) {
+        if(enemies[x].x > 960 || enemies[x].x < -40) { 
+            if(enemies[x].bumped) {
+                enemies[x].y = 999;
+            }
+        }
+    }
 
     for(let x=0; x<blocks.length; x++) {
         //only draw whats on the screen
@@ -510,6 +517,12 @@ draw = () => {
         }
     }
 
+    if(mario.canShow && mario.isSmall) {
+        fill(50);
+        stroke(0);
+        image(marioright, mario.x,mario.y, marioright.width, marioright.height);
+    }
+
     if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating)) {  
         if(currentPos >= 0) {
             backg1.move();    
@@ -601,7 +614,7 @@ draw = () => {
     }
 
     mario.show();
-    mario.showCentre();
+    //mario.showCentre();
 
     // ------  jumping  ------- //
     // if(mario.isJumping) {
@@ -701,7 +714,7 @@ draw = () => {
 
     enemies[6].stepLeft = true;
     enemies[7].stepLeft = true;
-    if(!enemies[8].power) {
+    if(!enemies[8].power && !enemies[8].shell) {
         enemies[8].stepLeft = true;
     }
     enemies[9].stepLeft = true;
