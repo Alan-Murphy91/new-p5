@@ -58,10 +58,10 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
     // }
 
     this.showCoin = () => {
-        if(this.coin && this.coinHit) {
-            fill(255,215,0);
-            ellipse(this.x+20,this.starY,20,30);
-        }
+        // if(this.coin && this.coinHit) {
+        //     fill(255,215,0);
+        //     ellipse(this.x+20,this.starY,20,30);
+        // }
     }
 
     this.raiseCoin = () => {

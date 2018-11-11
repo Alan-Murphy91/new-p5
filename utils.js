@@ -19,8 +19,9 @@ let rightRegen = false;
 let leftRegen = false;
 let slide = 0;
 
-let img = goomba1 = goomba2 = goomba3 = ground = question = solid = block = brick = mushroom = pipeg4 = koopaleft = kooparight = shell = block80 = block120 = block160 = marioright = marioleft = mariojump = mariojumpl = walk1 = walk1l = walk2 = walk2l = walk3 = walk3l = mariobump = mariobumpl = skidleft = skidright = '';
-
+let coin = img = goomba1 = goomba2 = goomba3 = ground = question = question2 = question3 = solid = block = brick = mushroom = pipeg4 = koopaleft = kooparight = shell = block80 = block120 = block160 = marioright = marioleft = mariojump = mariojumpl = walk1 = walk1l = walk2 = walk2l = walk3 = walk3l = mariobump = mariobumpl = skidleft = skidright = '';
+let bmarioright = bmarioleft = bmariojump = bmariojumpl = bwalk1 = bwalk1l = bwalk2 = bwalk2l = bwalk3 = bwalk3l = bmariobump = bmariobumpl = bskidleft = bskidright = '';
+let crouch = fainted = '';
 // ------blocks------------------
 blocks = [];
 
