@@ -56,6 +56,7 @@ setup = () => {
 
     luigi = loadImage('img/mario/luigi.png');
 
+    sbump = loadSound('sound/bump.wav');
 }
 
 // TODO!   splice enemies from array on kill
