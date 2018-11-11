@@ -149,6 +149,7 @@ draw = () => {
     image(block160, blocks[20].x, blocks[20].y, block160.width, block160.height);
     image(block160, blocks[28].x, blocks[28].y, block160.width, block160.height);
     image(block80, blocks[111].x, blocks[111].y, block80.width, block80.height);
+    image(block80, blocks[118].x, blocks[111].y, block80.width, block80.height);
 
 
 

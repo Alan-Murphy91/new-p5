@@ -168,10 +168,10 @@ blocks.push(new Block(169*blockSize,9*blockSize,blockSize,blockSize,'block'));
 blocks.push(new Block(170*blockSize,9*blockSize,blockSize,blockSize,'block',true));
 blocks.push(new Block(171*blockSize,9*blockSize,blockSize,blockSize,'block'));
 
-blocks.push(new Block(179*blockSize,12*blockSize,blockSize,blockSize,'brick'));
-blocks.push(new Block(179*blockSize,11*blockSize,blockSize,blockSize,'brick'));
-blocks.push(new Block(180*blockSize,12*blockSize,blockSize,blockSize,'brick'));
-blocks.push(new Block(180*blockSize,11*blockSize,blockSize,blockSize,'brick'));
+blocks.push(new Block(179*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(179*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(180*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
+blocks.push(new Block(180*blockSize,11*blockSize,blockSize,blockSize,'pipe'));
 
 blocks.push(new Block(181*blockSize,12*blockSize,blockSize,blockSize,'brick'));
 blocks.push(new Block(182*blockSize,12*blockSize,blockSize,blockSize,'brick'));
