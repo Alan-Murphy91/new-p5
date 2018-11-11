@@ -1,6 +1,13 @@
+preload = () => {
+    theme = loadSound('sound/theme.mp4');
+}
+
 setup = () => {
     createCanvas(960,600);
-    img = loadImage('img/map.png');  // Load the image
+    img = loadImage('img/map.png');  
+
+    theme.play();
+
     goomba1 = loadImage('img/goomba1.png');
     goomba2 = loadImage('img/goomba2.png');
     goomba3 = loadImage('img/goomba3.png');
@@ -56,23 +63,23 @@ setup = () => {
 
     luigi = loadImage('img/mario/luigi.png');
 
+    sbricksmash = loadSound('sound/bricksmash.wav');
     sbump = loadSound('sound/bump.wav');
+    scoin = loadSound('sound/coin.wav');
+    smarioFaint = loadSound('sound/marioFaint.wav');
+    smushroomAppear = loadSound('sound/mushroomAppear.wav');
+    spowerup = loadSound('sound/powerup.wav');
+    ssmallJump = loadSound('sound/smallJump.wav');
+    stimeWarning = loadSound('sound/timeWarning.wav');
+    sskid = loadSound('sound/Skid.wav');
+    ssquish = loadSound('sound/Squish.wav');
+    smariohit = loadSound('sound/mariohit.wav');
 }
-
-// TODO!   splice enemies from array on kill
-// setInterval(() => {
-//     for(i=0; i<enemies.length; i++) {
-//         if(enemies[i].fainted) {
-//             enemies.splice(i,1);
-//         }
-//     }
-// },1000);
 
 function background(x) {
     this.x = x;
     this.show = () => {
         image(img, this.x, 0, img.width*2, img.height*2.25);
-        //image(goomba1, 200, 200, img.width/9, img.height/9);
     }
     this.move = () => {
         this.x -=1;
@@ -283,33 +290,43 @@ draw = () => {
 
         if(enemies[8].power) {
             if(dist(enemies[8].x,enemies[8].y,enemies[5].x,enemies[5].y) <= 40) {
+                ssquish.play();
                 enemies[5].bump();
             }
             if(dist(enemies[8].x,enemies[8].y,enemies[7].x,enemies[7].y) <= 40) {
+                ssquish.play();
                 enemies[7].bump();
             }
             if(dist(enemies[8].x,enemies[8].y,enemies[6].x,enemies[6].y) <= 40) {
+                ssquish.play();
                 enemies[6].bump();
             }
             if(dist(enemies[8].x,enemies[8].y,enemies[7].x,enemies[7].y) <= 40) {
+                ssquish.play();
                 enemies[7].bump();
             }
             if(dist(enemies[8].x,enemies[8].y,enemies[9].x,enemies[9].y) <= 40) {
+                ssquish.play();
                 enemies[9].bump();
             }
             if(dist(enemies[8].x,enemies[8].y,enemies[10].x,enemies[10].y) <= 40) {
+                ssquish.play();
                 enemies[10].bump();
             }
             if(dist(enemies[8].x,enemies[8].y,enemies[11].x,enemies[11].y) <= 40) {
+                ssquish.play();
                 enemies[11].bump();
             }
             if(dist(enemies[8].x,enemies[8].y,enemies[12].x,enemies[12].y) <= 40) {
+                ssquish.play();
                 enemies[12].bump();
             }
             if(dist(enemies[8].x,enemies[8].y,enemies[13].x,enemies[13].y) <= 40) {
+                ssquish.play();
                 enemies[13].bump();
             }
             if(dist(enemies[8].x,enemies[8].y,enemies[14].x,enemies[14].y) <= 40) {
+                ssquish.play();
                 enemies[14].bump();
             }
                 
@@ -963,6 +980,7 @@ keyReleased = () => {
 
 function keyPressed() {
     if (keyCode === 32 && !mario.isJumping && !mario.isFalling) {
-      mario.isJumping = true;
+        ssmallJump.play();
+        mario.isJumping = true;
     } 
 }

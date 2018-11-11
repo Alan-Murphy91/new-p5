@@ -96,6 +96,7 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
         //else if(((mario.x+40 >= this.x && mario.x+40 <= this.x+40 && mario.y-40 >= this.y) || (mario.x >= this.x && mario.x <= this.x+39 && mario.y-40 >= this.y)) && dist(mario.x,this.y,mario.x,mario.y-40) == 0) {
         else if(mario.isSmall && this.y < mario.y && mario.x+20 >= this.x-20 && mario.x+20 <= this.x+60 && mario.y-40 <= this.y) {
             if(!mario.isFalling) {
+                sbump.play();
                 this.bumpEnemy = true;
                 this.y -= 5;
                 setTimeout(() => {
@@ -104,10 +105,12 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
                 },150)
                 this.booped = true;
                 if(this.mushroom) {
+                    smushroomAppear.play();
                     this.mushroomHit = true;
                     this.solid = true;
                 }
                 if(this.coin) {
+                    scoin.play();
                     this.coinHit = true;
                     this.solid = true;
                 }
@@ -117,6 +120,7 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
         }
         else if(mario.isBig && this.y < mario.y && mario.x+20 >= this.x-20 && mario.x+20 <= this.x+60 && mario.y-80 <= this.y) {
             if(!mario.isFalling) {
+                sbump.play();
                 this.bumpEnemy = true;
                 this.y -= 5;
                 setTimeout(() => {
@@ -126,15 +130,18 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
                 this.booped = true;
                 if(this.mushroom || this.coin) {
                     if(this.mushroom) {
+                        smushroomAppear.play();
                         this.mushroomHit = true;
                         this.solid = true;
                     }
                     if(this.coin) {
+                        scoin.play();
                         this.coinHit = true;
                         this.solid = true;
                     } 
                 }   else {
                     if(!this.solid) {
+                        sbricksmash.play();
                         this.y = 999;
                     }
                 }

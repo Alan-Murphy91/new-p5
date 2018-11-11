@@ -42,13 +42,15 @@ function Mario(x,y,h,w) {
         rect(this.x+20,this.y+20,5,5);
     }
     this.animate = () => {
-        let animationEffect = 500;
+        smarioFaint.play();
+        let animationEffect = 3500;
         while(animationEffect >= 5) {
             mario.y -=1;
             animationEffect -=5;
         }
     }
     this.mushroomAnimate = () => {
+        spowerup.play();
         this.invuln = true;
         setTimeout(() => {
             this.canShow = false;
@@ -74,6 +76,7 @@ function Mario(x,y,h,w) {
     }
 
     this.hitAnimate = () => {
+        smariohit.play();
         this.invuln = true;
         setTimeout(() => {
             this.canShow = false;
