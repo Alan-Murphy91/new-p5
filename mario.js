@@ -12,6 +12,9 @@ function Mario(x,y,h,w) {
     this.isAnim = false;
     this.canShow = true;
     this.invuln = false;
+    this.fright = true;
+    this.fleft = false;
+
     
     this.show = () => {
         if(this.canShow && this.isSmall) {

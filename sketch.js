@@ -18,7 +18,14 @@ setup = () => {
     block80 = loadImage('img/block80.png');
     block120 = loadImage('img/block120.png');
     block160 = loadImage('img/block160.png');
-    marioright = loadImage('img/marioright.png');
+    marioright = loadImage('img/mario/marioright.png');
+    marioleft = loadImage('img/mario/marioleft.png');
+    walk1 = loadImage('img/mario/walk1.png');
+    walk2 = loadImage('img/mario/walk2.png');
+    walk3 = loadImage('img/mario/walk3.png');
+    walk3l = loadImage('img/mario/walk1l.png');
+    walk3l = loadImage('img/mario/walk2l.png');
+    walk3l = loadImage('img/mario/walk3l.png');
 }
 
 // TODO!   splice enemies from array on kill
@@ -57,7 +64,7 @@ setInterval(() => {
 },300);
 
 draw = () => {
-    console.log(enemies[8].stepLeft, enemies[8].stepRight);
+    //console.log(enemies[8].stepLeft, enemies[8].stepRight);
     fill(0);
     topDetect = 0;
     bottomDetect = 0;
@@ -130,6 +137,10 @@ draw = () => {
 
     if(blocks[2].mushroom && (blocks[2].mushroomY != 0 || blocks[2].mushroomActive)) {
         image(mushroom, blocks[2].x + blocks[2].mushroomX,blocks[2].y + blocks[2].mushroomY,40,40);
+    }
+
+    if(blocks[35].mushroom && (blocks[35].mushroomY != 0 || blocks[35].mushroomActive)) {
+        image(mushroom, blocks[35].x + blocks[35].mushroomX,blocks[35].y + blocks[35].mushroomY,40,40);
     }
 
     if(blocks[2].mushroomActive) {
@@ -517,11 +528,22 @@ draw = () => {
         }
     }
 
-    if(mario.canShow && mario.isSmall) {
+
+    
+
+    if(mario.canShow && mario.isSmall && !keyIsDown(RIGHT_ARROW) && !keyIsDown(LEFT_ARROW) && mario.fright && !mario.fleft) {
         fill(50);
         stroke(0);
         image(marioright, mario.x,mario.y, marioright.width, marioright.height);
     }
+
+    if(mario.canShow && mario.isSmall && !keyIsDown(RIGHT_ARROW) && !keyIsDown(LEFT_ARROW) && mario.fleft && !mario.fright) {
+        fill(50);
+        stroke(0);
+        image(marioleft, mario.x,mario.y, marioleft.width, marioleft.height);
+    }
+
+
 
     if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating)) {  
         if(currentPos >= 0) {

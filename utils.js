@@ -19,7 +19,7 @@ let rightRegen = false;
 let leftRegen = false;
 let slide = 0;
 
-let img = goomba1 = goomba2 = goomba3 = ground = question = solid = block = brick = mushroom = pipeg4 = koopaleft = kooparight = shell = block80 = block120 = block160 = marioright = marioleft = '';
+let img = goomba1 = goomba2 = goomba3 = ground = question = solid = block = brick = mushroom = pipeg4 = koopaleft = kooparight = shell = block80 = block120 = block160 = marioright = marioleft = walk1 = walk2 = walk3 = '';
 
 // ------blocks------------------
 blocks = [];
@@ -66,7 +66,7 @@ blocks.push(new Block(59*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(65*blockSize,8*blockSize,blockSize,blockSize,'block'));
 
 blocks.push(new Block(78*blockSize,9*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(79*blockSize,9*blockSize,blockSize,blockSize,'block',false,true));
+blocks.push(new Block(79*blockSize,9*blockSize,blockSize,blockSize,'block',false,true)); //35
 blocks.push(new Block(80*blockSize,9*blockSize,blockSize,blockSize,'block'));
 
 blocks.push(new Block(81*blockSize,5*blockSize,blockSize,blockSize,'block'));
