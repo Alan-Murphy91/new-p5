@@ -24,10 +24,10 @@ function Mario(x,y,h,w) {
             //rect(this.x,this.y,this.w,this.h);
         }
         if(this.canShow && this.isAnim) {
-            fill(50);
-            stroke(0);
-            rect(this.x,this.y-20,this.w,this.h/2);
-            rect(this.x,this.y,this.w,this.h);
+            // fill(50);
+            // stroke(0);
+            // rect(this.x,this.y-20,this.w,this.h/2);
+            // rect(this.x,this.y,this.w,this.h);
         }
         if(this.canShow && this.isBig) {
             // fill(50);
