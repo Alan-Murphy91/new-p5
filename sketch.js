@@ -2,9 +2,13 @@ preload = () => {
     theme = loadSound('sound/theme.mp4');
 }
 
+//enemies that walk left need to fall at the first left empty gap
+//fix map background
+
 setup = () => {
     createCanvas(960,600);
     img = loadImage('img/map.png');  
+    // img2 = loadImage('img/mapinv.png');  
 
     theme.play();
 
