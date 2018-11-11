@@ -529,7 +529,7 @@ draw = () => {
                     if(x == 5) {
                         enemies[5].stepLeft = true;
                     }
-                    if(x == 4 && enemies[4].x+40 < blocks[37].x && enemies[4].x+40 > blocks[34].x && enemies[4].y+40 != blocks[36].y && !blocks[36].bumpEnemy && enemies[4].y != 480) {
+                    if(x == 4 && enemies[4].x+40 < blocks[37].x && enemies[4].x+40 > blocks[34].x && enemies[4].y+40 != blocks[35].y && !blocks[35].bumpEnemy && enemies[4].y != 480) {
                         enemies[4].y += 5;
                     }
                     if(x == 4 && (blocks[34].y === 999 || blocks[34].y === 1004) && enemies[4].x+40 < blocks[35].x && enemies[4].y != 480) {
@@ -541,11 +541,14 @@ draw = () => {
                     if(x == 4 && enemies[4].x+40 < blocks[34].x && enemies[4].y+40 != blocks[blocks.length-1].y && enemies[4].y != 480) {
                         enemies[4].y += 5;
                     }
-                    if(x == 5 && enemies[5].x+40 < blocks[37].x && enemies[5].x+40 > blocks[34].x && enemies[5].y+40 != blocks[36].y && !blocks[36].bumpEnemy && enemies[5].y != 480) {
+                    if(x == 5 && enemies[5].x+40 < blocks[37].x && (blocks[34].y == 999 || blocks[34].y === 1004) && enemies[5].x+40 < blocks[35].x && !blocks[35].bumpEnemy && enemies[5].y != 480) {
+                        enemies[5].y += 1;
+                    }
+                    if(x == 5 && enemies[5].x+40 < blocks[37].x && enemies[5].x+40 > blocks[34].x && enemies[5].y+40 != blocks[35].y && !blocks[35].bumpEnemy && enemies[5].y != 480) {
                         enemies[5].y += 5;
                     }
                     if(x == 5 && (blocks[34].y === 999 || blocks[34].y === 1004) && enemies[5].x+40 < blocks[35].x && enemies[5].y != 480) {
-                        enemies[5].y += 1;
+                        //enemies[5].y += 1;
                         if(enemies[5].y > 480 && enemies[5].x >= blocks[238].x-40 && !enemies[5].bumped && !enemies[5].fainted) {
                             enemies[5].y = 480;
                         }
@@ -579,7 +582,6 @@ draw = () => {
                         enemies[5].stepLeft = true;
                         enemies[5].steps = 50;
                     }
-
 
 
                     if(x == 7 && enemies[7].x+40 >= enemies[8].x && enemies[8].y == 480 && enemies[7].y == 480) {
@@ -960,6 +962,7 @@ if(!mario.isAnimating && !mario.hasBumped && mario.isBig && (mario.isFalling || 
     enemies[12].stepLeft = true;
     enemies[13].stepLeft = true;
     enemies[14].stepLeft = true;
+
 }
 
 keyReleased = () => {
