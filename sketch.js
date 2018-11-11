@@ -11,7 +11,6 @@ setup = () => {
     block = loadImage('img/block.png');
     brick = loadImage('img/brick.png');
     mushroom = loadImage('img/mushroom.png');
-    pipeg4 = loadImage('img/pipeg4.png');
     koopaleft = loadImage('img/koopaleft.png');
     kooparight = loadImage('img/kooparight.png');
     shell = loadImage('img/shell.png');
@@ -20,12 +19,18 @@ setup = () => {
     block160 = loadImage('img/block160.png');
     marioright = loadImage('img/mario/marioright.png');
     marioleft = loadImage('img/mario/marioleft.png');
+    mariojump = loadImage('img/mario/mariojump.png');
+    mariojumpl = loadImage('img/mario/mariojumpl.png');
     walk1 = loadImage('img/mario/walk1.png');
     walk2 = loadImage('img/mario/walk2.png');
     walk3 = loadImage('img/mario/walk3.png');
-    walk3l = loadImage('img/mario/walk1l.png');
-    walk3l = loadImage('img/mario/walk2l.png');
+    walk1l = loadImage('img/mario/walk1l.png');
+    walk2l = loadImage('img/mario/walk2l.png');
     walk3l = loadImage('img/mario/walk3l.png');
+    mariobump = loadImage('img/mario/mariobump.png');
+    mariobumpl = loadImage('img/mario/mariobumpl.png');
+    skidleft = loadImage('img/mario/skidleft.png');
+    skidright = loadImage('img/mario/skidright.png');
 }
 
 // TODO!   splice enemies from array on kill
@@ -63,8 +68,21 @@ setInterval(() => {
     }
 },300);
 
+let marioState = 0;
+setInterval(() => {
+    if(marioState == 0) {
+        marioState = 1;
+    } 
+    else if(marioState == 1) {
+        marioState = 2;
+    }
+    else if(marioState == 2) {
+        marioState = 0;
+    }
+},300);
+
 draw = () => {
-    //console.log(enemies[8].stepLeft, enemies[8].stepRight);
+    //console.log(slide);
     fill(0);
     topDetect = 0;
     bottomDetect = 0;
@@ -528,20 +546,63 @@ draw = () => {
         }
     }
 
+// ---------------------
 
     
-
-    if(mario.canShow && mario.isSmall && !keyIsDown(RIGHT_ARROW) && !keyIsDown(LEFT_ARROW) && mario.fright && !mario.fleft) {
-        fill(50);
-        stroke(0);
+    if(mario.fright && mario.hasBumped) {
+        image(mariobump, mario.x,mario.y, mariobump.width, mariobump.height);
+    }
+    if(mario.fleft && mario.hasBumped) {
+        image(mariobumpl, mario.x,mario.y, mariobumpl.width, mariobumpl.height);
+    }
+    if((mario.canShow && mario.isSmall && !keyIsDown(RIGHT_ARROW) && !keyIsDown(LEFT_ARROW) && mario.fright && !mario.fleft && !mario.isJumping && !mario.isFalling) || keyIsDown(RIGHT_ARROW) && leftDetect != 0 && !mario.isFalling && !mario.isJumping) {
         image(marioright, mario.x,mario.y, marioright.width, marioright.height);
     }
 
-    if(mario.canShow && mario.isSmall && !keyIsDown(RIGHT_ARROW) && !keyIsDown(LEFT_ARROW) && mario.fleft && !mario.fright) {
-        fill(50);
-        stroke(0);
+    if((mario.canShow && mario.isSmall && !keyIsDown(RIGHT_ARROW) && !keyIsDown(LEFT_ARROW) && mario.fleft && !mario.fright && !mario.isJumping && !mario.isFalling) || keyIsDown(LEFT_ARROW) && rightDetect != 0 && !mario.isFalling && !mario.isJumping) {
         image(marioleft, mario.x,mario.y, marioleft.width, marioleft.height);
     }
+    
+    if(mario.isSmall && slide > 0 && keyIsDown(LEFT_ARROW) && !mario.isJumping && !mario.isFalling && leftDetect === 0 && rightDetect === 0) {
+        image(skidright, mario.x, mario.y, skidright.width, skidright.height);
+    }
+
+    if(mario.isSmall && slide < 0 && keyIsDown(RIGHT_ARROW) && !mario.isJumping && !mario.isFalling && leftDetect === 0 && rightDetect === 0) {
+        image(skidleft, mario.x, mario.y, skidleft.width, skidleft.height);
+    }
+
+    if((mario.isSmall && keyIsDown(RIGHT_ARROW) && !mario.isFalling && !mario.isJumping && rightDetect === 0 && leftDetect === 0 && slide >= 0) || (mario.isSmall && slide > 0 && !keyIsDown(LEFT_ARROW) && !mario.isFalling && !mario.isJumping && rightDetect === 0 && leftDetect === 0)) {
+        if(marioState === 0) {
+            image(walk1, mario.x, mario.y, walk1.width, walk1.height);
+        }
+        if(marioState === 1) {
+            image(walk2, mario.x, mario.y, walk2.width, walk2.height);
+        }
+        if(marioState === 2) {
+            image(walk3, mario.x, mario.y, walk3.width, walk3.height);
+        }
+    }
+
+    if((mario.isSmall && keyIsDown(LEFT_ARROW) && !mario.isFalling && !mario.isJumping && rightDetect === 0 && leftDetect === 0 && slide <= 0) || (mario.isSmall && slide < 0 && !keyIsDown(RIGHT_ARROW) && !mario.isFalling && !mario.isJumping && rightDetect === 0 && leftDetect === 0)) {
+        if(marioState === 0) {
+            image(walk1l, mario.x, mario.y, walk1l.width, walk1l.height);
+        }
+        if(marioState === 1) {
+            image(walk2l, mario.x, mario.y, walk2l.width, walk2l.height);
+        }
+        if(marioState === 2) {
+            image(walk3l, mario.x, mario.y, walk3l.width, walk3l.height);
+        }
+    }
+
+    if(!mario.hasBumped && mario.isSmall && (mario.isFalling || mario.isJumping) && mario.fright && !mario.fleft) {
+        image(mariojump, mario.x, mario.y, mariojump.width, mariojump.height);
+    }
+    if(!mario.hasBumped && mario.isSmall && (mario.isFalling || mario.isJumping) && mario.fleft && !mario.fright) {
+        image(mariojumpl, mario.x, mario.y, mariojumpl.width, mariojumpl.height);
+    }
+
+// ------------------------
 
 
 
@@ -552,6 +613,10 @@ draw = () => {
             backg3.move();    
             backg4.move(); 
         }  
+    }
+    if(keyIsDown(RIGHT_ARROW)) {
+        mario.fleft = false;
+        mario.fright = true;
     }
     if((keyIsDown(RIGHT_ARROW) && leftDetect == 0 && !mario.isAnimating) || (rightRegen && leftDetect == 0) && !mario.isAnimating) {
         if(slide < 50) {
@@ -596,6 +661,10 @@ draw = () => {
         }
         }
 
+    if(keyIsDown(LEFT_ARROW)) {
+        mario.fright = false;
+        mario.fleft = true;
+    }
     if((keyIsDown(LEFT_ARROW) && rightDetect == 0 && !mario.isAnimating) || (leftRegen && rightDetect == 0) && !mario.isAnimating) {
         if(slide > -50) {
             slide--;

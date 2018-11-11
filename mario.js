@@ -14,6 +14,7 @@ function Mario(x,y,h,w) {
     this.invuln = false;
     this.fright = true;
     this.fleft = false;
+    this.hasBumped = false;
 
     
     this.show = () => {
