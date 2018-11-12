@@ -8,7 +8,7 @@ preload = () => {
 setup = () => {
     createCanvas(960,600);
     img = loadImage('img/map.png');  
-    // img2 = loadImage('img/mapinv.png');  
+    img2 = loadImage('img/mapinv.png');  
 
     theme.play();
 
@@ -84,6 +84,7 @@ function background(x) {
     this.x = x;
     this.show = () => {
         image(img, this.x, 0, img.width*2, img.height*2.25);
+        image(img2, this.x, img.height*2.23, img2.width*2, img2.height*2.25);
     }
     this.move = () => {
         this.x -=1;
@@ -135,7 +136,6 @@ setInterval(() => {
 
 draw = () => {
     //console.log(mario.isAnimating);
-    fill(0);
     topDetect = 0;
     bottomDetect = 0;
     leftDetect = 0;
@@ -280,16 +280,16 @@ draw = () => {
             enemies[8].stepRight = false;
             enemies[8].stepLeft = true;
         }
-        if(enemies[8].x+40 < blocks[42].x+160 && enemies[8].x > blocks[42].x+160) {
+        if(enemies[8].x+40 < blocks[42].x+120 && enemies[8].x > blocks[42].x+120) {
             enemies[8].stepRight = false;
             enemies[8].stepLeft = true;
             enemies[8].y+=5
         }
-        if(enemies[8].x < blocks[42].x+160) {
-            enemies[8].stepRight = false;
-            enemies[8].stepLeft = true;
-            enemies[8].y+=5;
-        }
+        // if(enemies[8].x < blocks[42].x+120) {
+        //     enemies[8].stepRight = false;
+        //     enemies[8].stepLeft = true;
+        //     enemies[8].y+=5;
+        // }
 
 
 
@@ -968,7 +968,24 @@ if(!mario.isAnimating && !mario.hasBumped && mario.isBig && (mario.isFalling || 
     enemies[13].stepLeft = true;
     enemies[14].stepLeft = true;
 
+    for(let i=6; i<15; i++) {
+        //enemies[i].stepLeft = true;
+        if(enemies[i].x < blocks[44].x+40) {
+            enemies[i].y += 5;
+        }
+    }
+
+    // if(!enemies[8].power && !enemies[8].shell) {
+    //     enemies[8].stepLeft = true;
+    // }
+    // if(enemies[8].x-40 > blocks[44].x+40) {
+    //     enemies[8].y += 5;
+    // }
+
+    // fill(0);
+    // rect(blocks[44].x+40,440,40,40);
 }
+
 
 keyReleased = () => {
     if(keyCode == 39) {
