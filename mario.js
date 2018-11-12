@@ -49,6 +49,19 @@ function Mario(x,y,h,w) {
             animationEffect -=5;
         }
     }
+
+    this.fallAnimate = () => {
+        smarioFaint.play();
+        let animationEffect = 3500;
+        while(animationEffect >= 5) {
+            mario.y -=1;
+            animationEffect -=5;
+        }
+        setTimeout(()=> {
+            history.go(0);
+        }, 2000)
+    }
+
     this.mushroomAnimate = () => {
         spowerup.play();
         this.invuln = true;

@@ -2,8 +2,10 @@ preload = () => {
     theme = loadSound('sound/theme.mp4');
 }
 
-//enemies that walk left need to fall at the first left empty gap
-//fix map background
+// fix map background
+// koopa animation
+// multiple coins block??
+
 
 setup = () => {
     createCanvas(960,600);
@@ -885,7 +887,9 @@ if(!mario.isAnimating && !mario.hasBumped && mario.isBig && (mario.isFalling || 
 
     // ----- reset ----- //
     if(mario.y >= 640) {
-        history.go(0);
+        mario.isAnimating = true;
+        mario.fallAnimate();
+        //history.go(0);
         // noLoop();
         // clear();
         // background(200);
