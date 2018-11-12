@@ -105,8 +105,8 @@ blocks.push(new Block(122*blockSize,5*blockSize,blockSize,blockSize,'block'));
 blocks.push(new Block(123*blockSize,5*blockSize,blockSize,blockSize,'block'));
 
 blocks.push(new Block(128*blockSize,5*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(129*blockSize,5*blockSize,blockSize,blockSize,'block'));
-blocks.push(new Block(130*blockSize,5*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(129*blockSize,5*blockSize,blockSize,blockSize,'block',true));
+blocks.push(new Block(130*blockSize,5*blockSize,blockSize,blockSize,'block',true));
 blocks.push(new Block(131*blockSize,5*blockSize,blockSize,blockSize,'block'));
 
 blocks.push(new Block(129*blockSize,9*blockSize,blockSize,blockSize,'block'));

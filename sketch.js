@@ -2,8 +2,9 @@ preload = () => {
     theme = loadSound('sound/theme.mp4');
 }
 
+// ------TODO-----
 // fix map background
-// koopa animation
+// koopa sprites
 // multiple coins block??
 
 
