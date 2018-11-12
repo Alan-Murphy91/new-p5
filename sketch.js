@@ -888,8 +888,8 @@ if(!mario.isAnimating && !mario.hasBumped && mario.isBig && (mario.isFalling || 
     // ----- reset ----- //
     if(mario.y >= 640) {
         mario.isAnimating = true;
-        mario.fallAnimate();
-        //history.go(0);
+        mario.animate();
+        history.go(0);
         // noLoop();
         // clear();
         // background(200);

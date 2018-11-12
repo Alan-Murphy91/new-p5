@@ -19,6 +19,8 @@ let rightRegen = false;
 let leftRegen = false;
 let slide = 0;
 
+let multicoin = 0;
+
 let coin = img = goomba1 = goomba2 = goomba3 = ground = question = question2 = question3 = solid = block = brick = mushroom = pipeg4 = koopaleft = kooparight = shell = block80 = block120 = block160 = marioright = marioleft = mariojump = mariojumpl = walk1 = walk1l = walk2 = walk2l = walk3 = walk3l = mariobump = mariobumpl = skidleft = skidright = '';
 let bmarioright = bmarioleft = bmariojump = bmariojumpl = bwalk1 = bwalk1l = bwalk2 = bwalk2l = bwalk3 = bwalk3l = bmariobump = bmariobumpl = bskidleft = bskidright = '';
 let crouch = crouchl = mapinv = luigi = fainted = sbump = sbricksmash = scoin = smarioFaint = smushroomAppear = spowerup = ssmallJump = stimeWarning = sskid = ssquish = smariohit = theme = '';
@@ -64,7 +66,7 @@ blocks.push(new Block(59*blockSize,12*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(59*blockSize,10*blockSize,blockSize,blockSize,'pipe'));
 blocks.push(new Block(59*blockSize,9*blockSize,blockSize,blockSize,'pipe'));
 
-blocks.push(new Block(65*blockSize,8*blockSize,blockSize,blockSize,'block'));
+blocks.push(new Block(65*blockSize,8*blockSize,blockSize,blockSize,'block',true));
 
 blocks.push(new Block(78*blockSize,9*blockSize,blockSize,blockSize,'block'));
 blocks.push(new Block(79*blockSize,9*blockSize,blockSize,blockSize,'block',false,true)); //35
