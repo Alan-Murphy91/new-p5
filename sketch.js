@@ -6,7 +6,7 @@ preload = () => {
 // fix map background
 // koopa sprites
 // multiple coins block??
-
+// fall animation
 
 setup = () => {
     createCanvas(960,600);
