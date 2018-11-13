@@ -68,7 +68,9 @@ function Enemy(x,y,h,w,type='') {
         if(!this.bumped && !mario.isFalling && dist(mario.x+20,mario.y+20,this.x+20,this.y+20) <= 40) {
             if(!mario.invuln && mario.isSmall && !mario.isAnimating && !this.fainted) {
                 mario.isAnimating = true;
+                mario.hitEnemy = true;
                 slide = 0;
+                theme.stop();
                 mario.animate();
             }
             if(!mario.invuln && mario.isBig && !mario.isAnimating && !this.fainted) {

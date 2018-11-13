@@ -887,62 +887,18 @@ if(!mario.isAnimating && !mario.hasBumped && mario.isBig && (mario.isFalling || 
     }
 
     // ----- reset ----- //
-    if(mario.y >= 640) {
-        mario.isAnimating = true;
-        mario.animate();
+    if(mario.y >= 640 && mario.hitEnemy) {
+        // mario.isAnimating = true;
+        // mario.animate();
         history.go(0);
-        // noLoop();
-        // clear();
-        // background(200);
-        // for(let x=0; x<blocks.length; x++) {
-        //     blocks[x].x += mapOffset;
-        //     blocks[x].show();
-        //     //blocks[x].showCentre();
-        //     blocks[x].showCoin();
-        //     blocks[x].booped = false;
-        //     if(enemies[x]) {
-        //         enemies[x].x = enemies[x].originX;
-        //         enemies[x].y = enemies[x].originY;
-        //         enemies[x].steps = 100;
-        //         enemies[x].show();
-        //         enemies[x].fainted = false;
-        //     }
-        // }
-        // mapOffset = 0;
-        // mario.x = 11*blockSize;
-        // mario.y = 12*blockSize;
-        // mario.isJumping = false;
-        // mario.isFalling = false;
-        // mario.isAnimating = false;
-        // mario.canJump = true;
-        // mario.show();
-        // mario.showCentre();
-        // setTimeout(() => {
-        //     loop();
-        // },50)
     }
-    // if(keyIsDown(32) && !mario.isFalling) {
-    //     if(jumpHeight < 100) {
-    //         jumpHeight+=5;
-    //         mario.y-=5;
-    //     } 
-    //     else if(jumpHeight == 0) {
-    //         mario.isFalling = false;
-    //         mario.isJumping = true;
-    //     }
-    //     else {
-    //         mario.isFalling = true;
-    //         mario.isJumping = false;
 
-    //     }
-    // } 
-    // else {
-    //     if(jumpHeight > 0) {
-    //         mario.isJumping = false;
-    //         mario.isFalling = true;
-    //         jumpHeight -=5;
-    //     }
-    // }
+    if(mario.y >= 640 && !mario.hitEnemy) {
+        // mario.isAnimating = true;
+        // mario.animate();
+        mario.fAnimate();
+    }
+
     if(keyIsDown(32) && jumpHeight >= 90) {
         if(jumpHeight >= 180 && !mario.isFalling) {
             mario.isFalling = true;

@@ -15,6 +15,7 @@ function Mario(x,y,h,w) {
     this.fright = true;
     this.fleft = false;
     this.hasBumped = false;
+    this.hitEnemy = false;
 
     
     this.show = () => {
@@ -42,15 +43,19 @@ function Mario(x,y,h,w) {
         rect(this.x+20,this.y+20,5,5);
     }
     this.animate = () => {
-        smarioFaint.play();
-        let animationEffect = 3500;
-        while(animationEffect >= 5) {
-            mario.y -=1;
-            animationEffect -=5;
+        if(this.hitEnemy) {
+            smarioFaint.play();
+            let animationEffect = 3500;
+            while(animationEffect >= 5) {
+                mario.y -=1;
+                animationEffect -=5;
+            }
         }
     }
 
-    this.fallAnimate = () => {
+    this.fAnimate = () => {
+        theme.stop();
+        mario.isAnimating = true;
         smarioFaint.play();
         let animationEffect = 3500;
         while(animationEffect >= 5) {
@@ -59,7 +64,7 @@ function Mario(x,y,h,w) {
         }
         setTimeout(()=> {
             history.go(0);
-        }, 2000)
+        },2400)
     }
 
     this.mushroomAnimate = () => {
