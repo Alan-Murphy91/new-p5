@@ -10,8 +10,7 @@ preload = () => {
 
 setup = () => {
     createCanvas(960,600);
-    img = loadImage('img/map.png');  
-    img2 = loadImage('img/mapinv.png');  
+    img = loadImage('img/Untitledmap.png');  
 
     theme.play();
 
@@ -83,11 +82,33 @@ setup = () => {
     smariohit = loadSound('sound/mariohit.wav');
 }
 
+
+let time = 400;
+
+setInterval(() => {
+    time--;
+    if(time == 20) {
+        console.log('20');
+        stimeWarning.play();
+    }
+    if(time == 0) {
+        console.log('0');
+        theme.stop();
+        mario.y = 641;
+    
+    }
+    document.getElementById('time').innerHTML = time;
+}, 500);
+
+
+
+
+
 function background(x) {
     this.x = x;
     this.show = () => {
         image(img, this.x, 0, img.width*2, img.height*2.25);
-        image(img2, this.x, img.height*2.23, img2.width*2, img2.height*2.25);
+        //image(img2, this.x, img.height*2.23, img2.width*2, img2.height*2.25);
     }
     this.move = () => {
         this.x -=1;

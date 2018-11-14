@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
 body, html {
     overflow: hidden;
-    display: flex;
-    place-content: center;
+    /* display: flex;
+    place-content: center; */
     background: #000;
+    margin-left: 70px;
 }
 .container {
     z-index: 99999;
@@ -30,4 +33,24 @@ body, html {
     .container div {
         margin-bottom: 10px;
     }
+}
+
+.stats {
+    position: relative;
+    font-size: 20px;
+    top: 45px;
+    font-family: 'Press Start 2P';
+    color: white;
+    display: flex;
+    place-content: center;
+    text-align: center;
+    width: 960px;
+}
+
+.stats .column {
+    flex: 1;
+}
+
+.stats .column .score {
+    display: block;
 }
