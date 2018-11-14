@@ -5,8 +5,7 @@ preload = () => {
 // ------TODO-----
 // fix map background
 // koopa sprites
-// multiple coins block??
-// fall animation
+// end level stuff castle etc.
 
 setup = () => {
     createCanvas(960,600);
