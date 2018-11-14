@@ -82,6 +82,16 @@ setup = () => {
     smariohit = loadSound('sound/mariohit.wav');
 }
 
+let coins = 0;
+let score = 0;
+
+setInterval(() => {
+    document.getElementById('score').innerHTML = score;
+}, 500);
+
+setInterval(() => {
+    document.getElementById('coins').innerHTML = coins;
+}, 500);
 
 let time = 400;
 

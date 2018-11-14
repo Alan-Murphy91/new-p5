@@ -67,6 +67,7 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
     this.raiseCoin = () => {
         if(this.starY > this.starYMax) {
             this.starY-=10;
+            score += 50;
         } else {
             this.coin = false;
         }
@@ -82,6 +83,7 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
     this.raiseMushroom = () => {
         if(!this.mushroomActive && this.mushroomY > this.mushroomYMax) {
             this.mushroomY-=2;
+            score +=50;
         } else {
             this.mushroomActive = true;
         }
@@ -111,6 +113,7 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
                 }
                 if(this.coin) {
                     scoin.play();
+                    coins++;
                     this.coinHit = true;
                     this.solid = true;
                 }
@@ -136,6 +139,7 @@ function Block(x,y,h,w,type='',coin=false,mushroom=false) {
                     }
                     if(this.coin) {
                         scoin.play();
+                        coins++;
                         this.coinHit = true;
                         this.solid = true;
                     } 

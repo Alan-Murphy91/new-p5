@@ -81,6 +81,7 @@ function Enemy(x,y,h,w,type='') {
     this.topDetect = () => {
         if((!this.bumped && mario.x+40 >= this.x && mario.x+40 <= this.x+40 || mario.x >= this.x && mario.x-40 <= this.x+40) && dist(mario.x,mario.y+40,mario.x,this.y) <= 1 && !mario.isAnimating) {
             if(!mario.isAnimating && !mario.isJumping && this.type == 'goomba') {
+                score += 100;
                 ssquish.play();
                 this.fainted = true;
                 this.y = 700;
@@ -132,6 +133,7 @@ function Enemy(x,y,h,w,type='') {
                 }
                 else if(this.power && this.type == 'koopatroopa') {
                     ssquish.play();
+                    score += 100;
                     this.power = false;
                     this.fainted = true;
                     this.y=700;
@@ -190,6 +192,7 @@ function Enemy(x,y,h,w,type='') {
     }
 
     this.bump = () => {
+        score += 100;
         this.y -= 10;
         this.bumped = true;
     }
