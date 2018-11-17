@@ -23,7 +23,7 @@ let multicoin = 0;
 
 let coin = img = goomba1 = goomba2 = goomba3 = ground = question = question2 = question3 = solid = block = brick = mushroom = pipeg4 = koopaleft = kooparight = shell = block80 = block120 = block160 = marioright = marioleft = mariojump = mariojumpl = walk1 = walk1l = walk2 = walk2l = walk3 = walk3l = mariobump = mariobumpl = skidleft = skidright = '';
 let bmarioright = bmarioleft = bmariojump = bmariojumpl = bwalk1 = bwalk1l = bwalk2 = bwalk2l = bwalk3 = bwalk3l = bmariobump = bmariobumpl = bskidleft = bskidright = '';
-let crouch = crouchl = mapinv = luigi = fainted = sbump = sbricksmash = scoin = smarioFaint = smushroomAppear = spowerup = ssmallJump = stimeWarning = sskid = ssquish = smariohit = theme = '';
+let crouch = crouchl = mapinv = luigi = peach = bowser = fainted = sbump = sbricksmash = scoin = smarioFaint = smushroomAppear = spowerup = ssmallJump = stimeWarning = sskid = ssquish = smariohit = theme = '';
 // ------blocks------------------
 blocks = [];
 
@@ -225,12 +225,9 @@ blocks.push(new Block(198*blockSize,12*blockSize,blockSize,blockSize,'brick'));
 
 
 
-
-
-
 // -- ground -- //
-for(let i=0;i<204;i++){
-        if(i == 71 || i == 70 || i == 87 || i == 88 || i == 89 || i == 153 || i == 154) {
+for(let i=0;i<224;i++){
+        if(i == 71 || i == 70 || i == 87 || i == 88 || i == 89 || i == 153 || i == 154 || i == 203 || i == 204 || i == 205 || i == 206 || i == 207 || i == 208 || i == 209 || i == 210 || i == 211 || i == 212 || i == 213) {
             continue;
         }
         else {

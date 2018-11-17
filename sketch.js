@@ -2,11 +2,6 @@ preload = () => {
     theme = loadSound('sound/theme.mp4');
 }
 
-// ------TODO-----
-// fix map background
-// koopa sprites
-// end level stuff castle etc.
-
 setup = () => {
     createCanvas(960,600);
     img = loadImage('img/Untitledmap.png');  
@@ -31,6 +26,10 @@ setup = () => {
     block120 = loadImage('img/block120.png');
     block160 = loadImage('img/block160.png');
     coin = loadImage('img/coin.png');
+    flagpole = loadImage('img/flagpole.png');
+    castle = loadImage('img/castle.png');
+    peach = loadImage('img/peach.png');
+    bowser = loadImage('img/bowser.png');
 
     marioright = loadImage('img/mario/marioright.png');
     marioleft = loadImage('img/mario/marioleft.png');
@@ -129,6 +128,7 @@ let backg2 = new background(960);
 let backg3 = new background(960*2);
 let backg4 = new background(960*3);
 
+
 let state = 0;
 setInterval(() => {
     //state == 0 ? 1 : 0;
@@ -187,6 +187,11 @@ draw = () => {
     image(block160, blocks[28].x, blocks[28].y, block160.width, block160.height);
     image(block80, blocks[111].x, blocks[111].y, block80.width, block80.height);
     image(block80, blocks[118].x, blocks[111].y, block80.width, block80.height);
+
+    image(castle, blocks[160].x+1040,blocks[160].y-135,castle.width,castle.height);
+    image(bowser, blocks[160].x+930,blocks[160].y+80,bowser.width/2,bowser.height/2);
+    image(peach, blocks[160].x+1180,blocks[160].y+190,peach.width,peach.height);
+
 
 
 
@@ -891,6 +896,7 @@ if(!mario.isAnimating && !mario.hasBumped && mario.isBig && (mario.isFalling || 
     }
 
     mario.show();
+
     //mario.showCentre();
 
     // ------  jumping  ------- //
